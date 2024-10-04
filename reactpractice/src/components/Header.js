@@ -2,8 +2,8 @@ import React from "react";
 
 function Header () {
   return (
-    <header>
-      <h1> This is the header</h1>
+    <header className="navbar">
+      <h1> To Do List :</h1>
     </header>
   )
 }

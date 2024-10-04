@@ -24,7 +24,7 @@
   color: white;
 
 }
-Header,Footer{
+Footer{
   background-color: #3563c0;
   min-height: 20vh;
   display: flex;
@@ -34,16 +34,48 @@ Header,Footer{
   color: white;
 }
 
-Main{
+.maincontent {
   background-color: #3563c0;
-  min-height: 60vh;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  font-weight: bold;
+
+}
+.navbar {
+background-color: #3563c0;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   color: white;
 }
 
+.todo-list {
+  background-color: #3563c0;
+  min-height: 70vh;
+  display:  flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.todo-item {
+  background-color: #3563c0;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
 
 .App-link {
   color: #61dafb;
