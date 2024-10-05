@@ -3,7 +3,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
 import TodoItem from './components/TodoItem'
-
+import ContactCard from './components/ContactCard';
 function App() {
   // const date = new Date()
   // const hours =date.getHours()
@@ -30,8 +30,18 @@ function App() {
   return (
     <div className="todo-list">
       <Header />
-      <TodoItem />
-   
+      <ContactCard 
+      contact={{name: "Software Developer",
+      imgURL: "https://st3.depositphotos.com/5392356/13703/i/1600/depositphotos_137037020-stock-photo-professional-software-developer-working-in.jpg",
+      phone: "555-555-555",
+      email:"example@gmail.com"}}
+      />
+      <ContactCard 
+      contact={{name: "Software Developer2",
+      imgURL: "https://st3.depositphotos.com/5392356/13703/i/1600/depositphotos_137037020-stock-photo-professional-software-developer-working-in.jpg",
+      phone: "777-777-7777",
+      email:"example2@gmail.com"}}
+      />
      
     
     </div>
