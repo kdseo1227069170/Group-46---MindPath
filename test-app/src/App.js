@@ -1,15 +1,18 @@
 import './App.css';
-import Product from './components/Product'
-import ProductData from './productsData';
+import Navbar from './components/Navbar'
+import MainContent from './components/MainContent';
 
 
 function App() {
-  const productComponents = ProductData.map(item => <Product key={item.id} product={item}/>)
+  
   return (
-    <div className="App">
-      {productComponents}
-    </div>
-  );
+   <div>
+   <Navbar />
+   <MainContent />
+   </div>
+
+  )
+  
 }
 
 export default App;
