@@ -1,16 +1,12 @@
 import React from "react";
 
-function TodoItem() {
-    let ListOfTasks = ["Take out the trash", "Get groceries", "Wash the car", " Take the dog for a walk", "Mow the lawn"]
+function TodoItem(props) {
+
 
     return (
-        <div className="todo-list">
-            {ListOfTasks.map((task,index) => (
-                <div className="todo-item" key={index}>   
-                <input type="checkbox" />
-                <ol>{task}</ol>
-                </div>
-            ))}
+        <div className="todo-item">
+            <input type="checkbox" checked={props.item.completed}/>
+            <p>{props.item.text}</p>
         </div>
     );
     
