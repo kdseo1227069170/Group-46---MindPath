@@ -1,14 +1,14 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const connectDB = require('../MindPath/src/config/db'); // Update the path according to your structure
+const connectDB = require('../MindPath/src/config/db'); 
 
 // Load environment variables 
 dotenv.config();
 
 const app = express();
 const mongoURI = process.env.MONGO_URI;
-const authRoutes = require('./src/routes/authRoutes'); // Update path if needed
+const authRoutes = require('./src/routes/authRoutes'); 
 
 app.set('view engine', 'ejs');
 
