@@ -6,4 +6,4 @@ const TwoFASchema = new mongoose.Schema({
 	expiresAt: { type: Date, required: true}
 });
 
-module.exports = mongoose.model('TwoFA, TwoFASchema);
+module.exports = mongoose.model('TwoFA', TwoFASchema);
