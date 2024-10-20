@@ -23,6 +23,15 @@ const RegistrationForm = () => {
 			const response = await axios.post('http://localhost:5000/api/auth/register', formData);
 		  console.log(response.data);
 		  alert('Registration successful!');
+		  // Clear the form after successful registration
+			setFormData({
+				firstName: '',
+				lastName: '',
+				email: '',
+				username: '',
+				password: '',
+				phoneNumber: '',
+			});
 		} catch (error) {
 		  console.error('Error registering user:', error);
 		  alert('Registration failed!');
@@ -30,7 +39,7 @@ const RegistrationForm = () => {
 	};
 	
 	return (
-		<form onsubmit={handleSubmit}>
+		<form onSubmit={handleSubmit}> {}
 			<h2>Register</h2>
 			<div>
 				<label>First Name:</label>
