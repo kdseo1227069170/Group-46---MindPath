@@ -95,3 +95,13 @@ const send2FACode = async (user) => {
     // Send the verification code to the user's phone or email
     console.log(`2FA code for ${user.email}: ${verificationCode}`); 
 };
+
+// Get all users
+exports.getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find({}, '-password'); 
+    return res.status(200).json(users);
+  } catch (error) {
+    return res.status(500).json({ message: 'Server error', error });
+  }
+};
