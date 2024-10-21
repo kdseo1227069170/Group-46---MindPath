@@ -23,17 +23,36 @@ const CrisisSupport = () => {
 
 const styles = {
     container: {
-        textAlign: 'center',
-        padding: '20px',
+        position: 'fixed',
+        bottom: '0',
+        right: '0',
+        backgroundColor: '#33343f',
+        margin: '10px',
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+        borderRadius: '8px',
+        zIndex: 1000,
+        width: '250px',
+        fontSize: '12px',
+        textAlign: 'right',
+        padding: '10px',
+    },
+    heading: {
+        fontSize: '8px',
+        marginBottom: '5px',
+    },
+    text: {
+        fontSize: '6px',
+        marginBottom: '10px',
     },
     button: {
-        padding: '10px 20px',
-        fontSize: '18px',
+        padding: '6px 12px',
+        fontSize: '12px',
         backgroundColor: '#ff3333',
-        color: '#fff',
+        color: '#ffffff',
         border: 'none',
         borderRadius: '5px',
         cursor: 'pointer',
+        alignSelf: 'flex-end',
     },
 };
 
