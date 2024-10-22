@@ -13,6 +13,8 @@ const userSchema = new mongoose.Schema({
 	password : { type: String, required: true },
 	phoneNumber: { type: String, required: true },
 	is2FAEnabled: { type: Boolean, default: false },
+	twoFACode: { type: String }
+	twoFACodeExpires: { type: Date}.
 	createdAt: { type: Date, default: Date.now},
 	lastLogin: { type: Date },
 });
