@@ -8,7 +8,13 @@ router.post('/register', authController.register);
 // Route for user login
 router.post('/login', authController.login);
 
+// Route for verifying 2FA code
+router.post('/verify-2fa', authController.verify2FA);
+
 // Route to get all users
 router.get('/users', authController.getAllUsers);
+
+// Route to delete a user by ID
+router.delete('/users/:username', authController.deleteUser); 
 
 module.exports = router;
