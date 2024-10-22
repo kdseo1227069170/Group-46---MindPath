@@ -47,6 +47,12 @@ exports.login = async (req, res) => {
         if (!isMatch) {
             return res.status(400).json({ message: 'Invalid password' });
         }
+		
+		 // Enable 2FA if it hasn't been enabled yet
+        if (!user.is2FAEnabled) {
+            user.is2FAEnabled = true;  // Set to true
+            await user.save();
+        }
 
         // Check for 2FA
         if (user.is2FAEnabled) {

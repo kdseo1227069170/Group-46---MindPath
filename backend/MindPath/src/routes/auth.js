@@ -15,6 +15,6 @@ router.post('/verify-2fa', authController.verify2FA);
 router.get('/users', authController.getAllUsers);
 
 // Route to delete a user by ID
-router.delete('/users/:username', authController.deleteUser); 
+router.delete('/users/username/:username', authController.deleteUserByUsername); 
 
 module.exports = router;
