@@ -26,7 +26,7 @@ const styles = {
         position: 'fixed',
         bottom: '0',
         right: '0',
-        backgroundColor: '#33343f',
+        backgroundColor: '#c7c4c4',
         margin: '10px',
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
         borderRadius: '8px',
