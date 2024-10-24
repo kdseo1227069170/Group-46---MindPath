@@ -55,29 +55,29 @@ const brandData = [
 ];
 const faqData = [
   {
-    title: 'What services does ProHealth offer?',
+    title: 'What services does MindPath offer?',
     content:
-      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesent voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui.',
+      'MindPath provides a wide range of mental health services designed to support individuals in managing their mental well-being. These services include therapy sessions (individual, group, and family), psychiatric evaluations, medication management, and specialized treatment plans for conditions such as anxiety, depression, bipolar disorder, and more. We also offer telehealth services for remote access to our mental health professionals, ensuring convenient care no matter where you are. Our goal is to empower individuals on their path to better mental health.',
   },
   {
-    title: 'How do I schedule an appointment with ProHealth?',
+    title: 'How do I schedule an appointment with MindPath?',
     content:
-      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesent voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui.',
+      'To schedule an appointment, you can use our online booking system through the MindPath website. We also offer telehealth appointments for those who prefer virtual sessions. After providing some basic information, we will match you with a provider based on your specific needs.',
   },
   {
-    title: 'Do you accept insurance?',
+    title: 'How can I access emergency mental health services?',
     content:
-      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesent voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui.',
+      'If you are experiencing a mental health crisis, please contact emergency services immediately by dialing 911 or going to the nearest emergency room. MindPath also provides urgent care appointments for existing clients who may need immediate support.',
   },
   {
-    title: 'What should I bring to my appointment?',
+    title: 'What age groups do you serve at MindPath?',
     content:
-      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesent voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui.',
+      'MindPath serves individuals of all ages, from children and adolescents to adults and seniors. Our mental health professionals are trained to address age-specific concerns and offer tailored treatments for each stage of life.',
   },
   {
-    title: 'How do I request a prescription refill?',
+    title: 'Are your services confidential? ',
     content:
-      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesent voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui.',
+      'Absolutely. MindPath takes your privacy very seriously. All information shared during therapy sessions and other services is confidential and protected under the law. We follow strict guidelines to ensure your personal information is kept safe and secure.',
   },
 ];
 const blogData = [
