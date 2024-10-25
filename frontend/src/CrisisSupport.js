@@ -6,7 +6,9 @@ const CrisisSupport = () => {
     const handleCrisisSupportClick = () => {
         window.open('https://www.canada.ca/en/public-health/services/mental-health-services/mental-health-get-help.html', '_blank');
     };
-
+    // Header
+    // Body
+    // Button action
     return (
         <div style={styles.container}>
             <h1>Need Immediate Crisis Support?</h1>
@@ -22,6 +24,7 @@ const CrisisSupport = () => {
 };
 
 const styles = {
+    // Edit the button container
     container: {
         position: 'fixed',
         bottom: '0',
@@ -36,14 +39,17 @@ const styles = {
         textAlign: 'right',
         padding: '10px',
     },
+    // Edit text size for the header
     heading: {
         fontSize: '8px',
         marginBottom: '5px',
     },
+    // Edit text size for the body
     text: {
         fontSize: '6px',
         marginBottom: '10px',
     },
+    // Edit button appearance
     button: {
         padding: '6px 12px',
         fontSize: '12px',
