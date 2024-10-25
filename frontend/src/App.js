@@ -3,22 +3,11 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
-// Placeholder components for additional pages
-function Home() {
-  return <h2>Welcome to MindPath!</h2>;
-}
-
-function About() {
-  return <h2>About MindPath</h2>;
-}
-
-function Services() {
-  return <h2>Our Services</h2>;
-}
-
-function Contact() {
-  return <h2>Contact Us</h2>;
-}
+// Import the new components
+import Home from './components/Home';
+import About from './components/About';
+import Services from './components/Services';
+import Contact from './components/Contact';
 
 function App() {
   return (
