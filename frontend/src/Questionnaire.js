@@ -5,6 +5,14 @@ const Questionnaire = () => {
         name: '',
         age: '',
         mood: '',
-        stressLevel: ''
+        stressLevel: '',
+        eatingHabits: '',
+        inCrisis: false,
+        onPrescription: false,
+        currentlySeeing: '',
+        location: '',
+        province: '',
+        isRemote: false,
+        needTranslator: false,
     });
 }
