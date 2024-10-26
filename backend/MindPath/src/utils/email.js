@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
 // Function to send 2FA code via email
 const send2FAEmail = async (email, code) => {
     const mailOptions = {
-        from: 'your_email@gmail.com',
+        from: 'asu-softdev-kevins-mi-aaaaoic7ltrbijvybrroj2wdpa@teamcanage.slack.com',
         to: email,
         subject: 'Your Two-Factor Authentication Code',
         text: `Your 2FA code is: ${code}`
