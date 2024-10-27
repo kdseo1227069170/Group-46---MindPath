@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MindPath-Group46.iml" filepath="$PROJECT_DIR$/MindPath-Group46.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/MindPath-Group46.iml" filepath="$PROJECT_DIR$/.idea/MindPath-Group46.iml" />
     </modules>
   </component>
 </project>
