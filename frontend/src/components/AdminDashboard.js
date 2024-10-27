@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import {Bar, Line} from 'react-chartjs-2';
+import React, { useEffect, useState } from 'react';
+import { Bar, Line } from 'react-chartjs-2';
 import 'chart.js/auto';
+import './AdminDashboard.css';
 
 const AdminDashboard = () => {
     const [dashboardData, setDashboardData] = useState(null);
@@ -72,71 +73,24 @@ const AdminDashboard = () => {
             <h2>Admin Dashboard</h2>
 
             {/* Bar Chart for Total Users and Searches */}
-            <div style={{marginBottom: '50px'}}>
+            <div className="chart-container" style={{ marginBottom: '50px' }}>
                 <h3>Total Users & Searches</h3>
-                <Bar data={userAndSearchData}/>
+                <Bar data={userAndSearchData} />
             </div>
 
             {/* Line Chart for Searches Per Day */}
-            <div style={{marginBottom: '50px'}}>
+            <div className="chart-container" style={{ marginBottom: '50px' }}>
                 <h3>Searches Per Day</h3>
-                <Line data={searchesPerDayData}/>
+                <Line data={searchesPerDayData} />
             </div>
 
             {/* Bar Chart for Popular Searches */}
-            <div>
+            <div className="chart-container">
                 <h3>Popular Search Terms</h3>
-                <Bar data={popularSearchesData}/>
+                <Bar data={popularSearchesData} />
             </div>
         </div>
     );
 };
 
 export default AdminDashboard;
-
-/* Optional CSS styling */
-h2
-{
-    text - align
-:
-    center;
-    margin - top
-:
-    20
-    px;
-}
-
-h3
-{
-    text - align
-:
-    center;
-    margin - bottom
-:
-    20
-    px;
-}
-
-.
-chart - container
-{
-    width: 80 %;
-    margin: 0
-    auto;
-    padding: 20
-    px;
-}
-
-<div className="chart-container">
-    <h3>Total Users & Searches</h3>
-    <Bar data={userAndSearchData}/>
-</div>
-
-//Ensures only Admin access
-fetch('/api/admin/dashboard', {
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`, // Only if using JWT
-    }
-})

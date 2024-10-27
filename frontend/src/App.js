@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
@@ -8,52 +8,17 @@ import Home from './components/Home';
 import About from './components/About';
 import Services from './components/Services';
 import Contact from './components/Contact';
+import AdminDashboard from './components/AdminDashboard';
 
-// Importing Load Spinner:
-import React, { useState, useEffect } from 'react';
-import LoadingSpinner from './LoadingSpinner';
-
-const Home = () => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulating data fetch that has a timeout (2000sec)
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
-
-  if (loading) {
-    return <LoadingSpinner />;
-  }
-
-  return (
-      <div>
-        <h1>Welcome to MindPath</h1>
-        <p>Navigate through the MindPath platform to find mental health services that suit your needs.</p>
-      </div>
-  );
-};
+// Importing the Loading Spinner
+import LoadingSpinner from './components/LoadingSpinner';
 
 function App() {
   return (
       <Router>
         <div className="App">
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-
-            {/* Navigation Bar */}
+            {/* Removed the React logo */}
             <nav>
               <ul>
                 <li><Link to="/">Home</Link></li>
@@ -70,6 +35,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </div>
       </Router>

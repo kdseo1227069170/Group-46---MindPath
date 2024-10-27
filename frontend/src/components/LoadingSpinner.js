@@ -1,4 +1,4 @@
-// Load Spinner graphic:
+// Load the LoadingSpinner graphic
 import React from 'react';
 import './LoadingSpinner.css';
 

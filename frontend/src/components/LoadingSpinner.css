@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Make this full height to center on the page */
+    height: 100vh; /* Full height to center on page */
 }
 
 .spinner {
@@ -20,3 +20,4 @@
         transform: rotate(360deg);
     }
 }
+
