@@ -9,6 +9,32 @@ import About from './components/About';
 import Services from './components/Services';
 import Contact from './components/Contact';
 
+// Importing Load Spinner:
+import React, { useState, useEffect } from 'react';
+import LoadingSpinner from './LoadingSpinner';
+
+const Home = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulating data fetch that has a timeout (2000sec)
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
+  return (
+      <div>
+        <h1>Welcome to MindPath</h1>
+        <p>Navigate through the MindPath platform to find mental health services that suit your needs.</p>
+      </div>
+  );
+};
+
 function App() {
   return (
       <Router>
