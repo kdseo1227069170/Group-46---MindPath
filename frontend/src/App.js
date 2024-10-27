@@ -1,7 +1,14 @@
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './App.css';
 import React from "react";
 import CrisisSupport from './CrisisSupport';
 import RegistrationForm from './RegistrationForm';
+
+// Import Admin Dashboard
+import AdminDashboard from './components/AdminDashboard';
+
+// Importing the Loading Spinner
+import LoadingSpinner from './components/LoadingSpinner';
 
 function App() {
     return (
