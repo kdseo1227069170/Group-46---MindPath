@@ -12,3 +12,11 @@ logs/
 # OS generated files
 .DS_Store
 Thumbs.db
+
+
+backend/node_modules/
+backend/.env
+backend/package.json
+backend/package-lock.json
+
+.idea/
