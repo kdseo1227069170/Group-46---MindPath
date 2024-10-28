@@ -26,6 +26,12 @@ import HomeStyle5 from './components/Pages/HomeStyle5';
 import HomeStyle6 from './components/Pages/HomeStyle6';
 
 
+// Import Admin Dashboard
+import AdminDashboard from './components/AdminDashboard';
+
+// Importing the Loading Spinner
+import LoadingSpinner from './components/LoadingSpinner';
+
 function App() {
   const { pathname } = useLocation();
 
