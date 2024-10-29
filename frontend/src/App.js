@@ -1,8 +1,9 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation, Link } from 'react-router-dom';
 import Layout from './components/Layout';
 import Layout2 from './components/Layout/Layout2';
 import Layout3 from './components/Layout/Layout3';
 import Layout4 from './components/Layout/Layout4';
+
 import Home from './components/Pages/Home';
 import HomeStyle2 from './components/Pages/HomeStyle2';
 import HomeStyle3 from './components/Pages/HomeStyle3';
@@ -42,6 +43,19 @@ function App() {
     window.scrollTo(0, 0);
   }, [pathname]);
   return (
+	<>
+      
+      <div style={{
+          position: 'absolute',
+          top: '35px', // Adjust as needed
+          right: '300px', // Adjust as needed to place it near the magnifying glass
+          zIndex: 1000,
+        }}>
+        <Link to="/register">
+          <button>Register</button>
+        </Link>
+      </div>
+  
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
@@ -64,6 +78,7 @@ function App() {
       </Route>
       <Route path="*" element={<ErrorPage />} />
     </Routes>
+	</>
   );
 }
 
