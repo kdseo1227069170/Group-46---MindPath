@@ -32,6 +32,9 @@ import AdminDashboard from './components/AdminDashboard';
 // Importing the Loading Spinner
 import LoadingSpinner from './components/LoadingSpinner';
 
+// Import Registration Form
+import RegistrationForm from './components/RegistrationForm';
+
 function App() {
   const { pathname } = useLocation();
 
@@ -46,6 +49,7 @@ function App() {
         <Route path="doctors" element={<Doctors />} />
         <Route path="doctors/:doctorId" element={<DoctorDetails />} />
         <Route path="blog" element={<Blog />} />
+		<Route path="register" element={<RegistrationForm />} />
         <Route path="blog/:blogId" element={<BlogDetails />} />
         <Route path="appointments" element={<Appointments />} />
         <Route path="departments" element={<Departments />} />
