@@ -5,8 +5,9 @@ import SocialWidget from '../Widget/SocialWidget';
 import Newsletter from '../Widget/Newsletter';
 import IconBoxStyle11 from '../IconBox/IconBoxStyle11';
 import Spacing from '../Spacing';
+import { Link as ScrollLink } from 'react-scroll';
 
-export default function Header({ logoSrc, variant }) {
+export default function Header({logoSrc, variant }) {
   const [isSticky, setIsSticky] = useState(false);
   const [mobileToggle, setMobileToggle] = useState(false);
   const [sideNav, setSideNav] = useState(false);
@@ -46,35 +47,18 @@ export default function Header({ logoSrc, variant }) {
                     }`}
                   >
                     <li className="menu-item-has-children">
-                      <Link to="/">Home</Link>
-                      <DropDown>
-                        <ul>
-                          <li>
-                            <Link to="/">Home Version-1</Link>
-                          </li>
-                          <li>
-                            <Link to="/home-v2">Home Version-2</Link>
-                          </li>
-                          <li>
-                            <Link to="/home-v3">Home Version-3</Link>
-                          </li>
-                          <li>
-                            <Link to="/home-v4">Home Version-4</Link>
-                          </li>
-                          <li>
-                            <Link to="/home-v5">Home Version-5</Link>
-                          </li>
-                        </ul>
-                      </DropDown>
+                    
                     </li>
                     <li>
                       <Link to="/about">About</Link>
                     </li>
                     <li>
-                      <Link to="/doctors">Find Doctor</Link>
+                      <Link to="/services">Services</Link>
                     </li>
                     <li>
-                      <Link to="/blog">Blog</Link>
+                      <ScrollLink to="faq-section" smooth={true} duration={500} offset={-50} style={{ cursor: 'pointer' }}>
+                        FAQ
+                      </ScrollLink>
                     </li>
                     <li className="menu-item-has-children">
                       <Link to="/">Pages</Link>
@@ -110,9 +94,6 @@ export default function Header({ logoSrc, variant }) {
                           </li>
                         </ul>
                       </DropDown>
-                    </li>
-                    <li>
-                      <Link to="/contact">Contact</Link>
                     </li>
                   </ul>
                   <span
