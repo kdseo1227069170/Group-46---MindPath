@@ -1,4 +1,6 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
+import {Route, Routes, useLocation} from 'react-router-dom';
+import CrisisSupport from './CrisisSupport';
+import CrisisSupportPage from './CrisisSupportPage';
 import Layout from './components/Layout';
 import Layout2 from './components/Layout/Layout2';
 import Layout3 from './components/Layout/Layout3';
@@ -19,7 +21,7 @@ import PricingPlan from './components/Pages/PricingPlan';
 import Gallery from './components/Pages/Gallery';
 import Timetable from './components/Pages/Timetable';
 import Contact from './components/Pages/Contact';
-import { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import ErrorPage from './components/Pages/ErrorPage';
 import Layout5 from './components/Layout/Layout5';
 import HomeStyle5 from './components/Pages/HomeStyle5';
@@ -33,34 +35,38 @@ import AdminDashboard from './components/AdminDashboard';
 import LoadingSpinner from './components/LoadingSpinner';
 
 function App() {
-  const { pathname } = useLocation();
+    const {pathname} = useLocation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="doctors" element={<Doctors />} />
-        <Route path="doctors/:doctorId" element={<DoctorDetails />} />
-        <Route path="blog" element={<Blog />} />
-        <Route path="blog/:blogId" element={<BlogDetails />} />
-        <Route path="appointments" element={<Appointments />} />
-        <Route path="departments" element={<Departments />} />
-        <Route
-          path="departments/:departmentId"
-          element={<DepartmentDetails />}
-        />
-        <Route path="pricing-plan" element={<PricingPlan />} />
-        <Route path="gallery" element={<Gallery />} />
-        <Route path="timetable" element={<Timetable />} />
-        <Route path="contact" element={<Contact />} />
-      </Route>
-      <Route path="*" element={<ErrorPage />} />
-    </Routes>
-  );
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+    return (
+        <>
+            // Makes Crisis Support button visible across all pages
+            <CrisisSupport/>
+
+            <Routes>
+                <Route path="/" element={<Layout/>}>
+                    <Route index element={<Home/>}/>
+                    <Route path="about" element={<About/>}/>
+                    <Route path="doctors" element={<Doctors/>}/>
+                    <Route path="doctors/:doctorId" element={<DoctorDetails/>}/>
+                    <Route path="blog" element={<Blog/>}/>
+                    <Route path="blog/:blogId" element={<BlogDetails/>}/>
+                    <Route path="appointments" element={<Appointments/>}/>
+                    <Route path="departments" element={<Departments/>}/>
+                    <Route path="departments/:departmentId" element={<DepartmentDetails/>}/>
+                    <Route path="pricing-plan" element={<PricingPlan/>}/>
+                    <Route path="gallery" element={<Gallery/>}/>
+                    <Route path="timetable" element={<Timetable/>}/>
+                    <Route path="contact" element={<Contact/>}/>
+                </Route>
+
+                <Route path="/crisis-support" element={<CrisisSupportPage/>}/>
+                <Route path="*" element={<ErrorPage/>}/>
+            </Routes>
+        </>
+    );
 }
 
 export default App;
