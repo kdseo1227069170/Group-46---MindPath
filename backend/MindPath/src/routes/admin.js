@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const SearchLog = require('../models/SearchLog'); // Import SearchLog
 const User = require('../models/User'); // Import User model (need to make from another task)
-const verifyAdmin = require('../middleware/verifyAdmin'); // Middleware verifies that it's an admin privilege
+const verifyAdmin = require('../middlewares/verifyAdmin'); // Middleware verifies that it's an admin privilege
 
 // For ActivityLog of logging admin's login attempts
 const ActivityLog = require('../models/ActivityLog');

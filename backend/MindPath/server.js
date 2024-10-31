@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const authRoutes = require('./src/routes/auth');
-const app = express(); //admin dashboard
-const dashboardRoutes = require('./backend/routes/admin'); //admin dashboard
+const dashboardRoutes = require('./src/routes/admin'); //admin dashboard
 require('dotenv').config();
 
 
