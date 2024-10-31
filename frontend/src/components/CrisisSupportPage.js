@@ -3,7 +3,7 @@ import React from 'react';
 const CrisisSupportPage = () => {
     return (
         <div style={styles.pageContainer}>
-            <h1>Get Help with Mental Health Services</h1>
+            <h1>Crisis Support Resources</h1>
             <p>
                 If you are in crisis, there are services available to help.
                 This page offers information and resources for mental health support in Canada.
@@ -38,10 +38,8 @@ const CrisisSupportPage = () => {
 
 const styles = {
     pageContainer: {
-        padding: '20px',
-        fontFamily: 'Arial, sans-serif',
-        lineHeight: '1.6',
-    }
+        padding: '80px 20px 20px',
+    },
 };
 
 export default CrisisSupportPage;

@@ -1,6 +1,6 @@
 import {Route, Routes, useLocation} from 'react-router-dom';
-import CrisisSupport from './CrisisSupport';
-import CrisisSupportPage from './CrisisSupportPage';
+import CrisisSupport from './components/CrisisSupport';
+import CrisisSupportPage from './components/CrisisSupportPage';
 import Layout from './components/Layout';
 import Layout2 from './components/Layout/Layout2';
 import Layout3 from './components/Layout/Layout3';
@@ -41,9 +41,6 @@ function App() {
         window.scrollTo(0, 0);
     }, [pathname]);
     return (
-        <>
-            // Makes Crisis Support button visible across all pages
-            <CrisisSupport/>
 
             <Routes>
                 <Route path="/" element={<Layout/>}>
@@ -60,12 +57,10 @@ function App() {
                     <Route path="gallery" element={<Gallery/>}/>
                     <Route path="timetable" element={<Timetable/>}/>
                     <Route path="contact" element={<Contact/>}/>
+                    <Route path="/crisis-support" element={<CrisisSupportPage/>}/>
                 </Route>
-
-                <Route path="/crisis-support" element={<CrisisSupportPage/>}/>
                 <Route path="*" element={<ErrorPage/>}/>
             </Routes>
-        </>
     );
 }
 
