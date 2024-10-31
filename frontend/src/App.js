@@ -57,6 +57,7 @@ function App() {
         <Route path="gallery" element={<Gallery />} />
         <Route path="timetable" element={<Timetable />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="admin" element={<AdminDashboard />} />
       </Route>
       <Route path="*" element={<ErrorPage />} />
     </Routes>

@@ -1,15 +1,34 @@
 const express = require('express');
 const router = express.Router();
+const verifyAdmin = require('../middlewares/verifyAdmin');
+const SearchLog = require('../models/SearchLog');
+const User = require('../models/User');
 
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', verifyAdmin, async (req, res) => {
     try {
-        // Get aggregate stats (here, total users and searches)
         const totalUsers = await User.countDocuments();
         const totalSearches = await SearchLog.countDocuments();
+        const searchesPerDay = await SearchLog.aggregate([
+            {
+                $group: {
+                    _id: { $dateToString: { format: "%Y-%m-%d", date: "$searchDate" } },
+                    totalSearches: { $sum: 1 }
+                }
+            },
+            { $sort: { _id: 1 } }
+        ]);
+
+        const popularSearches = await SearchLog.aggregate([
+            { $group: { _id: "$searchTerm", count: { $sum: 1 } } },
+            { $sort: { count: -1 } },
+            { $limit: 5 }
+        ]);
 
         res.json({
             totalUsers,
             totalSearches,
+            searchesPerDay,
+            popularSearches
         });
     } catch (err) {
         console.error(err);
@@ -18,17 +37,3 @@ router.get('/dashboard', async (req, res) => {
 });
 
 module.exports = router;
-
-//Ensure only admin privileges get access to view the dashboard
-const verifyAdmin = (req, res, next) => {
-    if (req.user && req.user.role === 'admin') {
-        next();
-    } else {
-        res.status(403).json({ message: 'Access denied' });
-    }
-};
-
-// TODO: Apply middleware to route
-router.get('/dashboard', verifyAdmin, async (req, res) => {
-    // TODO: Dashboard logic
-});
