@@ -45,16 +45,7 @@ function App() {
   return (
 	<>
       
-      <div style={{
-          position: 'absolute',
-          top: '35px', // Adjust as needed
-          right: '300px', // Adjust as needed to place it near the magnifying glass
-          zIndex: 1000,
-        }}>
-        <Link to="/register">
-          <button>Register</button>
-        </Link>
-      </div>
+      
   
     <Routes>
       <Route path="/" element={<Layout />}>

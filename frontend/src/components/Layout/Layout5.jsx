@@ -15,9 +15,7 @@ export default function Layout5() {
       />
 	  <div>
       
-      <nav>
-        <Link to="/register">Register</Link>
-      </nav>
+      
      
     </div>
       <Outlet />

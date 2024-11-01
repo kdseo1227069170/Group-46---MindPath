@@ -124,9 +124,13 @@ export default function HeaderStyle2({ logoSrc, variant, btnText, btnUrl }) {
                   </span>
                 </nav>
               </div>
-              <div className="cs_main_header_right">
-                <Button btnUrl={btnUrl} btnText={btnText} />
-              </div>
+              
+			   <div className="cs_main_header_right" style={{ display: 'flex', alignItems: 'center' }}>
+				  <Link to="/register" style={{ marginRight: '10px' }}>
+					<button className="register-button">Register</button>
+				  </Link>
+				  <Button btnUrl={btnUrl} btnText={btnText} />
+				</div>
             </div>
           </div>
         </div>
