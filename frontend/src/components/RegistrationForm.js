@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './RegistrationForm.css';
 
-const RegistrationForm = () => {
+const RegistrationForm = ({ onClose }) => {
 	const [formData, setFormData] = useState({
 		firstName: '',
 		lastName: '',
@@ -32,6 +33,7 @@ const RegistrationForm = () => {
 				password: '',
 				phoneNumber: '',
 			});
+			onClose();
 		} catch (error) {
 		  console.error('Error registering user:', error);
 		  alert('Registration failed!');

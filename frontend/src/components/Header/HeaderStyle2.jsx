@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import DropDown from './DropDown';
-import Button from '../Button';
+import Button from '../Button'
+import { RegistrationButton } from './RegistrationButton';
 
 export default function HeaderStyle2({ logoSrc, variant, btnText, btnUrl }) {
   const [isSticky, setIsSticky] = useState(false);
@@ -127,7 +128,7 @@ export default function HeaderStyle2({ logoSrc, variant, btnText, btnUrl }) {
               
 			   <div className="cs_main_header_right" style={{ display: 'flex', alignItems: 'center' }}>
 				  <Link to="/register" style={{ marginRight: '10px' }}>
-					<button className="register-button">Register</button>
+					<Button btnUrl="/register" btnText="Register" className="register-button" /> {/* Using Button component */}
 				  </Link>
 				  <Button btnUrl={btnUrl} btnText={btnText} />
 				</div>
