@@ -2,8 +2,6 @@ import { Icon } from '@iconify/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import List from '../../List';
-import ListStyle3 from '../../List/ListStyle3';
-import ListStyle2 from '../../List/ListStyle2';
 import Spacing from '../../Spacing';
 
 export default function DoctorDetailsSection({
@@ -44,17 +42,8 @@ export default function DoctorDetailsSection({
               </h3>
             </div>
             <Spacing md="94" lg="60" />
-            <ListStyle2
-              heading={contactInfoHeading}
-              iconUrl="/images/icons/schedule.svg"
-              data={contactInfo}
-            />
+          
             <Spacing md="66" lg="60" />
-            <ListStyle3
-              heading={scheduleHeading}
-              iconUrl="/images/icons/schedule.svg"
-              data={schedules}
-            />
           </div>
           <div className="col-lg-6 offset-lg-1 position-relative">
             <Spacing md="55" />
