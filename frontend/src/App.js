@@ -3,9 +3,7 @@ import CrisisSupport from './components/CrisisSupport';
 import CrisisSupportPage from './components/CrisisSupportPage';
 
 import Layout from './components/Layout';
-import Layout2 from './components/Layout/Layout2';
-import Layout3 from './components/Layout/Layout3';
-import Layout4 from './components/Layout/Layout4';
+import Layout5 from './components/Layout/Layout5';
 
 import Home from './components/Pages/Home';
 import About from './components/Pages/About';
@@ -22,6 +20,9 @@ import Timetable from './components/Pages/Timetable';
 import Contact from './components/Pages/Contact';
 import React, {useEffect} from 'react';
 import ErrorPage from './components/Pages/ErrorPage';
+
+// Import Services page
+import Services from './components/Services/Services';
 
 
 
@@ -55,7 +56,7 @@ function App() {
       </div>
   
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={<Layout5 />}>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="doctors" element={<Doctors />} />
@@ -75,6 +76,7 @@ function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="admin" element={<AdminDashboard />} />
         <Route path="/crisis-support" element={<CrisisSupportPage/>}/>
+        <Route path="services" element={<Services />} />
       </Route>
       <Route path="*" element={<ErrorPage />} />
     </Routes>
