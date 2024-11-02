@@ -1,4 +1,7 @@
-import { Route, Routes, useLocation, Link } from 'react-router-dom';
+import {Route, Routes, useLocation, Link} from 'react-router-dom';
+import CrisisSupport from './components/CrisisSupport';
+import CrisisSupportPage from './components/CrisisSupportPage';
+
 import Layout from './components/Layout';
 import Layout2 from './components/Layout/Layout2';
 import Layout3 from './components/Layout/Layout3';
@@ -20,7 +23,7 @@ import PricingPlan from './components/Pages/PricingPlan';
 import Gallery from './components/Pages/Gallery';
 import Timetable from './components/Pages/Timetable';
 import Contact from './components/Pages/Contact';
-import { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import ErrorPage from './components/Pages/ErrorPage';
 import Layout5 from './components/Layout/Layout5';
 import HomeStyle5 from './components/Pages/HomeStyle5';
@@ -37,7 +40,7 @@ import LoadingSpinner from './components/LoadingSpinner';
 import RegistrationForm from './components/RegistrationForm';
 
 function App() {
-  const { pathname } = useLocation();
+    const {pathname} = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -76,6 +79,7 @@ function App() {
         <Route path="timetable" element={<Timetable />} />
         <Route path="contact" element={<Contact />} />
         <Route path="admin" element={<AdminDashboard />} />
+        <Route path="/crisis-support" element={<CrisisSupportPage/>}/>
       </Route>
       <Route path="*" element={<ErrorPage />} />
     </Routes>

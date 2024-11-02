@@ -5,6 +5,7 @@ import SocialWidget from '../Widget/SocialWidget';
 import Newsletter from '../Widget/Newsletter';
 import IconBoxStyle11 from '../IconBox/IconBoxStyle11';
 import Spacing from '../Spacing';
+import CrisisSupport from '../CrisisSupport';
 
 export default function Header({ logoSrc, variant }) {
   const [isSticky, setIsSticky] = useState(false);
@@ -113,6 +114,9 @@ export default function Header({ logoSrc, variant }) {
                     </li>
                     <li>
                       <Link to="/contact">Contact</Link>
+                    </li>
+                    <li>
+                      <CrisisSupport/>
                     </li>
                   </ul>
                   <span
@@ -266,3 +270,5 @@ export default function Header({ logoSrc, variant }) {
     </>
   );
 }
+
+
