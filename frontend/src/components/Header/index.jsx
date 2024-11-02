@@ -6,6 +6,7 @@ import Newsletter from '../Widget/Newsletter';
 import IconBoxStyle11 from '../IconBox/IconBoxStyle11';
 import Spacing from '../Spacing';
 import { Link as ScrollLink } from 'react-scroll';
+import CrisisSupport from '../CrisisSupport';
 
 
 export default function Header({logoSrc, variant }) {
@@ -96,6 +97,11 @@ export default function Header({logoSrc, variant }) {
                         </ul>
                       </DropDown>
                     </li>
+                    
+                    <li>
+                      <CrisisSupport/>
+                    </li>
+                    
                   </ul>
                   <span
                     className={
@@ -176,3 +182,5 @@ export default function Header({logoSrc, variant }) {
     </>
   );
 }
+
+
