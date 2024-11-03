@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import DropDown from './DropDown';
 import Button from '../Button'
-import { RegistrationButton } from './RegistrationButton';
+//import { RegistrationButton } from './RegistrationButton';
 
 export default function HeaderStyle2({ logoSrc, variant, btnText, btnUrl }) {
   const [isSticky, setIsSticky] = useState(false);
