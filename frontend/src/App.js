@@ -3,7 +3,11 @@ import CrisisSupport from './components/CrisisSupport';
 import CrisisSupportPage from './components/CrisisSupportPage';
 
 import Layout from './components/Layout';
+
 import RegistrationButton from './components/RegistrationButton';
+
+
+
 import RegistrationForm from './components/RegistrationForm';
 import Home from './components/Pages/Home';
 import About from './components/Pages/About';
@@ -41,7 +45,18 @@ function App() {
   return (
 	<>
       
-      
+
+      <div style={{
+          position: 'absolute',
+          top: '35px', 
+          right: '300px', 
+          zIndex: 1000,
+        }}>
+        <Link to="/register">
+          <button>Register</button>
+        </Link>
+      </div>
+
   
     <Routes>
       <Route path="/" element={<Layout />}>
