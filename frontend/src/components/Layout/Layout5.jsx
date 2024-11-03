@@ -8,16 +8,12 @@ export default function Layout5() {
   return (
     <>
       <HeaderStyle2
-        logoSrc="/images/logo.svg"
+        logoSrc="/images/logoTest.png"
         variant="cs_heading_color cs_color_2"
         btnText="Book Now"
         btnUrl="/appointments"
       />
-	  <div>
-      
-      
-     
-    </div>
+	  
       <Outlet />
       <FooterStyle4 />
     </>

@@ -5,7 +5,7 @@ import Accordion from '../../Accordion';
 
 export default function FaqSection({ data, sectionTitle, sectionTitleUp }) {
   return (
-    <div className="container">
+    <div id="faq-section" className="container">
       <SectionHeading title={sectionTitle} titleUp={sectionTitleUp} center />
       <Spacing md="72" lg="50" />
       <div className="row">

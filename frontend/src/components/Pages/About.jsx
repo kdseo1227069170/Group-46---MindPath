@@ -9,6 +9,7 @@ import TeamSection from '../Section/TeamSection';
 import GallerySection from '../Section/GallerySection';
 import AwardSectionStyle2 from '../Section/AwardSection/AwardSectionStyle2';
 import { pageTitle } from '../../helpers/PageTitle';
+
 const departmentData = [
   {
     title: 'Diagnostic testing',
@@ -147,7 +148,7 @@ const awardData = [
 export default function About() {
   pageTitle('About');
   return (
-    <>
+    <div className='about'>
       <BannerSectionStyle3
         bgUrl="/images/about/banner_bg.svg"
         imgUrl="/images/about/banner_img.png"
@@ -211,6 +212,6 @@ export default function About() {
           center
         />
       </Section>
-    </>
+    </div>
   );
 }
