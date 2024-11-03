@@ -3,10 +3,8 @@ import CrisisSupport from './components/CrisisSupport';
 import CrisisSupportPage from './components/CrisisSupportPage';
 
 import Layout from './components/Layout';
-import Layout2 from './components/Layout/Layout2';
-import Layout3 from './components/Layout/Layout3';
-import Layout4 from './components/Layout/Layout4';
-
+import RegistrationButton from './components/RegistrationButton';
+import RegistrationForm from './components/RegistrationForm';
 import Home from './components/Pages/Home';
 import About from './components/Pages/About';
 import Doctors from './components/Pages/Doctors';
@@ -31,8 +29,8 @@ import AdminDashboard from './components/AdminDashboard';
 // Importing the Loading Spinner
 import LoadingSpinner from './components/LoadingSpinner';
 
-// Import Registration Form
-import RegistrationForm from './components/RegistrationForm';
+
+
 
 function App() {
     const {pathname} = useLocation();
