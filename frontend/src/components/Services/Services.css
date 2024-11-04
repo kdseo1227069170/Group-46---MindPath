@@ -1,5 +1,95 @@
+.services-page {
+  padding: 20px;
+  padding-top: 170px;
+  max-width: 800px;
+  margin: 0 auto;
+  
+}
+
 .services-header {
-  text-align: center;
+  background-color: transparent;
+}
+
+
+
+.services-page section {
   margin-bottom: 30px;
-  margin-top: 100px;
+  padding: 20px;
+  background-color: #d4def1;
+  border-radius: 8px;
+}
+
+.services-header h1 {
+  font-size: 2.4em;
+  color: #274760;
+  text-align: center;
+  
+}
+
+.services-header p {
+  font-size: 1.1em;
+  color: #274760;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.8em;
+  color: #274760;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+ul li {
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+a {
+  color: #274760;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.coverage-by-province p, .coverage-by-province ul {
+  color: #555;
+}
+
+.crisis-support-info {
+  border-left: 5px solid #dc3545;
+  padding-left: 15px;
+  background-color:#d4def1;
+}
+
+.crisis-support-info p {
+  font-size: 1em;
+}
+
+
+.finding-professionals p {
+  color:rgba(39, 71, 96, 0.52);
+}
+
+@media (max-width: 768px) {
+  .services-page {
+    padding: 10px;
+  }
+
+  header, section {
+    padding: 15px;
+  }
+
+  .services-header h1, h2 {
+    font-size: 1.8em;
+  }
+
+  ul li {
+    font-size: 0.9em;
+  }
 }

@@ -55,14 +55,20 @@ export default function Header({logoSrc, variant }) {
                       <Link to="/about">About</Link>
                     </li>
                     <li>
-  <Link to="/services">Services</Link>
-</li>
+                      <Link to="/services">Services</Link>
+                    </li>
 
                     <li>
-                      <ScrollLink to="faq-section" smooth={true} duration={500} offset={-50} style={{ cursor: 'pointer' }}>
+                      <Link to="/" onClick={() => window.setTimeout(() => {
+                        const faqSection = document.getElementById('faq-section');
+                        if (faqSection) {
+                          faqSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }, 0)}>
                         FAQ
-                      </ScrollLink>
+                      </Link>
                     </li>
+
                     <li className="menu-item-has-children">
                       <Link to="/">Pages</Link>
                       <DropDown>
