@@ -10,7 +10,7 @@ import BlogSection from '../Section/BlogSection';
 import AppointmentSection from '../Section/AppointmentSection';
 import FaqSection from '../Section/FaqSection';
 import AwardSection from '../Section/AwardSection';
-import DepartmentSection from '../Section/DepartmentSection';
+
 import { pageTitle } from '../../helpers/PageTitle';
 const featureListData = [
   {
@@ -132,38 +132,6 @@ const awardData = [
     iconUrl: 'images/icons/award.svg',
   },
 ];
-const departmentData = [
-  {
-    title: 'Emergency Department',
-    iconUrl: 'images/home_1/department_icon_1.svg',
-    href: '/departments/department-details',
-  },
-  {
-    title: 'Pediatric Departement',
-    iconUrl: 'images/home_1/department_icon_2.svg',
-    href: '/departments/department-details',
-  },
-  {
-    title: 'Gynecology Department',
-    iconUrl: 'images/home_1/department_icon_3.svg',
-    href: '/departments/department-details',
-  },
-  {
-    title: 'Cardiology Department',
-    iconUrl: 'images/home_1/department_icon_4.svg',
-    href: '/departments/department-details',
-  },
-  {
-    title: 'Neurology Department',
-    iconUrl: 'images/home_1/department_icon_5.svg',
-    href: '/departments/department-details',
-  },
-  {
-    title: 'Psychiatry Department',
-    iconUrl: 'images/home_1/department_icon_6.svg',
-    href: '/departments/department-details',
-  },
-];
 
 export default function Home() {
   pageTitle('Home');
@@ -226,16 +194,7 @@ export default function Home() {
         />
       </Section>
       {/* End About Section */}
-      {/* Start Departments Section */}
-      <Section topMd={185} topLg={150} topXl={110}>
-        <DepartmentSection
-          sectionTitle="Departments"
-          bgUrl="images/home_1/department_bg.svg"
-          data={departmentData}
-        />
-      </Section>
-
-      {/* End Departments Section */}
+      
       {/* Start Award Section */}
       <Section topMd={185} topLg={140} topXl={100}>
         <AwardSection sectionTitle="Departments" data={awardData} />
