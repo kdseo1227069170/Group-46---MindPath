@@ -116,6 +116,16 @@ export default function Header({logoSrc, variant }) {
                 </nav>
               </div>
               <div className="cs_main_header_right">
+				<div style={{
+                  position: 'absolute',
+                  top: '35px',
+                  right: '50px',
+                  zIndex: 1000,
+                }}>
+                  <Link to="/register">
+                    <button>Register</button>
+                  </Link>
+                </div>
                 <div className="cs_toolbox">
                   <button
                     className="cs_toolbox_btn cs_search_toggle_btn"
