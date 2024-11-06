@@ -9,7 +9,7 @@ import TestimonialSection from '../Section/TestimonialSection';
 import BlogSection from '../Section/BlogSection';
 import AppointmentSection from '../Section/AppointmentSection';
 import FaqSection from '../Section/FaqSection';
-import AwardSection from '../Section/AwardSection';
+
 
 import { pageTitle } from '../../helpers/PageTitle';
 const featureListData = [
@@ -106,32 +106,6 @@ const blogData = [
     socialShare: true,
   },
 ];
-const awardData = [
-  {
-    title: 'Malcolm Baldrige National Quality Award',
-    subTitle:
-      'This award recognizes healthcare organizations that have demonstrated excellence in leadership, strategic planning, customer and employee satisfaction, and operational efficiency.',
-    iconUrl: 'images/icons/award.svg',
-  },
-  {
-    title: 'HIMSS Davies Award',
-    subTitle:
-      'This award recognizes healthcare organizations that have used health information technology to improve patient outcomes and reduce costs.',
-    iconUrl: 'images/icons/award.svg',
-  },
-  {
-    title: 'Healthgrades National’s Best Hospital',
-    subTitle:
-      'This recognition is given to hospitals that have achieved high ratings for clinical quality and patient safety across multiple specialties and procedures.',
-    iconUrl: 'images/icons/award.svg',
-  },
-  {
-    title: 'Joint Commission Gold Seal of Approval',
-    subTitle:
-      'This recognition is given to hospitals that have met rigorous standards for patient safety and quality of care.',
-    iconUrl: 'images/icons/award.svg',
-  },
-];
 
 export default function Home() {
   pageTitle('Home');
@@ -195,11 +169,7 @@ export default function Home() {
       </Section>
       {/* End About Section */}
       
-      {/* Start Award Section */}
-      <Section topMd={185} topLg={140} topXl={100}>
-        <AwardSection sectionTitle="Departments" data={awardData} />
-      </Section>
-      {/* End Award Section */}
+      
       {/* Start Testimonial */}
       <Section
         topMd={185}
