@@ -30,5 +30,22 @@ const send2FAEmail = async (email, code) => {
 		throw error;
 	}
 };
-	
-module.exports = { send2FAEmail };
+
+// Function to send an admin notification on new user registration
+const sendAdminNotification = async (userEmail, username) => {
+	const mailOptions = {
+		from: 'admin@mindpath.com',
+		to: 'admin@mindpath.com', // Admin's email address
+		subject: 'New User Registration',
+		text: `A new user has been registered: ${username} (Email: ${userEmail})`
+	};
+
+	try {
+		await transporter.sendMail(mailOptions);
+		console.log(`Admin has been notified about new user: ${username}`);
+	} catch (error) {
+		console.error('Could not send the admin notification:', error);
+	}
+};
+
+module.exports = { send2FAEmail, sendAdminNotification };
