@@ -58,9 +58,26 @@ const Questionnaire = () => {
     };
     return (
         <div>
-            
+            <h2>Mental Heath Questionnaire</h2>
+            <form onSubmit={submitHandler}>
+                <div>
+                    <label>Name:</label>
+                    <input type="text" name="name" value{clientAnswers.name} onChange={changeHandler}/>
+                    {erros.name && <span>{errors.name}</span>}
+                </div>
+
+                
+
+            </form>
+
+            {recommendations && (
+                <div>
+                    <h3>Recommendations</h3>
+                    <p>{recommendations}</p>
+                </div>
+            )}
         </div>
+    );
+};
 
-    )
-
-}
+export default Questionnaire;
