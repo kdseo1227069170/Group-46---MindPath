@@ -1,0 +1,23 @@
+.cs_banner_subtitle {
+  text-align: right; 
+  font-size: 1.2rem;        
+}
+.cs_section_title, .cs_section_subtitle {
+  display: inline-block; 
+  text-align: center;
+  white-space: nowrap; 
+  margin: 0 auto; 
+}
+
+
+.about-me-services {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  width: 100%; 
+  margin: 0 auto;
+}
+
+
+
+

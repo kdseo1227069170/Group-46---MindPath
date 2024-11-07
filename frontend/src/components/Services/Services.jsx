@@ -54,7 +54,7 @@ const Services = () => {
       {/* Finding Professionals Section */}
       <section className="finding-professionals">
         <h2>Finding Mental Health Professionals</h2>
-        <p>Locate mental health professionals such as therapists, counselors, and psychiatrists in your area. Consider using online directories and provincial health websites for verified professionals.</p>
+        <p>Take our personalized questionnaire to get matched with licensed mental health professionals near you who can help. Whether you're looking for therapy, counseling, or other mental health services, we’ll guide you to the right resources.</p>
       </section>
     </div>
   );

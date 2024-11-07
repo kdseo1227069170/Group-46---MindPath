@@ -76,7 +76,7 @@ function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="admin" element={<AdminDashboard />} />
         <Route path="/crisis-support" element={<CrisisSupportPage/>}/>
-        <Route path="services" element={<Services />} />
+        <Route path="/services" element={<Services />} />
       </Route>
       <Route path="*" element={<ErrorPage />} />
     </Routes>

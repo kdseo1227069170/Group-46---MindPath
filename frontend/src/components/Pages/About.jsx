@@ -9,44 +9,10 @@ import TeamSection from '../Section/TeamSection';
 import GallerySection from '../Section/GallerySection';
 import AwardSectionStyle2 from '../Section/AwardSection/AwardSectionStyle2';
 import { pageTitle } from '../../helpers/PageTitle';
+import './About.css';
+import { Link } from 'react-router-dom';
 
-const departmentData = [
-  {
-    title: 'Diagnostic testing',
-    subTitle:
-      'Blood tests, imaging studies, and other tests to diagnose health conditions',
-    iconUrl: '/images/icons/calendar_white.svg',
-    href: '/departments/department-details',
-  },
-  {
-    title: 'Rehabilitation services',
-    subTitle:
-      'Physical therapy, occupational therapy, and other services to help patients recover from injuries',
-    iconUrl: '/images/icons/calendar_white.svg',
-    href: '/departments/department-details',
-  },
-  {
-    title: 'Preventive care',
-    subTitle:
-      'Annual checkups, immunizations, and health screenings care preventive',
-    iconUrl: '/images/icons/calendar_white.svg',
-    href: '/departments/department-details',
-  },
-  {
-    title: 'Treatment for acute and chronic conditions',
-    subTitle:
-      'Medication management, disease management, and other treatments to improve health outcomes',
-    iconUrl: '/images/icons/calendar_white.svg',
-    href: '/departments/department-details',
-  },
-  {
-    title: 'Mental health services',
-    subTitle:
-      'Counseling, therapy, and other services to help patients manage mental health conditions',
-    iconUrl: '/images/icons/calendar_white.svg',
-    href: '/departments/department-details',
-  },
-];
+
 
 const featureListData = [
   {
@@ -151,17 +117,32 @@ export default function About() {
     <div className='about'>
       <BannerSectionStyle3
         bgUrl="/images/about/banner_bg.svg"
-        imgUrl="/images/about/banner_img.png"
-        title="Welcome to <br />ProHealth Medical & Healthcare Center"
-        subTitle="Your Partner in Health and Wellness"
+        imgUrl="/images/about/MindPathAboutMe.png"
+        title="Welcome to MindPath!"
+        subTitle="Your Partner in Mental Health and Wellness"
       />
-      <Section topMd={200} topLg={150} topXl={110}>
-        <DepartmentSectionStyle2
-          sectionTitle="Provides Our Best Services"
-          sectionTitleUp="SERVICES"
-          data={departmentData}
-        />
-      </Section>
+      <div class="about-me-services">
+        <Section topMd={200} topLg={150} topXl={110}>
+          <DepartmentSectionStyle2
+            sectionTitle="Learn More About Our Services"
+            sectionTitleUp="SERVICES"
+          />
+          <Link to="/services">
+          <center><button style={{
+              backgroundColor: '#007bff',
+              color: 'white',
+              padding: '10px 20px',
+              border: 'none',
+              borderRadius: '10px',
+              cursor: 'pointer',
+              fontSize: '20px',
+            }}>
+              Services
+            </button></center>
+          </Link>
+        </Section>
+      </div>
+
       <Section topMd={175} topLg={125} topXl={85} bottomMd={100} bottomLg={110}>
         <FeaturesSectionStyle2
           sectionTitle="Why Choose Us"
