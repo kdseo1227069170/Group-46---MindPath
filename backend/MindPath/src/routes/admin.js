@@ -6,6 +6,9 @@ const SearchLog = require('../models/SearchLog'); // Import SearchLog
 const User = require('../models/User'); // Import User model (need to make from another task)
 const verifyAdmin = require('../middleware/verifyAdmin'); // Middleware verifies that it's an admin privilege
 
+// For ActivityLog of logging admin's login attempts
+const ActivityLog = require('../models/ActivityLog');
+
 // Helpers to aggregate data
 const getSearchesPerDay = async () => {
     return await SearchLog.aggregate([
@@ -46,6 +49,13 @@ router.get('/dashboard', verifyAdmin, async (req, res) => {
         const searchesPerDay = await getSearchesPerDay();
         const popularSearches = await getPopularSearches();
         const activeUsers = await getActiveUsers();
+
+        // Log admin access
+        const logEntry = new ActivityLog({
+            adminId: req.user.id,
+            action: 'Accessed Admin Dashboard',
+        });
+        await logEntry.save();
 
         res.json({
             totalUsers,
