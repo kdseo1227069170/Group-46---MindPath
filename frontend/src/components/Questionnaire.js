@@ -53,7 +53,7 @@ const Questionnaire = () => {
         if (answers.mood === 'sad' || answers.stressLevel === 'high' || answers.inCrisis) {
             setRecommendations('We recommend contacting a mental health professional immediately.');
         } else {
-            setRecommendations('Base on your responses, regular monitoring or light therapy might be sufficient');
+            setRecommendations('Based on your responses, regular monitoring or light therapy might be sufficient');
         }
     };
     return (
@@ -84,8 +84,13 @@ const Questionnaire = () => {
                 </div>
 
                 <div>
-                    <label>Stress Level (low, medium, high):</label>
-                    <input type="text" name="stressLevel" value={answers.stressLevel} onChange={handleChange}/>
+                    <label>Stress Level:</label>
+                    <select name="stressLevel" value={answers.stressLevel} onChange={handleChange}>
+                        <option value="">Select</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
                     {errors.stressLevel && <span>{errors.stressLevel}</span>}
                 </div>
 
@@ -108,7 +113,8 @@ const Questionnaire = () => {
 
                 <div>
                     <label>Are you currently seeing a therapist?</label>
-                    <input type="text" name="currentlyseeing" value={answers.currentlySeeing} onChange={handleChange}/>
+                    <input type="checkbox" name="currentlyseeing" checked={answers.currentlySeeing}
+                           onChange={handleChange}/>
                 </div>
 
                 <div>

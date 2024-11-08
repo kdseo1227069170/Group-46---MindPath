@@ -59,7 +59,19 @@ function App() {
                 zIndex: 1000,
             }}>
                 <Link to="/questionnaire">
-                    <button>Mental Health Questionnaire</button>
+                    <button
+                        style={{
+                            fontSize: '16',
+                            color: '#333',
+                            background: 'none',
+                            border: 'none',
+                            padding: '8px 16px',
+                            cursor: 'pointer',
+                        }}
+                        onMouseEnter={(e) => (e.target.style.color = '#4780b6')}
+                        onMouseLeave={(e) => (e.target.style.color = '#333')}
+                    >Mental Health Questionnaire
+                    </button>
                 </Link>
             </div>
 
