@@ -186,28 +186,6 @@ const CrisisSupportPage = () => {
                 <p style={styles.paragraph}>You may also want to talk to another trusted professional, such as a
                     counsellor or spiritual leader.</p>
             </section>
-            <section style={styles.section}>
-                <h2 style={styles.subheading}>Related links</h2>
-                <ul style={styles.list}>
-                    <li><a href="https://www.canada.ca/en/public-health/services/about-mental-health.html"
-                           target="_blank" rel="noopener noreferrer" style={styles.link}> About mental health </a>
-                    </li>
-                    <li><a
-                        href="https://www.canada.ca/en/health-canada/services/publications/healthy-living/evacuations-mental-health.html"
-                        target="_blank" rel="noopener noreferrer" style={styles.link}> Evacuations and your mental
-                        health</a>
-                    </li>
-                    <li><a
-                        href="https://www.sac-isc.gc.ca/eng/1576089278958/1576089333975?utm_source=canada.ca&utm_medium=hc&utm_content=en-healthcanada-mentalhealthsupportpage&utm_campaign=sac-isc-mentalhealth-22-23"
-                        target="_blank" rel="noopener noreferrer" style={styles.link}> Mental wellness in First Nations
-                        and Inuit communities </a>
-                    </li>
-                    <li><a href="https://canemerg-urgencecan.com"
-                           target="_blank" rel="noopener noreferrer" style={styles.link}> Canadian Emergency Response
-                        Psychosocial Support Network: Mental health guidance and resource </a>
-                    </li>
-                </ul>
-            </section>
         </div>
     );
 };

@@ -1,6 +1,7 @@
 import {Route, Routes, useLocation, Link} from 'react-router-dom';
 import CrisisSupport from './components/CrisisSupport';
 import CrisisSupportPage from './components/CrisisSupportPage';
+import Questionnaire from "./components/Questionnaire";
 
 import Layout from './components/Layout';
 
@@ -22,7 +23,6 @@ import React, {useEffect} from 'react';
 import ErrorPage from './components/Pages/ErrorPage';
 
 
-
 // Import Admin Dashboard
 import AdminDashboard from './components/AdminDashboard';
 
@@ -35,49 +35,61 @@ import RegistrationForm from './components/RegistrationForm';
 function App() {
     const {pathname} = useLocation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return (
-	<>
-      
-      <div style={{
-          position: 'absolute',
-          top: '35px', // Adjust as needed
-          right: '300px', // Adjust as needed to place it near the magnifying glass
-          zIndex: 1000,
-        }}>
-        <Link to="/register">
-          <button>Register</button>
-        </Link>
-      </div>
-  
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="doctors" element={<Doctors />} />
-        <Route path="doctors/:doctorId" element={<DoctorDetails />} />
-        <Route path="blog" element={<Blog />} />
-		<Route path="register" element={<RegistrationForm />} />
-        <Route path="blog/:blogId" element={<BlogDetails />} />
-        <Route path="appointments" element={<Appointments />} />
-        <Route path="departments" element={<Departments />} />
-        <Route
-          path="departments/:departmentId"
-          element={<DepartmentDetails />}
-        />
-        <Route path="pricing-plan" element={<PricingPlan />} />
-        <Route path="gallery" element={<Gallery />} />
-        <Route path="timetable" element={<Timetable />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="admin" element={<AdminDashboard />} />
-        <Route path="/crisis-support" element={<CrisisSupportPage/>}/>
-      </Route>
-      <Route path="*" element={<ErrorPage />} />
-    </Routes>
-	</>
-  );
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+    return (
+        <>
+
+            <div style={{
+                position: 'absolute',
+                top: '35px', // Adjust as needed
+                right: '300px', // Adjust as needed to place it near the magnifying glass
+                zIndex: 1000,
+            }}>
+                <Link to="/register">
+                    <button>Register</button>
+                </Link>
+            </div>
+
+            <div style={{
+                position: 'fixed',
+                top: '65px',
+                right: '100px',
+                zIndex: 1000,
+            }}>
+                <Link to="/questionnaire">
+                    <button>Mental Health Questionnaire</button>
+                </Link>
+            </div>
+
+            <Routes>
+                <Route path="/" element={<Layout/>}>
+                    <Route index element={<Home/>}/>
+                    <Route path="about" element={<About/>}/>
+                    <Route path="doctors" element={<Doctors/>}/>
+                    <Route path="doctors/:doctorId" element={<DoctorDetails/>}/>
+                    <Route path="blog" element={<Blog/>}/>
+                    <Route path="register" element={<RegistrationForm/>}/>
+                    <Route path="blog/:blogId" element={<BlogDetails/>}/>
+                    <Route path="appointments" element={<Appointments/>}/>
+                    <Route path="departments" element={<Departments/>}/>
+                    <Route
+                        path="departments/:departmentId"
+                        element={<DepartmentDetails/>}
+                    />
+                    <Route path="pricing-plan" element={<PricingPlan/>}/>
+                    <Route path="gallery" element={<Gallery/>}/>
+                    <Route path="timetable" element={<Timetable/>}/>
+                    <Route path="contact" element={<Contact/>}/>
+                    <Route path="admin" element={<AdminDashboard/>}/>
+                    <Route path="/crisis-support" element={<CrisisSupportPage/>}/>
+                    <Route path="questionnaire" element={<Questionnaire/>}/>
+                </Route>
+                <Route path="*" element={<ErrorPage/>}/>
+            </Routes>
+        </>
+    );
 }
 
 export default App;
