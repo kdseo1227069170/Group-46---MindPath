@@ -4,8 +4,7 @@ import CrisisSupportPage from './components/CrisisSupportPage';
 import Questionnaire from "./components/Questionnaire";
 
 import Layout from './components/Layout';
-
-
+import RegistrationForm from './components/RegistrationForm';
 import Home from './components/Pages/Home';
 import About from './components/Pages/About';
 import Doctors from './components/Pages/Doctors';
@@ -29,8 +28,6 @@ import AdminDashboard from './components/AdminDashboard';
 // Importing the Loading Spinner
 import LoadingSpinner from './components/LoadingSpinner';
 
-// Import Registration Form
-import RegistrationForm from './components/RegistrationForm';
 
 function App() {
     const {pathname} = useLocation();
