@@ -100,6 +100,7 @@ function App() {
                     <Route path="admin" element={<AdminDashboard/>}/>
                     <Route path="/crisis-support" element={<CrisisSupportPage/>}/>
                     <Route path="questionnaire" element={<Questionnaire/>}/>
+                    <Route path="services" element={<Services />} />
                 </Route>
                 <Route path="*" element={<ErrorPage/>}/>
             </Routes>
