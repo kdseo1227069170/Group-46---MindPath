@@ -9,70 +9,18 @@ import TeamSection from '../Section/TeamSection';
 import GallerySection from '../Section/GallerySection';
 import AwardSectionStyle2 from '../Section/AwardSection/AwardSectionStyle2';
 import { pageTitle } from '../../helpers/PageTitle';
+import './About.css';
+import { Link } from 'react-router-dom';
 
-const departmentData = [
-  {
-    title: 'Diagnostic testing',
-    subTitle:
-      'Blood tests, imaging studies, and other tests to diagnose health conditions',
-    iconUrl: '/images/icons/calendar_white.svg',
-    href: '/departments/department-details',
-  },
-  {
-    title: 'Rehabilitation services',
-    subTitle:
-      'Physical therapy, occupational therapy, and other services to help patients recover from injuries',
-    iconUrl: '/images/icons/calendar_white.svg',
-    href: '/departments/department-details',
-  },
-  {
-    title: 'Preventive care',
-    subTitle:
-      'Annual checkups, immunizations, and health screenings care preventive',
-    iconUrl: '/images/icons/calendar_white.svg',
-    href: '/departments/department-details',
-  },
-  {
-    title: 'Treatment for acute and chronic conditions',
-    subTitle:
-      'Medication management, disease management, and other treatments to improve health outcomes',
-    iconUrl: '/images/icons/calendar_white.svg',
-    href: '/departments/department-details',
-  },
-  {
-    title: 'Mental health services',
-    subTitle:
-      'Counseling, therapy, and other services to help patients manage mental health conditions',
-    iconUrl: '/images/icons/calendar_white.svg',
-    href: '/departments/department-details',
-  },
-];
 
-const featureListData = [
+
+const aboutData = [
   {
-    title: 'Experienced Medical Professionals',
+    title: '',
     subTitle:
-      'Our team includes experienced doctors, nurses, <br />and other healthcare professionals who are <br />dedicated to providing the best possible care to <br />our patients.',
+      "MindPath is dedicated to helping Canadians navigate the complex mental health services landscape across different provinces. Whether you’re looking for information on therapy, counseling, psychiatric care, or medication coverage, MindPath offers a comprehensive, user-friendly platform to find what you need with ease.",
     iconUrl: 'images/icons/professional.svg',
-  },
-  {
-    title: 'Comprehensive <br />Services',
-    subTitle:
-      'We offer a wide range of healthcare services, <br />from preventive care to specialized treatment <br />for complex conditions.',
-    iconUrl: 'images/icons/comprehensive.svg',
-  },
-  {
-    title: 'Patient-centered <br />Approach',
-    subTitle:
-      'We believe in treating each patient as an <br />individual, and we take the time to understand <br />your unique health needs and concerns.',
-    iconUrl: 'images/icons/patient.svg',
-  },
-  {
-    title: 'State-of-the-art <br />Facilities',
-    subTitle:
-      'Our healthcare center is equipped with the <br />latest technology and equipment to provide our <br />patients with the most advanced care possible.',
-    iconUrl: 'images/icons/facilities.svg',
-  },
+  }
 ];
 
 const funFactData = [
@@ -151,25 +99,39 @@ export default function About() {
     <div className='about'>
       <BannerSectionStyle3
         bgUrl="/images/about/banner_bg.svg"
-        imgUrl="/images/about/banner_img.png"
-        title="Welcome to <br />ProHealth Medical & Healthcare Center"
-        subTitle="Your Partner in Health and Wellness"
+        imgUrl="/images/about/MindPathAboutMe.png"
+        title="Welcome to MindPath!"
+        subTitle="Your Guide to Provincial Mental Health Services and Coverage!"
       />
-      <Section topMd={200} topLg={150} topXl={110}>
-        <DepartmentSectionStyle2
-          sectionTitle="Provides Our Best Services"
-          sectionTitleUp="SERVICES"
-          data={departmentData}
-        />
-      </Section>
-      <Section topMd={175} topLg={125} topXl={85} bottomMd={100} bottomLg={110}>
-        <FeaturesSectionStyle2
-          sectionTitle="Why Choose Us"
-          imgUrl="images/about/why_choose_us.jpeg"
-          data={featureListData}
-        />
-      </Section>
+      <div class="about-me-services">
+        <Section topMd={200} topLg={150} topXl={110}>
+          <DepartmentSectionStyle2
+            sectionTitle="Learn More About Our Services"
+            sectionTitleUp="SERVICES"
+          />
+          <Link to="/services">
+          <center><button style={{
+              backgroundColor: '#007bff',
+              color: 'white',
+              padding: '10px 20px',
+              border: 'none',
+              borderRadius: '10px',
+              cursor: 'pointer',
+              fontSize: '20px',
+            }}>
+              Services
+            </button></center>
+          </Link>
+        </Section>
+      </div>
+      <div className="section-container">
+      <div className='about-me'>
       <Section>
+        <h1>About MindPath </h1>
+        <p>MindPath is dedicated to helping Canadians navigate the complex mental health services landscape across different provinces. Whether you’re looking for information on therapy, counseling, psychiatric care, or medication coverage, MindPath offers a comprehensive, user-friendly platform to find what you need with ease.</p>
+      </Section>
+      </div>
+      {/* <Section>
         <FunFactSection
           bgUrl="images/about/fun_fact_bg.jpeg"
           data={funFactData}
@@ -181,8 +143,16 @@ export default function About() {
           sectionTitleUp="MEET OUR"
           data={teamData}
         />
+      </Section> */}
+    <div className="mission-section">
+      <Section>
+        <h1>Our Mission</h1>
+        <p>We believe that understanding and accessing mental health services should be simple and stress-free. MindPath is designed to bridge the information gap, empowering Canadians to connect with available services, understand their coverage options, and make informed choices about their mental health journey.</p>
       </Section>
-      <Section topMd={170} topLg={120} topXl={80}>
+    </div>
+    </div>
+
+      {/* <Section topMd={170} topLg={120} topXl={80}>
         <GallerySection
           sectionTitle="Our Facilities and <br />Latest Activities"
           sectionTitleUp="HAVE A LOOK AT"
@@ -211,7 +181,7 @@ export default function About() {
           subTitle="Schedule an appointment with one of our experienced <br />medical professionals today!"
           center
         />
-      </Section>
+      </Section> */}
     </div>
   );
 }

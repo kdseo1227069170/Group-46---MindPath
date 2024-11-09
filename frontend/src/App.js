@@ -4,7 +4,10 @@ import CrisisSupportPage from './components/CrisisSupportPage';
 import Questionnaire from "./components/Questionnaire";
 
 import Layout from './components/Layout';
+import Layout5 from './components/Layout/Layout5';
+
 import RegistrationForm from './components/RegistrationForm';
+
 import Home from './components/Pages/Home';
 import About from './components/Pages/About';
 import Doctors from './components/Pages/Doctors';
@@ -21,6 +24,9 @@ import Contact from './components/Pages/Contact';
 import React, {useEffect} from 'react';
 import ErrorPage from './components/Pages/ErrorPage';
 
+// Import Services page
+import Services from './components/Services/Services';
+
 
 // Import Admin Dashboard
 import AdminDashboard from './components/AdminDashboard';
@@ -31,7 +37,7 @@ import LoadingSpinner from './components/LoadingSpinner';
 
 function App() {
     const {pathname} = useLocation();
-
+  
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [pathname]);
