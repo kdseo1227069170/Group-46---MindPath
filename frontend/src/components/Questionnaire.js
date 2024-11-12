@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 
 const Questionnaire = () => {
+    // Tracks answers for each question in the questionnaire
     const [answers, setAnswers] = useState({
         name: '',
         age: '',
@@ -15,10 +16,11 @@ const Questionnaire = () => {
         isRemote: false,
         needTranslator: false,
     });
-
+    // Tracks form validation errors
     const [errors, setErrors] = useState({});
+    // Stores recommendations based on answers
     const [recommendations, setRecommendations] = useState('');
-
+    // Handles input changes in form fields
     const handleChange = (e) => {
         const {name, value, type, checked} = e.target;
         setAnswers({
@@ -26,7 +28,7 @@ const Questionnaire = () => {
             [name]: type === 'checkbox' ? checked : value,
         });
     };
-
+    // Validates fields in the form
     const validateForm = () => {
         let formErrors = {};
 
@@ -42,6 +44,7 @@ const Questionnaire = () => {
         return Object.keys(formErrors).length === 0;
     };
 
+    // Handles form submission
     const submitHandler = (e) => {
         e.preventDefault();
         if (validateForm()) {
@@ -49,6 +52,7 @@ const Questionnaire = () => {
         }
     };
 
+    // Generates recommendations based on answers
     const generateRecs = () => {
         if (answers.mood === 'sad' || answers.stressLevel === 'high' || answers.inCrisis) {
             setRecommendations('We recommend contacting a mental health professional immediately.');
