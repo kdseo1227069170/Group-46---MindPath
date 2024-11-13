@@ -12,3 +12,7 @@ logs/
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# JSON files
+package.json
+package-lock.json
