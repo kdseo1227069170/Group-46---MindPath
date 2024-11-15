@@ -61,7 +61,7 @@ const Questionnaire = () => {
         }
     };
     return (
-        <div style={{marginTop: '300px'}}>
+        <div style={{marginTop: '100px'}}>
             <h2>Mental Heath Questionnaire</h2>
             <form onSubmit={submitHandler}>
                 <div>

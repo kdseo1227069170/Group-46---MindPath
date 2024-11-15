@@ -45,8 +45,14 @@ export default function Header({logoSrc, variant}) {
                                         <li>
                                             <Link to="/about">About</Link>
                                         </li>
-                                        <li>
+                                        <li className="menu-item-has-children">
                                             <Link to="/services">Services</Link>
+                                            <DropDown>
+                                                <ul>
+                                                    <li><Link to="/questionnaire"
+                                                              className="cs_nav_button">Questionnaire</Link></li>
+                                                </ul>
+                                            </DropDown>
                                         </li>
                                         <li>
                                             <Link to="/" onClick={handleFaqScroll}>FAQ</Link>
@@ -67,9 +73,7 @@ export default function Header({logoSrc, variant}) {
                                                 </ul>
                                             </DropDown>
                                         </li>
-                                        <li>
-                                            <CrisisSupport/>
-                                        </li>
+                                        <li><CrisisSupport/></li>
                                     </ul>
                                     <span
                                         className={`cs_menu_toggle ${mobileToggle ? 'cs_teggle_active' : ''}`}
@@ -81,65 +85,46 @@ export default function Header({logoSrc, variant}) {
                             </div>
                             <div className="cs_main_header_right">
                                 <div className="cs_toolbox">
-                                    <button
-                                        className="cs_toolbox_btn cs_search_toggle_btn"
-                                        type="button"
-                                        onClick={() => setSearchToggle(!searchToggle)}
+
+                                    <div
+                                        style={{
+                                            position: 'absolute',
+                                            top: '35px',
+                                            right: '50px',
+                                            zIndex: 1000,
+                                        }}
                                     >
-                                        <svg
-                                            width={30}
-                                            height={30}
-                                            viewBox="0 0 30 30"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                d="M13.1684 0C5.91146 0 0 5.90944 0 13.164C0 20.4184 5.91146 26.3394 13.1684 26.3394C16.2681 26.3394 19.1188 25.2535 21.3719 23.4505L26.8571 28.931C27.1339 29.1962 27.5036 29.3426 27.887 29.3386C28.2704 29.3347 28.6371 29.1809 28.9084 28.91C29.1797 28.6392 29.3342 28.2729 29.3386 27.8896C29.3431 27.5064 29.1972 27.1365 28.9322 26.8595L23.4471 21.3762C25.2521 19.1204 26.3397 16.2662 26.3397 13.164C26.3397 5.90944 20.4254 0 13.1684 0ZM13.1684 2.926C18.8435 2.926 23.4099 7.49078 23.4099 13.164C23.4099 18.8371 18.8435 23.4134 13.1684 23.4134C7.4933 23.4134 2.92695 18.8371 2.92695 13.164C2.92695 7.49078 7.4933 2.926 13.1684 2.926Z"
-                                                fill="currentColor"
-                                            />
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div
-                                    style={{
-                                        position: 'absolute',
-                                        top: '35px',
-                                        right: '50px',
-                                        zIndex: 1000,
-                                    }}
-                                >
-                                    <Link to="/register">
-                                        <button>Register</button>
-                                    </Link>
-                                </div>
-                                <div style={{
-                                    position: 'fixed',
-                                    top: '65px',
-                                    right: '100px',
-                                    zIndex: 1000,
-                                }}>
-                                    <Link to="/questionnaire">
-                                        <button
-                                            style={{
-                                                fontSize: '16px',
-                                                color: '#333',
-                                                background: 'none',
-                                                border: 'none',
-                                                padding: '8px 16px',
-                                                cursor: 'pointer',
-                                            }}
-                                            onMouseEnter={(e) => (e.target.style.color = '#4780b6')}
-                                            onMouseLeave={(e) => (e.target.style.color = '#333')}
-                                        >
-                                            Mental Health Questionnaire
-                                        </button>
-                                    </Link>
+                                        <Link to="/register">
+                                            <button>Register</button>
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </header>
+
+            <div className="cs_search_icon_fixed">
+                <button
+                    className="cs_toolbox_btn cs_search_toggle_btn"
+                    type="button"
+                    onClick={() => setSearchToggle(!searchToggle)}
+                >
+                    <svg
+                        width={30}
+                        height={30}
+                        viewBox="0 0 30 30"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M13.1684 0C5.91146 0 0 5.90944 0 13.164C0 20.4184 5.91146 26.3394 13.1684 26.3394C16.2681 26.3394 19.1188 25.2535 21.3719 23.4505L26.8571 28.931C27.1339 29.1962 27.5036 29.3426 27.887 29.3386C28.2704 29.3347 28.6371 29.1809 28.9084 28.91C29.1797 28.6392 29.3342 28.2729 29.3386 27.8896C29.3431 27.5064 29.1972 27.1365 28.9322 26.8595L23.4471 21.3762C25.2521 19.1204 26.3397 16.2662 26.3397 13.164C26.3397 5.90944 20.4254 0 13.1684 0ZM13.1684 2.926C18.8435 2.926 23.4099 7.49078 23.4099 13.164C23.4099 18.8371 18.8435 23.4134 13.1684 23.4134C7.4933 23.4134 2.92695 18.8371 2.92695 13.164C2.92695 7.49078 7.4933 2.926 13.1684 2.926Z"
+                            fill="currentColor"
+                        />
+                    </svg>
+                </button>
+            </div>
 
             {/* Search Overlay */}
             <div className={`cs_header_search ${searchToggle ? 'active' : ''}`}>
@@ -181,3 +166,5 @@ export default function Header({logoSrc, variant}) {
         </>
     );
 }
+
+
