@@ -6,17 +6,16 @@ const transporter = nodemailer.createTransport({
 	port: 2525,
     //service: 'Gmail', 
     auth: {
-		user: 'todorov.g@abv.bg',
-        pass: 'MindPath2024'
-        //user: 'your_email@gmail.com',
-        //pass: 'your_email_password'
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     }
 });
 
 // Function to send 2FA code via email
 const send2FAEmail = async (email, code) => {
     const mailOptions = {
-        from: 'asu-softdev-kevins-mi-aaaaoic7ltrbijvybrroj2wdpa@teamcanage.slack.com',
+		from: 'no-reply@teamcanage.slack.com',
+        //from: 'asu-softdev-kevins-mi-aaaaoic7ltrbijvybrroj2wdpa@teamcanage.slack.com',
         to: email,
         subject: 'Your Two-Factor Authentication Code',
         text: `Your 2FA code is: ${code}`

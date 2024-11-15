@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const authRoutes = require('./src/routes/auth');
-const app = express(); //admin dashboard
+//const app = express(); //admin dashboard ###This is declared twice, marked out by Galin on 11/15.
 const dashboardRoutes = require('./backend/admin/dashboard'); //admin dashboard
 
 
@@ -18,9 +18,9 @@ mongoose.connect('mongodb://localhost:27017/mindpath')
 	.catch((err) => console.log(err));
 	
 	
-	app.use('/api/auth', authRoutes);
+app.use('/api/auth', authRoutes);
 	
-	//start the server
-	const PORT = process.env.PORT || 5000;
-	app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+//start the server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 	
