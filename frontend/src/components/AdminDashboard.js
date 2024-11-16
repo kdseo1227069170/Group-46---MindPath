@@ -2,30 +2,51 @@ import React, { useEffect, useState } from 'react';
 import { Bar, Line } from 'react-chartjs-2';
 import 'chart.js/auto';
 import './AdminDashboard.css';
+import axios from 'axios';
 
 const AdminDashboard = () => {
     const [dashboardData, setDashboardData] = useState(null);
+    const [loading, setLoading] = useState(true); // Handle loading state
+    const [error, setError] = useState(null); // Handle error state
 
-    // Fetch the data from the backend
+    // Fetch data function
+    const fetchDashboardData = async () => {
+        setLoading(true); // Show loading spinner
+        setError(null); // Reset any previous errors
+
+        try {
+            const token = localStorage.getItem('adminToken'); // Use stored token if needed
+            const response = await axios.get('/api/admin/dashboard', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`, // Add token if backend needs it
+                },
+            });
+            setDashboardData(response.data); // Update with refreshed data
+        } catch (err) {
+            console.error('Error fetching dashboard data:', err);
+            setError('Failed to load dashboard data. Please try again.');
+        } finally {
+            setLoading(false); // Hide loading spinner
+        }
+    };
+
+    // Fetch data on component mount
     useEffect(() => {
-        fetch('/api/admin/dashboard', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                // Might need token for admin access
-            }
-        })
-            .then(res => res.json())
-            .then(data => setDashboardData(data))
-            .catch(err => console.error('Error fetching dashboard data:', err));
+        fetchDashboardData();
     }, []);
 
-    // For handling loading state:
-    if (!dashboardData) {
+    // Handle loading state
+    if (loading) {
         return <div>Loading...</div>;
     }
 
-    // Bar chart to display total users and # of total searches
+    // Handle error state
+    if (error) {
+        return <div style={{ color: 'red' }}>{error}</div>;
+    }
+
+    // Bar chart for Total Users and Searches
     const userAndSearchData = {
         labels: ['Total Users', 'Total Searches'],
         datasets: [
@@ -39,7 +60,7 @@ const AdminDashboard = () => {
         ],
     };
 
-    // Line Chart to display how many searches per day
+    // Line Chart for Searches Per Day
     const searchesPerDayData = {
         labels: dashboardData.searchesPerDay.map(search => search._id), // Dates
         datasets: [
@@ -54,7 +75,7 @@ const AdminDashboard = () => {
         ],
     };
 
-    // Bar Chart to display popular search terms
+    // Bar Chart for Popular Searches
     const popularSearchesData = {
         labels: dashboardData.popularSearches.map(search => search._id), // Search terms
         datasets: [
@@ -71,6 +92,11 @@ const AdminDashboard = () => {
     return (
         <div>
             <h2>Admin Dashboard</h2>
+
+            {/* Refresh Data Button */}
+            <button onClick={fetchDashboardData} style={{ marginBottom: '20px' }}>
+                Refresh Data
+            </button>
 
             {/* Bar Chart for Total Users and Searches */}
             <div className="chart-container" style={{ marginBottom: '50px' }}>

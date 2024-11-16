@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const moment = require('moment');
 const { send2FAEmail } = require('../utils/email');
+const { sendAdminNotification } = require('../utils/email'); //TODO: update directory
 
 const JWT_SECRET = 'your_jwt_secret';
 
@@ -23,6 +24,9 @@ exports.register = async (req, res) => {
         // Create a new user
         const newUser = new User({ firstName, lastName, email, username, password, phoneNumber });
         await newUser.save();
+
+        // Send notification to admin
+        await sendAdminNotification(email, username);
 
         return res.status(201).json({ message: 'User registered successfully' });
     } catch (error) {
