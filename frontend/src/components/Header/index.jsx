@@ -51,20 +51,8 @@ export default function Header({ logoSrc, variant }) {
                     <li>
                       <Link to="/" onClick={handleFaqScroll}>FAQ</Link>
                     </li>
-                    <li className="menu-item-has-children">
-                      <Link to="/">Pages</Link>
-                      <DropDown>
-                        <ul>
-                          <li><Link to="/appointments">Appointments</Link></li>
-                          <li><Link to="/departments">Departments</Link></li>
-                          <li><Link to="/departments/department-details">Department Details</Link></li>
-                          <li><Link to="/doctors">Doctors</Link></li>
-                          <li><Link to="doctors/doctor-details">Doctor Details</Link></li>
-                          <li><Link to="/pricing-plan">Pricing Plan</Link></li>
-                          <li><Link to="/gallery">Gallery</Link></li>
-                          <li><Link to="/timetable">Timetable</Link></li>
-                        </ul>
-                      </DropDown>
+                    <li>
+                      <Link to="/Blog">Blog</Link>
                     </li>
                     <li>
                       <CrisisSupport />

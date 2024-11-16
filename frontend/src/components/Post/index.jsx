@@ -6,6 +6,7 @@ export default function Post({
   title,
   thumbUrl,
   date,
+  author,
   btnText,
   href,
   socialShare,
@@ -19,7 +20,9 @@ export default function Post({
       <div className="cs_post_info">
         <div>
           <div className="cs_post_meta">
-            <div className="cs_posted_by">{date}</div>
+            <div className="cs_posted_by">{date}
+            {author && <span> | {author}</span>} {/* Render author here */}
+            </div>
             {socialShare && (
               <div className="cs_post_social">
                 <Link to="/" className="cs_center rounded-circle">

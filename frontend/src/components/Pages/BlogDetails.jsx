@@ -81,7 +81,7 @@ export default function BlogDetails() {
         </div>
         <Spacing md="55" />
         <img
-          src="/images/blog/blog_details_1.jpeg"
+          src="/images/blog/uc davis.png"
           alt="Blog Details"
           className="w-100 cs_radius_20"
         />
