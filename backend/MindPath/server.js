@@ -4,13 +4,13 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const authRoutes = require('./src/routes/auth');
 //const app = express(); //admin dashboard ###This is declared twice, marked out by Galin on 11/15.
-const dashboardRoutes = require('./backend/admin/dashboard'); //admin dashboard
+const dashboardRoutes = require('./backend/src/admin/dashboard'); //admin dashboard
 
 
 const app = express();
 app.use(cors());
 app.use(express.json()); //for admin dashboard
-app.use('/api/admin', dashboardRoutes); //for admin dashboard
+app.use('/api/admin/dashboard', dashboardRoutes); //for admin dashboard
 app.use(bodyParser.json());
 
 mongoose.connect('mongodb://localhost:27017/mindpath')
