@@ -3,7 +3,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const adminRoutes = require('./routes/admin'); // Import the admin routes
+const adminRoutes = require('../routes/admin'); // Import the admin routes
 
 // Middleware to handle requests
 app.use(express.json());
