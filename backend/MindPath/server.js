@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const authRoutes = require('./src/routes/auth');
 const dashboardRoutes = require('./src/routes/admin'); //admin dashboard
+const feedbackRoutes = require('./src/routes/feedback'); //feedback form
 require('dotenv').config();
 
 
@@ -11,6 +12,7 @@ const app = express();
 app.use(cors());
 app.use(express.json()); //for admin dashboard
 app.use('/api/admin', dashboardRoutes); //for admin dashboard
+app.use('/api/feedback', feedbackRoutes); //for feedback form
 app.use(bodyParser.json());
 
 //mongoose.connect('mongodb://localhost:27017/mindpath')     //Galin: I added environment variables that lead to this URL instead. Uncomment this if that creates a problem

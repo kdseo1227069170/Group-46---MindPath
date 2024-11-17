@@ -71,6 +71,7 @@ function App() {
                     <Route path="questionnaire" element={<Questionnaire />} />
                     <Route path="services" element={<Services />} />
                     <Route path="register" element={<RegistrationForm />} />
+                    <Route path="/feedback" element={<FeedbackForm />} />
                 </Route>
                 <Route path="*" element={<ErrorPage />} />
             </Routes>

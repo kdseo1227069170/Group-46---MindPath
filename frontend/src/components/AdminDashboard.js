@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Bar, Line } from 'react-chartjs-2';
 import 'chart.js/auto';
 import './AdminDashboard.css';
+import FeedbackList from './FeedbackList';
 import axios from 'axios';
 
 const AdminDashboard = () => {
@@ -45,6 +46,34 @@ const AdminDashboard = () => {
     if (error) {
         return <div style={{ color: 'red' }}>{error}</div>;
     }
+
+    //Display FeedbackForm in AdminDashboard
+    const FeedbackList = () => {
+        const [feedbacks, setFeedbacks] = useState([]);
+
+        useEffect(() => {
+            axios.get('/api/feedback')
+                .then(response => setFeedbacks(response.data))
+                .catch(error => console.error('Error fetching feedback:', error));
+        }, []);
+
+        return (
+            <div>
+                <h3>User Feedback</h3>
+                <ul>
+                    {feedbacks.map((fb, index) => (
+                        <li key={index}>
+                            <strong>Rating:</strong> {fb.rating} <br />
+                            <strong>Comments:</strong> {fb.comments} <br />
+                            <strong>Submitted At:</strong> {new Date(fb.submittedAt).toLocaleString()}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        );
+    };
+
+    export default FeedbackList;
 
     // Bar chart for Total Users and Searches
     const userAndSearchData = {
@@ -94,27 +123,32 @@ const AdminDashboard = () => {
             <h2>Admin Dashboard</h2>
 
             {/* Refresh Data Button */}
-            <button onClick={fetchDashboardData} style={{ marginBottom: '20px' }}>
+            <button onClick={fetchDashboardData} style={{marginBottom: '20px'}}>
                 Refresh Data
             </button>
 
             {/* Bar Chart for Total Users and Searches */}
-            <div className="chart-container" style={{ marginBottom: '50px' }}>
+            <div className="chart-container" style={{marginBottom: '50px'}}>
                 <h3>Total Users & Searches</h3>
-                <Bar data={userAndSearchData} />
+                <Bar data={userAndSearchData}/>
             </div>
 
             {/* Line Chart for Searches Per Day */}
-            <div className="chart-container" style={{ marginBottom: '50px' }}>
+            <div className="chart-container" style={{marginBottom: '50px'}}>
                 <h3>Searches Per Day</h3>
-                <Line data={searchesPerDayData} />
+                <Line data={searchesPerDayData}/>
             </div>
 
             {/* Bar Chart for Popular Searches */}
             <div className="chart-container">
                 <h3>Popular Search Terms</h3>
-                <Bar data={popularSearchesData} />
+                <Bar data={popularSearchesData}/>
             </div>
+
+            <div style={{marginTop: '50px'}}>
+                <FeedbackList/>
+            </div>
+
         </div>
     );
 };
