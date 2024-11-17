@@ -1,6 +1,8 @@
 import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 const Questionnaire = () => {
+    const navigate = useNavigate();
     // Tracks answers for each question in the questionnaire
     const [answers, setAnswers] = useState({
         name: '',
@@ -56,6 +58,12 @@ const Questionnaire = () => {
     const generateRecs = () => {
         if (answers.mood === 'sad' || answers.stressLevel === 'high' || answers.inCrisis) {
             setRecommendations('We recommend contacting a mental health professional immediately.');
+            const confirmRedirect = window.confirm(
+                "Based on your response, we recommend crisis support. Do you want to proceed?"
+            );
+            if (confirmRedirect) {
+                navigate('/crisis-support');
+            }
         } else {
             setRecommendations('Based on your responses, regular monitoring or light therapy might be sufficient');
         }
@@ -117,7 +125,7 @@ const Questionnaire = () => {
 
                 <div>
                     <label>Are you currently seeing a therapist?</label>
-                    <input type="checkbox" name="currentlyseeing" checked={answers.currentlySeeing}
+                    <input type="checkbox" name="currentlySeeing" checked={answers.currentlySeeing}
                            onChange={handleChange}/>
                 </div>
 
