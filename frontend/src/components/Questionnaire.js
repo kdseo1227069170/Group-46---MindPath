@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
+// Main component for the Questionnaire
 const Questionnaire = () => {
     const navigate = useNavigate();
     // Tracks answers for each question in the questionnaire
@@ -43,6 +44,8 @@ const Questionnaire = () => {
         if (!answers.province) formErrors.province = 'Province is required';
 
         setErrors(formErrors);
+
+        // Return true if there are no errors
         return Object.keys(formErrors).length === 0;
     };
 
@@ -57,14 +60,18 @@ const Questionnaire = () => {
     // Generates recommendations based on answers
     const generateRecs = () => {
         if (answers.mood === 'sad' || answers.stressLevel === 'high' || answers.inCrisis) {
+            // Provide crisis support recommendation
             setRecommendations('We recommend contacting a mental health professional immediately.');
+            // Confirms with the user prior to navigating to the crisis support page
             const confirmRedirect = window.confirm(
                 "Based on your response, we recommend crisis support. Do you want to proceed?"
             );
             if (confirmRedirect) {
+                // Navigates to the crisis support page
                 navigate('/crisis-support');
             }
         } else {
+            // Provide recommendations for non-crisis situations
             setRecommendations('Based on your responses, regular monitoring or light therapy might be sufficient');
         }
     };
