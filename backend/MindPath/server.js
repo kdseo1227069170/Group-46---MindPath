@@ -6,6 +6,7 @@ const authRoutes = require('./src/routes/auth');
 const dashboardRoutes = require('./src/routes/admin'); // Use the correct path for admin dashboard routes
 require('dotenv').config();
 
+
 const app = express();
 
 // Middleware
