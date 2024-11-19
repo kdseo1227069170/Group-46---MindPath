@@ -19,6 +19,7 @@ import ErrorPage from './components/Pages/ErrorPage';
 import Services from './components/Services/Services';
 import AdminDashboard from './components/AdminDashboard';
 import LoadingSpinner from './components/LoadingSpinner';
+import ContactForm from './components/Pages/Contact';
 
 function App() {
     const { pathname } = useLocation();
@@ -71,6 +72,7 @@ function App() {
                     <Route path="/crisis-support" element={<CrisisSupportPage />} />
                     <Route path="questionnaire" element={<Questionnaire />} />
                     <Route path="services" element={<Services />} />
+                    <Route path="/contact" element={<ContactForm />} />
                 </Route>
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
