@@ -10,6 +10,7 @@ import BlogSection from '../Section/BlogSection';
 import AppointmentSection from '../Section/AppointmentSection';
 import FaqSection from '../Section/FaqSection';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import './Home.css';
 
 
 import { pageTitle } from '../../helpers/PageTitle';
@@ -238,10 +239,9 @@ export default function Home() {
         <BrandsSection data={brandData} />
       </Section> */}
       {/* End Brand Section */}
-      <Section>
+      <Section className="contactSection">
         <h1>Have a question or need help?</h1>
-        <p>Contact us today!</p>
-        <button onClick={() => navigate('/contact')}>Contact</button>
+        <button onClick={() => navigate('/contact')}>Contact Us</button>
       </Section>
     </>
   );
