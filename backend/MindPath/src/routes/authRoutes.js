@@ -40,4 +40,12 @@ router.post('/login', validateLogin, (req, res, next) => {
     next();
 }, loginUser);
 
+// @route   DELETE /api/auth/delete/:userId
+// @desc    Delete a user by ID
+// @access  Private (assuming you want to protect this route with authentication)
+router.delete('/delete/:userId', (req, res, next) => {
+    // Here you can add middleware to check if the user is authorized (e.g., using a JWT)
+    next();
+}, deleteUser);
+
 module.exports = router;
