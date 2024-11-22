@@ -43,6 +43,7 @@ const Questionnaire = () => {
         if (!answers.location) formErrors.location = 'Location is required';
         if (!answers.province) formErrors.province = 'Province is required';
 
+        // Update errors state
         setErrors(formErrors);
 
         // Return true if there are no errors

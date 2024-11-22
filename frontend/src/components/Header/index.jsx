@@ -8,6 +8,7 @@ import Spacing from '../Spacing';
 import {Link as ScrollLink} from 'react-scroll';
 import CrisisSupport from '../CrisisSupport';
 
+// Header component for the website
 export default function Header({logoSrc, variant}) {
     const [isSticky, setIsSticky] = useState(false);
     const [mobileToggle, setMobileToggle] = useState(false);
