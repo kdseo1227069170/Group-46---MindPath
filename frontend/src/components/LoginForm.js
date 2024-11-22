@@ -1,40 +1,46 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';  
 import './LoginForm.css';
 
-function LoginForm({ closeLoginForm }) {
+const LoginForm = ({ onClose }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+	
+    const [isFormClosed, setIsFormClosed] = useState(false);
+    const navigate = useNavigate();  
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5000/api/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email: email,
-                    password: password,
-                }),
+            const response = await axios.post('http://localhost:5000/api/auth/login', {
+                email: email,
+                password: password,
             });
 
-            const data = await response.json();
-
-            if (response.ok) {
-                // Handle success (store token, close the form, etc.)
+            if (response.status === 200) {
+                // On successful login
                 alert('Login successful!');
-                localStorage.setItem('authToken', data.token);
-                closeLoginForm();  // Close the login form on success
-            } else {
-                setError('Invalid credentials. Please try again.');
+                localStorage.setItem('authToken', response.data.token);  // Store the token
+
+                // Clear form data after login
+                setEmail('');
+                setPassword('');
+                setIsFormClosed(true);
+				if (onClose) {
+				  onClose();
+				}
+				navigate('/');
             }
         } catch (err) {
-            setError('Failed to login. Please try again later.');
+            setError('Invalid credentials. Please try again.');
         }
     };
+
+    if (isFormClosed) {
+        return null; // Render nothing when the form is closed
+    }
 
     return (
         <div className="login-form-container">
@@ -61,9 +67,9 @@ function LoginForm({ closeLoginForm }) {
                 <button type="submit">Login</button>
             </form>
             {error && <p className="error-message">{error}</p>}
-            <button onClick={closeLoginForm}>Close</button>
+            <button onClick={onClose}>Close</button>
         </div>
     );
-}
+};
 
 export default LoginForm;
