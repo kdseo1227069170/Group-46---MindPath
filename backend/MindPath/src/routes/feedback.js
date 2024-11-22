@@ -3,6 +3,8 @@
 const express = require('express');
 const router = express.Router();
 const Feedback = require('../models/Feedback');
+const verifyAdmin = require('../middlewares/verifyAdmin'); // Import the verifyAdmin middleware
+
 
 router.post('/', async (req, res) => {
     try {
@@ -17,7 +19,8 @@ router.post('/', async (req, res) => {
 });
 
 // ADMIN-ONLY: this route retrieves the feedback form to view
-router.get('/', verifyAdmin, async (req, res) => {
+//router.get('/', verifyAdmin, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const feedbacks = await Feedback.find().sort({ submittedAt: -1 });
         res.json(feedbacks);

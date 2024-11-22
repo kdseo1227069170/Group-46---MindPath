@@ -18,6 +18,7 @@ import React, { useEffect } from 'react';
 import ErrorPage from './components/Pages/ErrorPage';
 import Services from './components/Services/Services';
 import AdminDashboard from './components/AdminDashboard';
+import FeedbackForm from './components/FeedbackForm';
 import LoadingSpinner from './components/LoadingSpinner';
 
 function App() {

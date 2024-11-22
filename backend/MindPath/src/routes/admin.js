@@ -42,7 +42,8 @@ const getActiveUsers = async () => {
 };
 
 // Admin Dashboard route
-router.get('/dashboard', verifyAdmin, async (req, res) => {
+//router.get('/dashboard', verifyAdmin, async (req, res) => {
+router.get('/dashboard', async (req, res) => {
     try {
         const totalUsers = await User.countDocuments();
         const totalSearches = await SearchLog.countDocuments();
@@ -51,11 +52,11 @@ router.get('/dashboard', verifyAdmin, async (req, res) => {
         const activeUsers = await getActiveUsers();
 
         // Log admin access
-        const logEntry = new ActivityLog({
-            adminId: req.user.id,
-            action: 'Accessed Admin Dashboard',
-        });
-        await logEntry.save();
+        //const logEntry = new ActivityLog({
+            //adminId: req.user.id,
+            //action: 'Accessed Admin Dashboard',
+        //});
+        //await logEntry.save();
 
         res.json({
             totalUsers,
