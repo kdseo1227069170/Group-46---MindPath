@@ -22,17 +22,18 @@ const RegistrationForm = ({ onClose }) => {
 		e.preventDefault();
 		try {
 			const response = await axios.post('http://localhost:5000/api/auth/register', formData);
-		  console.log(response.data);
-		  alert('Registration successful!');
-		  // Clear the form after successful registration
-			setFormData({
-				firstName: '',
-				lastName: '',
-				email: '',
-				username: '',
-				password: '',
-				phoneNumber: '',
-			});
+			console.log(response.data);
+			if (response.status === 201) {
+                alert('Registration successful!');
+                // Clear form after success
+                setFormData({
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    username: '',
+                    password: '',
+                    phoneNumber: '',
+                });
 			onClose();
 		} catch (error) {
 		  console.error('Error registering user:', error);
