@@ -19,6 +19,8 @@ import ErrorPage from './components/Pages/ErrorPage';
 import Services from './components/Services/Services';
 import AdminDashboard from './components/AdminDashboard';
 import LoadingSpinner from './components/LoadingSpinner';
+import LoginForm from './components/LoginForm';  
+
 
 function App() {
     const { pathname } = useLocation();
@@ -71,6 +73,7 @@ function App() {
                     <Route path="questionnaire" element={<Questionnaire />} />
                     <Route path="services" element={<Services />} />
                     <Route path="register" element={<RegistrationForm />} />
+					<Route path="login" element={<LoginForm />} />
                 </Route>
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
