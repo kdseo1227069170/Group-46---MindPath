@@ -50,7 +50,7 @@ router.post('/verify-2fa', authController.verify2FA);
 router.get('/users', authController.getAllUsers);
 
 // Route to delete a user by ID
-router.delete('/delete/:userId', authController.deleteUserByUsername);
+router.delete('/delete/:userId', authController.deleteUserById);
 
 
 // Route to create the admin account (admin is unique; RUN ONLY ONCE)
