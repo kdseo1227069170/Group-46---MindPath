@@ -111,6 +111,19 @@ export default function Header({ logoSrc, variant }) {
                     <button>Register</button>
                   </Link>
                 </div>
+				<div
+					style={{
+						position: 'absolute',
+						top: '35px',
+						right: '100px',  // Adjust position
+						zIndex: 1000,
+					}}
+				>
+					<Link to="/login">
+						<button>Login</button>
+					</Link>
+				</div>
+
               </div>
             </div>
           </div>
