@@ -115,7 +115,7 @@ export default function Header({ logoSrc, variant }) {
 					style={{
 						position: 'absolute',
 						top: '35px',
-						right: '100px',  // Adjust position
+						right: '125px',  // Adjust position
 						zIndex: 1000,
 					}}
 				>
