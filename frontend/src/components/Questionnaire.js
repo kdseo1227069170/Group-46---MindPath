@@ -1,6 +1,10 @@
 import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
+// Main component for the Questionnaire
 const Questionnaire = () => {
+    const navigate = useNavigate();
+    // Tracks answers for each question in the questionnaire
     const [answers, setAnswers] = useState({
         name: '',
         age: '',
@@ -15,10 +19,11 @@ const Questionnaire = () => {
         isRemote: false,
         needTranslator: false,
     });
-
+    // Tracks form validation errors
     const [errors, setErrors] = useState({});
+    // Stores recommendations based on answers
     const [recommendations, setRecommendations] = useState('');
-
+    // Handles input changes in form fields
     const handleChange = (e) => {
         const {name, value, type, checked} = e.target;
         setAnswers({
@@ -26,7 +31,7 @@ const Questionnaire = () => {
             [name]: type === 'checkbox' ? checked : value,
         });
     };
-
+    // Validates fields in the form
     const validateForm = () => {
         let formErrors = {};
 
@@ -38,10 +43,14 @@ const Questionnaire = () => {
         if (!answers.location) formErrors.location = 'Location is required';
         if (!answers.province) formErrors.province = 'Province is required';
 
+        // Update errors state
         setErrors(formErrors);
+
+        // Return true if there are no errors
         return Object.keys(formErrors).length === 0;
     };
 
+    // Handles form submission
     const submitHandler = (e) => {
         e.preventDefault();
         if (validateForm()) {
@@ -49,15 +58,26 @@ const Questionnaire = () => {
         }
     };
 
+    // Generates recommendations based on answers
     const generateRecs = () => {
         if (answers.mood === 'sad' || answers.stressLevel === 'high' || answers.inCrisis) {
+            // Provide crisis support recommendation
             setRecommendations('We recommend contacting a mental health professional immediately.');
+            // Confirms with the user prior to navigating to the crisis support page
+            const confirmRedirect = window.confirm(
+                "Based on your response, we recommend crisis support. Do you want to proceed?"
+            );
+            if (confirmRedirect) {
+                // Navigates to the crisis support page
+                navigate('/crisis-support');
+            }
         } else {
+            // Provide recommendations for non-crisis situations
             setRecommendations('Based on your responses, regular monitoring or light therapy might be sufficient');
         }
     };
     return (
-        <div style={{marginTop: '300px'}}>
+        <div style={{marginTop: '100px'}}>
             <h2>Mental Heath Questionnaire</h2>
             <form onSubmit={submitHandler}>
                 <div>
@@ -113,7 +133,7 @@ const Questionnaire = () => {
 
                 <div>
                     <label>Are you currently seeing a therapist?</label>
-                    <input type="checkbox" name="currentlyseeing" checked={answers.currentlySeeing}
+                    <input type="checkbox" name="currentlySeeing" checked={answers.currentlySeeing}
                            onChange={handleChange}/>
                 </div>
 

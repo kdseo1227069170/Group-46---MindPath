@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Component for the crisis support page
 const CrisisSupportPage = () => {
     return (
         <div style={styles.pageContainer}>
@@ -190,6 +191,7 @@ const CrisisSupportPage = () => {
     );
 };
 
+// Styles for elements
 const styles = {
     pageContainer: {
         padding: '20px',
