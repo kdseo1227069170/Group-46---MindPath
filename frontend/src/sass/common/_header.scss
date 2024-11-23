@@ -33,6 +33,12 @@
     }
   }
 }
+.cs_search_icon_fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
 .cs_site_header.cs_style1 {
   .cs_main_header_in,
   .cs_top_header_in {

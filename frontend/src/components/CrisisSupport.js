@@ -22,7 +22,7 @@ const CrisisSupport = () => {
 const styles = {
     // Edit button appearance
     container: {
-      marginTop: '25px',
+        marginTop: '25px',
     },
     button: {
         padding: '4px 12px',

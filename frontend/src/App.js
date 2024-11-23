@@ -30,29 +30,6 @@ function App() {
 
     return (
         <>
-            <div style={{
-                position: 'fixed',
-                top: '65px',
-                right: '100px',
-                zIndex: 1000,
-            }}>
-                <Link to="/questionnaire">
-                    <button
-                        style={{
-                            fontSize: '16px',
-                            color: '#333',
-                            background: 'none',
-                            border: 'none',
-                            padding: '8px 16px',
-                            cursor: 'pointer',
-                        }}
-                        onMouseEnter={(e) => (e.target.style.color = '#4780b6')}
-                        onMouseLeave={(e) => (e.target.style.color = '#333')}
-                    >
-                        Mental Health Questionnaire
-                    </button>
-                </Link>
-            </div>
 
             <Routes>
                 <Route path="/" element={<Layout />}>
@@ -61,7 +38,6 @@ function App() {
                     <Route path="doctors" element={<Doctors />} />
                     <Route path="doctors/:doctorId" element={<DoctorDetails />} />
                     <Route path="blog" element={<Blog />} />
-                    <Route path="register" element={<RegistrationForm />} />
                     <Route path="blog/:blogId" element={<BlogDetails />} />
                     <Route path="appointments" element={<Appointments />} />
                     <Route path="pricing-plan" element={<PricingPlan />} />
@@ -73,6 +49,7 @@ function App() {
                     <Route path="questionnaire" element={<Questionnaire />} />
                     <Route path="services" element={<Services />} />
                     <Route path="/contact" element={<ContactForm />} />
+                    <Route path="register" element={<RegistrationForm />} />
                 </Route>
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
