@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const authRoutes = require('./src/routes/auth');
+const authRoutes = require('./src/routes/authRoutes');
 const dashboardRoutes = require('./src/routes/admin'); // Use the correct path for admin dashboard routes
 require('dotenv').config();
 
