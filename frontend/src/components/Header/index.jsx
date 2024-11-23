@@ -78,17 +78,29 @@ export default function Header({logoSrc, variant}) {
                                 <div className="cs_toolbox">
 
                                     <div
-                                        style={{
-                                            position: 'absolute',
-                                            top: '35px',
-                                            right: '50px',
-                                            zIndex: 1000,
-                                        }}
-                                    >
-                                        <Link to="/register">
-                                            <button>Register</button>
-                                        </Link>
-                                    </div>
+                                          style={{
+										position: 'absolute',
+										top: '35px',
+										right: '50px',
+										zIndex: 1000,
+									  }}
+									>
+									  <Link to="/register">
+										<button>Register</button>
+									  </Link>
+									</div>
+									<div
+										style={{
+											position: 'absolute',
+											top: '35px',
+											right: '125px',  // Adjust position
+											zIndex: 1000,
+										}}
+									>
+										<Link to="/login">
+											<button>Login</button>
+										</Link>
+									</div>
                                 </div>
                             </div>
                         </div>
@@ -150,9 +162,15 @@ export default function Header({logoSrc, variant}) {
                     </div>
                 </div>
                 <div
+
                     className="cs_sidenav_overlay"
                     onClick={() => setSearchToggle(!searchToggle)}
                 />
+
+                
+
+              </div>
+
             </div>
         </>
     );

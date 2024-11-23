@@ -1,5 +1,5 @@
 const User = require('../models/User');
-//const TwoFA = require('../models/TwoFA');
+const TwoFA = require('../models/TwoFA');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
@@ -85,7 +85,7 @@ exports.login = async (req, res) => {
         return res.status(500).json({ message: 'Server error' });
     }
 };
-/**
+
 // Generate and send 2FA code that expires in 10 minutes
 const send2FACode = async (user) => {
     const verificationCode = crypto.randomBytes(3).toString('hex'); 
@@ -101,7 +101,7 @@ const send2FACode = async (user) => {
     // Send the verification code to the user's phone or email
     console.log(`2FA code for ${user.email}: ${verificationCode}`); 
 };
-*/
+
 // Verify 2FA Code
 exports.verify2FA = async (req, res) => {
     const { email, code } = req.body;
@@ -140,10 +140,10 @@ exports.getAllUsers = async (req, res) => {
 
 
 // Delete User by Username
-exports.deleteUserByUsername = async (req, res) => {
-    const { username } = req.params; 
+exports.deleteUserById = async (req, res) => {
+    const { userId } = req.params; 
     try {
-        const deletedUser = await User.findOneAndDelete({ username });
+        const deletedUser = await User.findByIdAndDelete(userId);
         if (!deletedUser) {
             return res.status(404).json({ message: 'User not found' });
         }
