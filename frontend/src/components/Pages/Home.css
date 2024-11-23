@@ -1,0 +1,23 @@
+.contactSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%; 
+  padding: 20px; 
+  margin-top: 130px;
+}
+.contactSection button {
+  border-radius: 17px;
+  margin-bottom: 130px;
+  margin-top: 23px;
+  color:black;
+  background-color: #f0f0f0;
+}
+
+.contactSection button:hover {
+  background-color: #D4FEF1;
+  transition-duration: 0.3s;
+}
+

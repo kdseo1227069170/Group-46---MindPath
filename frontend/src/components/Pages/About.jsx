@@ -118,7 +118,10 @@ export default function About() {
               borderRadius: '10px',
               cursor: 'pointer',
               fontSize: '20px',
-            }}>
+              transition: 'background-color 0.3s ease'
+            }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = '#D4DEF1'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = '#007BFF'}>
               Services
             </button></center>
           </Link>
@@ -151,6 +154,36 @@ export default function About() {
       </Section>
     </div>
     </div>
+    <div className="help-section section-box">
+      <Section>
+        <h1> How MindPath Can Help You</h1>
+        <ol>
+          <li>Explore Services</li>
+            <p>Use our searchable database to find mental health services in each province, so you can access support that best meets your needs.</p>
+          <li>Understand Coverage</li>
+            <p>Get detailed information about provincial health coverage for therapy, counseling, psychiatric care, and medications. Know what’s covered and what options are available in your area.</p>
+          <li>Personalized Recommendations</li>
+            <p>Take our confidential questionnaire to assess your mental health needs. Based on your responses, we’ll suggest relevant services that may benefit you.</p>
+          <li>Crisis and Emergency Support</li>
+            <p>Access resources for immediate support in times of crisis, including emergency mental health services.</p>
+          <li>Track Your Journey</li>
+            <p>Securely manage your mental health appointments, medication schedules, and personal progress notes, all in one place.</p>
+        </ol>
+
+
+      </Section>    
+      </div>
+
+      <div className="privacy-section section-box">
+        <Section>
+          <h1>Our Commitment to Privacy</h1>
+          <p>At MindPath, your privacy and security are our priority. We’ve implemented secure data protection measures to ensure that your personal information remains confidential and protected.</p>
+        </Section>
+        <Section>
+          <h1>Get Started with MindPath</h1>
+          <p>Let MindPath be your partner in navigating mental health and wellness. Together, we will help you find the services and support you deserve.</p>
+        </Section>
+      </div>
 
       {/* <Section topMd={170} topLg={120} topXl={80}>
         <GallerySection

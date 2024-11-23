@@ -1,0 +1,54 @@
+.contactPage {
+  background-color: #D4DEF1;
+  
+}
+.cs_banner_contact {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  text-align: center; 
+  background-color: #D4DEF1;
+}
+
+.cs_banner_contact_title {
+  margin: 20px 0;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 100px;
+}
+
+.cs_banner_contact_img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+}
+
+.cs_banner_contact_img img {
+  width: 600px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.cs_contact_form {
+  margin-top: 30px;
+  background-color: #ddedfd;
+
+}
+
+
+
+
+@media (max-width: 768px) {
+  .cs_banner_contact_title {
+    font-size: 1.5rem;
+  }
+
+  .cs_banner_contact_img img {
+    width: 90%;
+    height: auto;
+  }
+}

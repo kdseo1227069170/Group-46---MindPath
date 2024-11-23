@@ -9,9 +9,13 @@ import TestimonialSection from '../Section/TestimonialSection';
 import BlogSection from '../Section/BlogSection';
 import AppointmentSection from '../Section/AppointmentSection';
 import FaqSection from '../Section/FaqSection';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import './Home.css';
 
 
 import { pageTitle } from '../../helpers/PageTitle';
+import ContactForm from '../ContactForm';
+
 const featureListData = [
   {
     iconSrc: '/images/home_1/compassion.svg',
@@ -109,6 +113,7 @@ const blogData = [
 
 export default function Home() {
   pageTitle('Home');
+  const navigate = useNavigate();
   return (
     <>
       <Hero
@@ -223,7 +228,7 @@ export default function Home() {
       </Section>
       {/* End FAQ Section */}
       {/* Start Brand Section */}
-      <Section
+      {/* <Section
         topMd={200}
         topLg={150}
         topXl={110}
@@ -232,8 +237,12 @@ export default function Home() {
         bottomXl={110}
       >
         <BrandsSection data={brandData} />
-      </Section>
+      </Section> */}
       {/* End Brand Section */}
+      <Section className="contactSection">
+        <h1>Have a question or need help?</h1>
+        <button onClick={() => navigate('/contact')}>Contact Us</button>
+      </Section>
     </>
   );
 }
