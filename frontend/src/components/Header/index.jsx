@@ -162,14 +162,10 @@ export default function Header({logoSrc, variant}) {
                     </div>
                 </div>
                 <div
-
                     className="cs_sidenav_overlay"
                     onClick={() => setSearchToggle(!searchToggle)}
                 />
-
-                
-
-              </div>
+    			
 
             </div>
         </>
