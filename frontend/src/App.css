@@ -1,0 +1,11 @@
+#light {
+  background-color: white;
+}
+
+#dark {
+  background-color: rgb(59, 52, 161);
+}
+
+#dark .home-page-element {
+  color: #b80000;
+}
