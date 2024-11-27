@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './LoginForm.css';
 
 const LoginForm = ({ onClose }) => {
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 	
@@ -15,7 +15,7 @@ const LoginForm = ({ onClose }) => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:5000/api/auth/login', {
-                email: email,
+                username: username,
                 password: password,
             });
 
@@ -25,7 +25,7 @@ const LoginForm = ({ onClose }) => {
                 localStorage.setItem('authToken', response.data.token);  // Store the token
 
                 // Clear form data after login
-                setEmail('');
+                setUsername('');
                 setPassword('');
                 setIsFormClosed(true);
 				if (onClose) {
@@ -47,10 +47,10 @@ const LoginForm = ({ onClose }) => {
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Email:</label>
+                    <label>Usename:</label>
                     <input
-                        type="email"
-                        value={email}
+                        type="text"
+                        value={username}
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
