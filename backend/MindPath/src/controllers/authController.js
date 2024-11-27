@@ -20,6 +20,17 @@ exports.register = async (req, res) => {
             return res.status(400).json({ message: 'Email already exists' });
         }
 
+		 // Password validation regex
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        if (!passwordRegex.test(password)) {
+            return res.status(400).json({
+                message: 'Password must be at least 8 characters long, contain an uppercase letter, a number, and a special character'
+            });
+        }
+		
+		// Hash password using bcrypt
+        const hashedPassword = await bcrypt.hash(password, 10);
         
         // Create a new user
         const newUser = new User({ firstName, lastName, email, username, password, phoneNumber });
@@ -37,11 +48,11 @@ exports.register = async (req, res) => {
 
 // User Login
 exports.login = async (req, res) => {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
     try {
         // Find the user by email
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ username });
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
