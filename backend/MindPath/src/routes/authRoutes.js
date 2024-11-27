@@ -3,19 +3,24 @@ const router = express.Router()
 const authController = require('../controllers/authController');
 const Admin = require('../models/adminModel'); //for the Admin user
 const { body, validationResult } = require('express-validator');
+const jwt = require('jsonwebtoken');
 
 // Validation middleware for registering a user
 const validateRegister = [
     body('firstName').not().isEmpty().withMessage('First name is required'),
     body('lastName').not().isEmpty().withMessage('Last name is required'),
     body('email').isEmail().withMessage('Please enter a valid email address'),
-    body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long'),
-    body('phoneNumber').isMobilePhone().withMessage('Please enter a valid phone number')
+    body('password')
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/).withMessage('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character (@, $, !, %, *, ?, &)')
+    ,
+    body('phoneNumber')
+        .matches(/^\d{3}[\s\-]?\d{3}[\s\-]?\d{4}$/).withMessage('Please enter a valid phone number (USA or Canada)')
+        .isLength({ min: 10, max: 10 }).withMessage('Phone number must be exactly 10 digits long')
 ];
 
 // Validation middleware for logging in a user
 const validateLogin = [
-    body('email').isEmail().withMessage('Please enter a valid email address'),
+    body('username').not().isEmpty().withMessage('Username is required'),
     body('password').not().isEmpty().withMessage('Password is required')
 ];
 

@@ -9,6 +9,13 @@ const { sendAdminNotification } = require('../utils/email'); //TODO: update dire
 
 const JWT_SECRET = 'your_jwt_secret';
 
+// Phone number validation regex for Canada and USA (supports formats like +1-123-456-7890, 123-456-7890, etc.)
+const phoneRegex = /^(?:\+1[-.\s]?)?(\d{3})[-.\s]?(\d{3})[-.\s]?(\d{4})$/;
+
+// Password validation regex (minimum 8 characters, 1 uppercase, 1 number, 1 special character)
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+
 // User Registration
 exports.register = async (req, res) => {
     const { firstName, lastName, email, username, password, phoneNumber } = req.body;
@@ -19,9 +26,13 @@ exports.register = async (req, res) => {
         if (existingUser) {
             return res.status(400).json({ message: 'Email already exists' });
         }
+		
+		// Validate phone number
+        if (!phoneRegex.test(phoneNumber)) {
+            return res.status(400).json({ message: 'Invalid phone number. Please use a valid Canadian or US phone number.' });
+        }
 
-		 // Password validation regex
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+		 
 
         if (!passwordRegex.test(password)) {
             return res.status(400).json({
@@ -63,25 +74,7 @@ exports.login = async (req, res) => {
             return res.status(400).json({ message: 'Invalid password' });
         }
 		
-		 // Enable 2FA if it hasn't been enabled yet
-        if (!user.is2FAEnabled) {
-            user.is2FAEnabled = true;  // Set to true
-            await user.save();
-        }
-
-        // Check for 2FA
-        if (user.is2FAEnabled) {
-            const verificationCode = crypto.randomBytes(3).toString('hex');
-			const expiresAt = moment().add(10, 'minutes').toDate();
-			
-			user.twoFACode = verificationCode;
-			user.twoFACodeExpires = expiresAt;
-			await user.save();
-			
-			await send2FAEmail(user.email, verificationCode);
-			
-			return res.status(200).json({ message: '2FA code sent to your email' });
-        }
+		 
 
         // Generate JWT token
         const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '1h' });
