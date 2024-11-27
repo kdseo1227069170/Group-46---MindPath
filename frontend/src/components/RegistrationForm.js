@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import './RegistrationForm.css';
 
 const RegistrationForm = ({ onClose }) => {
@@ -12,13 +12,34 @@ const RegistrationForm = ({ onClose }) => {
     password: '',
     phoneNumber: '',
   });
-  
+
+  const [passwordError, setPasswordError] = useState('');
+  const [phoneNumberError, setPhoneNumberError] = useState('');
   const [isFormClosed, setIsFormClosed] = useState(false);
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
+
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  const phoneRegex = /^\d{10}$/; 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
+    if (name === 'password') {
+      if (!passwordRegex.test(value)) {
+        setPasswordError('Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one digit, and one special character.');
+      } else {
+        setPasswordError('');
+      }
+    }
+	
+	if (name === 'phoneNumber') {
+      if (!phoneRegex.test(value)) {
+        setPhoneNumberError('Please enter a valid phone number (e.g., 1234567890)');
+      } else {
+        setPhoneNumberError('');
+      }
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -37,18 +58,18 @@ const RegistrationForm = ({ onClose }) => {
           password: '',
           phoneNumber: '',
         });
-		setIsFormClosed(true);
+        setIsFormClosed(true);
         if (onClose) {
           onClose();
         }
-		navigate('/');
+        navigate('/');
       }
     } catch (error) {
       console.error('Error registering user:', error);
       alert('Registration failed!');
     }
   };
-  
+
   if (isFormClosed) {
     return null; // Render nothing when the form is closed
   }
@@ -106,6 +127,7 @@ const RegistrationForm = ({ onClose }) => {
             onChange={handleChange}
             required
           />
+          {passwordError && <p className="error-message">{passwordError}</p>}
         </div>
         <div>
           <label>Phone Number:</label>
@@ -117,7 +139,7 @@ const RegistrationForm = ({ onClose }) => {
             required
           />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit" disabled={passwordError}>Register</button>
       </form>
     </div>
   );
