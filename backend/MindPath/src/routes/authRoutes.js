@@ -46,6 +46,8 @@ router.post('/login', validateLogin, (req, res, next) => {
     next();
 }, authController.login);
 
+// Route for checking who is logged into system 
+router.get('/active-user', authController.getActiveUsers);
 
 
 // Route for verifying 2FA code

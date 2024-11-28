@@ -9,6 +9,8 @@ const { sendAdminNotification } = require('../utils/email'); //TODO: update dire
 
 const JWT_SECRET = 'your_jwt_secret';
 
+let activeUsers = {};
+
 // Phone number validation regex for Canada and USA (supports formats like +1-123-456-7890, 123-456-7890, etc.)
 const phoneRegex = /^(?:\+1[-.\s]?)?(\d{3})[-.\s]?(\d{3})[-.\s]?(\d{4})$/;
 
@@ -82,6 +84,9 @@ exports.login = async (req, res) => {
         // Update last login time
         user.lastLogin = new Date();
         await user.save();
+		
+		// Track the logged-in user
+        activeUsers[user._id] = { username, role: user.role };
 
         return res.status(200).json({ message: 'Login successful', token });
     } catch (error) {
@@ -89,6 +94,8 @@ exports.login = async (req, res) => {
         return res.status(500).json({ message: 'Server error' });
     }
 };
+
+
 
 // Generate and send 2FA code that expires in 10 minutes
 const send2FACode = async (user) => {
@@ -141,6 +148,13 @@ exports.getAllUsers = async (req, res) => {
     return res.status(500).json({ message: 'Server error', error });
 }
 };
+
+// Get active users
+exports.getActiveUsers = (req, res) => {
+    const loggedInUsers = Object.values(activeUsers);  // Get an array of logged-in user data
+    res.status(200).json({ activeUsers: loggedInUsers });
+};
+
 
 
 // Delete User by Username
