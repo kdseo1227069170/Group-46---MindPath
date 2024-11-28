@@ -77,7 +77,7 @@ const Questionnaire = () => {
         }
     };
     return (
-        <div style={{marginTop: '100px'}}>
+        <div style="questionnaire-popup">
             <h2>Mental Heath Questionnaire</h2>
             <form onSubmit={submitHandler}>
                 <div>
@@ -161,6 +161,7 @@ const Questionnaire = () => {
                 </div>
 
                 <button type="submit">Submit</button>
+                <button type="button" onClick={onClose} className="close-btn">Close</button>
             </form>
 
             {recommendations && (
