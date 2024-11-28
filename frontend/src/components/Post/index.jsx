@@ -21,7 +21,7 @@ export default function Post({
         <div>
           <div className="cs_post_meta">
             <div className="cs_posted_by">{date}
-            {author && <span> | {author}</span>} {/* Render author here */}
+            {author && <span> | {author}</span>} 
             </div>
             {socialShare && (
               <div className="cs_post_social">
