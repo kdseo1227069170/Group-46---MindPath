@@ -95,6 +95,29 @@ exports.login = async (req, res) => {
     }
 };
 
+// Logout User
+exports.logout = (req, res) => {
+    const { userId } = req.body;  // Expect userId in request body
+
+    try {
+        // Check if user is in the active users list
+        if (activeUsers[userId]) {
+            // Remove user from the active users list
+            delete activeUsers[userId];
+
+            // Send a success response
+            return res.status(200).json({ message: 'User logged out successfully' });
+        } else {
+            // If user is not found in active users
+            return res.status(400).json({ message: 'User is not logged in' });
+        }
+    } catch (error) {
+        console.error('Logout error:', error);
+        return res.status(500).json({ message: 'Server error' });
+    }
+};
+
+
 
 
 // Generate and send 2FA code that expires in 10 minutes

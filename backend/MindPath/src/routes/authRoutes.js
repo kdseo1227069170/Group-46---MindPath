@@ -41,10 +41,21 @@ router.post('/register', validateRegister, (req, res, next) => {
 router.post('/login', validateLogin, (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() }); // Send validation errors
+        return res.status(400).json({ errors: errors.array() }); 
     }
     next();
 }, authController.login);
+
+// @route   POST /api/auth/logout
+// @desc    Logout user
+// @access  Private
+/*
+router.post('/logout', (req, res) => {
+    const { userId } = req.body;  
+    authController.logout(req, res);  
+});
+*/
+router.post('/logout', authController.logout);
 
 // Route for checking who is logged into system 
 router.get('/active-user', authController.getActiveUsers);
