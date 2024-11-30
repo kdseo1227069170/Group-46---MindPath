@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import "./Questionnaire.css";
 import {useNavigate} from "react-router-dom";
 
 // Main component for the Questionnaire
