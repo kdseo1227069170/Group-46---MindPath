@@ -3,6 +3,7 @@ const router = express.Router()
 const authController = require('../controllers/authController');
 const Admin = require('../models/adminModel'); //for the Admin user
 const { body, validationResult } = require('express-validator');
+const { verifyToken } = require('../middlewares/middleware');
 const jwt = require('jsonwebtoken');
 
 // Validation middleware for registering a user
@@ -69,6 +70,12 @@ router.get('/users', authController.getAllUsers);
 
 // Route to delete a user by ID
 router.delete('/delete/:userId', authController.deleteUserById);
+
+// Route for protected data (e.g., /api/protected-route)
+router.get('/protected-route', verifyToken, (req, res) => {
+    res.json({ message: 'This is protected data', user: req.user });
+});
+
 
 
 // Route to create the admin account (admin is unique; RUN ONLY ONCE)

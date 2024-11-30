@@ -9,7 +9,9 @@ const { sendAdminNotification } = require('../utils/email'); //TODO: update dire
 
 const JWT_SECRET = 'your_jwt_secret';
 
+
 let activeUsers = {};
+
 
 // Phone number validation regex for Canada and USA (supports formats like +1-123-456-7890, 123-456-7890, etc.)
 const phoneRegex = /^(?:\+1[-.\s]?)?(\d{3})[-.\s]?(\d{3})[-.\s]?(\d{4})$/;
@@ -95,27 +97,40 @@ exports.login = async (req, res) => {
     }
 };
 
+const blacklist = []; // For simplicity; use Redis or a database in production
+
 // Logout User
 exports.logout = (req, res) => {
-    const { userId } = req.body;  // Expect userId in request body
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader) {
+        return res.status(400).json({ message: 'Authorization header is required' });
+    }
+
+    const token = authHeader.split(' ')[1]; // Extract the token from "Bearer <token>"
+    if (!token || blacklist.includes(token)) {
+        return res.status(400).json({ message: 'Invalid or expired token' });
+    }
 
     try {
-        // Check if user is in the active users list
-        if (activeUsers[userId]) {
-            // Remove user from the active users list
-            delete activeUsers[userId];
+        const decoded = jwt.verify(token, JWT_SECRET);
 
-            // Send a success response
-            return res.status(200).json({ message: 'User logged out successfully' });
-        } else {
-            // If user is not found in active users
-            return res.status(400).json({ message: 'User is not logged in' });
+        // If the decoded userId exists in activeUsers, remove them
+        if (decoded.userId && activeUsers[decoded.userId]) {
+            console.log(`Removing user ${decoded.userId} from active users.`);
+            delete activeUsers[decoded.userId]; // Remove the user from active users
         }
+
+        // Optionally add the token to blacklist (invalidating it)
+        blacklist.push(token);
+
+        return res.status(200).json({ message: 'Logged out successfully' });
     } catch (error) {
         console.error('Logout error:', error);
         return res.status(500).json({ message: 'Server error' });
     }
 };
+
 
 
 
