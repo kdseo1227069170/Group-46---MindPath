@@ -35,7 +35,8 @@ const AdminDashboard = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const fetchDashboardData = async () => {
+    //Testing with hardcoded, injected website stats
+/*    const fetchDashboardData = async () => {
         setLoading(true);
         setError(null);
 
@@ -61,6 +62,33 @@ const AdminDashboard = () => {
             setError('Failed to load dashboard data. Please try again.');
         } finally {
             setLoading(false); // Stop the loading state
+        }
+    };*/
+
+    const fetchDashboardData = async () => {
+        setLoading(true);
+        setError(null);
+
+        try {
+            const data = {
+                totalUsers: 2,
+                totalSearches: 10,
+                searchesPerDay: [
+                    { _id: '2024-11-10', totalSearches: 4 },
+                    { _id: '2024-11-11', totalSearches: 6 },
+                ],
+                popularSearches: [
+                    { _id: 'mental health', count: 5 },
+                    { _id: 'therapy', count: 3 },
+                ],
+                activeUsers: 2,
+            };
+            setDashboardData(data);
+        } catch (err) {
+            console.error('Error fetching dashboard data:', err);
+            setError('Failed to load dashboard data. Please try again.');
+        } finally {
+            setLoading(false);
         }
     };
 
