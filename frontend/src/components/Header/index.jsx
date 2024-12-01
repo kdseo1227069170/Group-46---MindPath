@@ -7,6 +7,7 @@ import IconBoxStyle11 from '../IconBox/IconBoxStyle11';
 import Spacing from '../Spacing';
 import {Link as ScrollLink} from 'react-scroll';
 import CrisisSupport from '../CrisisSupport';
+import { useNavigate } from 'react-router-dom';
 
 // Header component for the website
 export default function Header({logoSrc, variant}) {
@@ -21,19 +22,25 @@ export default function Header({logoSrc, variant}) {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-	
+	/**
 	 // Log out handler
 	  const handleLogout = () => {
-		// Clear any session or token if you use it
-		setIsLoggedIn(false);
-		// You can also remove the authentication token here, e.g. localStorage.removeItem('token')
-	  };
-	  
+		// Clear any session or token
+        localStorage.removeItem('jwtToken');
+        setIsLoggedIn(false);
+        // Optionally, redirect user to login page
+        window.location.href = '/login';  // Adjust the route if needed
+    };
+	 */
 	  // Log in handler (simulate login by setting the state to true)
 	  const handleLogin = () => {
 		setIsLoggedIn(true);
 		// Optionally store token or session data here
 	  };
+		const handleLogout = () => {
+			setIsLoggedIn(false); // Update the state to reflect the user has logged out
+		};
+
 
     // Smooth scroll to FAQ section
     const handleFaqScroll = () => {
