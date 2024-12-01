@@ -3,7 +3,7 @@ import "./Questionnaire.css";
 import {useNavigate} from "react-router-dom";
 
 // Main component for the Questionnaire
-const Questionnaire = () => {
+const Questionnaire = ({onClose}) => {
     const navigate = useNavigate();
     // Tracks answers for each question in the questionnaire
     const [answers, setAnswers] = useState({
