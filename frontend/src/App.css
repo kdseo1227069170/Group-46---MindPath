@@ -86,4 +86,20 @@
   color:#000000;
 }
 
+.switch {
+  position: absolute; 
+  top: 20px; 
+  right: 20px; 
+  z-index: 1000; 
+}
 
+#dark .cs_main_header_in {
+  background-color: rgb(10, 12, 41);
+  width: 100%;
+
+}
+
+#dark .container {
+  width: 100%
+  
+}

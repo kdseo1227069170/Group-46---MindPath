@@ -23,6 +23,8 @@ import ContactForm from './components/Pages/Contact';
 import LoginForm from './components/LoginForm';  
 import './App.css';
 import ReactSwitch from 'react-switch';
+import {FaSun, FaMoon} from 'react-icons/fa';
+
 
 export const ThemeContext = createContext(null);
 
@@ -34,10 +36,11 @@ function App() {
     }, [pathname]);
 
 
-    const [theme,setTheme] = useState("light");
+    const [theme,setTheme] = useState("dark");
     const toggleTheme = () => {
         setTheme((curr) => (curr === "light" ? "dark" : "light"));
-    }
+        document.body.className = theme === "light" ? "dark" : "light"; 
+    };
 
     return (
         <ThemeContext.Provider value={{toggleTheme}}>
@@ -66,9 +69,42 @@ function App() {
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
             <div className="switch">
-            <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+                    <ReactSwitch
+                        onChange={toggleTheme}
+                        checked={theme === "dark"}
+                        onColor="#282c34"
+                        offColor="#d3d3d3"
+                        checkedIcon={
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    height: "100%",
+                                    fontSize: 15,
+                                    color: "#f9d71c",
+                                }}
+                            >
+                                <FaMoon />
+                            </div>
+                        }
+                        uncheckedIcon={
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    height: "100%",
+                                    fontSize: 15,
+                                    color: "#f39c12",
+                                }}
+                            >
+                                <FaSun />
+                            </div>
+                        }
+                    />
+                </div>
             </div>
-        </div>
         </ThemeContext.Provider>
     );
 }
