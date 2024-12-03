@@ -10,5 +10,63 @@
     z-index: 1000;
     width: 400px;
     max-width: 90%;
+    max-height: 80vh;
     border-radius: 8px;
+    overflow-y: auto;
+}
+
+.questionnaire-popup h2 {
+    margin: 0 0 15px;
+    text-align: center;
+}
+
+.questionnaire-popup form {
+    display: flex;
+    flex-direction: column;
+}
+
+.questionnaire-popup form div {
+    margin-top: 15px;
+}
+
+.questionnaire-popup form div label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.questionnaire-popup input,
+.questionnaire-popup select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.questionnaire-popup button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.questionnaire-popup button:hover {
+    background-color: #0056b3;
+}
+
+.close-btn {
+    background-color: #f44336;
+    margin-top: 10px;
+    border: none;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    background-color: #d32f2f;
 }

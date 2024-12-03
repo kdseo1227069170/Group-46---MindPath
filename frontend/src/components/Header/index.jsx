@@ -64,8 +64,8 @@ export default function Header({logoSrc, variant}) {
                                         </li>
                                         <div
                                             style={{
-                                                position: 'absolute',
-                                                right: '200px',
+                                                position: "absolute",
+                                                right: 200,
                                                 zIndex: 1000,
                                             }}
                                         >

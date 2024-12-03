@@ -3,8 +3,11 @@ import "./Questionnaire.css";
 import {useNavigate} from "react-router-dom";
 
 // Main component for the Questionnaire
-const Questionnaire = ({onClose}) => {
+const Questionnaire = () => {
     const navigate = useNavigate();
+
+    const [isQuestionnaireOpen, setIsQuestionnaireOpen] = useState(true);
+
     // Tracks answers for each question in the questionnaire
     const [answers, setAnswers] = useState({
         name: '',
@@ -77,8 +80,15 @@ const Questionnaire = ({onClose}) => {
             setRecommendations('Based on your responses, regular monitoring or light therapy might be sufficient');
         }
     };
+
+    const handleClose = () => {
+        setIsQuestionnaireOpen(false);
+    };
+
+    if (!isQuestionnaireOpen) return null;
+
     return (
-        <div style="questionnaire-popup">
+        <div className="questionnaire-popup">
             <h2>Mental Heath Questionnaire</h2>
             <form onSubmit={submitHandler}>
                 <div>
@@ -162,7 +172,7 @@ const Questionnaire = ({onClose}) => {
                 </div>
 
                 <button type="submit">Submit</button>
-                <button type="button" onClick={onClose} className="close-btn">Close</button>
+                <button type="button" onClick={handleClose} className="close-btn">Close</button>
             </form>
 
             {recommendations && (
