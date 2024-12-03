@@ -7,7 +7,7 @@ const moment = require('moment');
 const { send2FAEmail } = require('../utils/email');
 const { sendAdminNotification } = require('../utils/email'); //TODO: update directory
 
-const JWT_SECRET = 'your_jwt_secret';
+const JWT_SECRET = process.env.JWT_SECRET;
 
 
 let activeUsers = {};
@@ -34,10 +34,8 @@ exports.register = async (req, res) => {
 		// Validate phone number
         if (!phoneRegex.test(phoneNumber)) {
             return res.status(400).json({ message: 'Invalid phone number. Please use a valid Canadian or US phone number.' });
-        }
-
+		}
 		 
-
         if (!passwordRegex.test(password)) {
             return res.status(400).json({
                 message: 'Password must be at least 8 characters long, contain an uppercase letter, a number, and a special character'
@@ -76,9 +74,7 @@ exports.login = async (req, res) => {
         const isMatch = await user.comparePassword(password);
         if (!isMatch) {
             return res.status(400).json({ message: 'Invalid password' });
-        }
-		
-		 
+        }	 
 
         // Generate JWT token
         const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '1h' });
@@ -98,6 +94,7 @@ exports.login = async (req, res) => {
 };
 
 const blacklist = []; // For simplicity; use Redis or a database in production
+const SESSION_TIMEOUT = 1 * 60 * 1000; // 15 minutes of inactivity
 
 // Logout User
 exports.logout = (req, res) => {
@@ -107,21 +104,32 @@ exports.logout = (req, res) => {
         return res.status(400).json({ message: 'Authorization header is required' });
     }
 
-    const token = authHeader.split(' ')[1]; // Extract the token from "Bearer <token>"
-    if (!token || blacklist.includes(token)) {
+    const token = authHeader.split(' ')[1];
+    if (!token) {
         return res.status(400).json({ message: 'Invalid or expired token' });
     }
 
     try {
         const decoded = jwt.verify(token, JWT_SECRET);
+        const userId = decoded.userId;
 
-        // If the decoded userId exists in activeUsers, remove them
-        if (decoded.userId && activeUsers[decoded.userId]) {
-            console.log(`Removing user ${decoded.userId} from active users.`);
-            delete activeUsers[decoded.userId]; // Remove the user from active users
+        // Check if the session exists
+        const userSession = activeUsers[userId];
+        if (!userSession) {
+            return res.status(401).json({ message: 'Session not found. Please log in again.' });
         }
 
-        // Optionally add the token to blacklist (invalidating it)
+        // Check if the session has expired due to inactivity
+        const now = Date.now();
+        if (now - userSession.lastActivity > SESSION_TIMEOUT) {
+            delete activeUsers[userId]; // Remove expired session
+            return res.status(401).json({ message: 'Session expired due to inactivity. Please log in again.' });
+        }
+
+        // Remove the user session
+        delete activeUsers[userId];
+
+        // Optionally, add the token to the blacklist to prevent reuse
         blacklist.push(token);
 
         return res.status(200).json({ message: 'Logged out successfully' });

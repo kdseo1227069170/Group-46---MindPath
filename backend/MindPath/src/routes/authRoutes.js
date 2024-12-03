@@ -11,6 +11,7 @@ const validateRegister = [
     body('firstName').not().isEmpty().withMessage('First name is required'),
     body('lastName').not().isEmpty().withMessage('Last name is required'),
     body('email').isEmail().withMessage('Please enter a valid email address'),
+	body('username').not().isEmpty().withMessage('Username is required'), 
     body('password')
         .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/).withMessage('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character (@, $, !, %, *, ?, &)')
     ,
@@ -77,7 +78,7 @@ router.get('/protected-route', verifyToken, (req, res) => {
 });
 
 
-
+/**
 // Route to create the admin account (admin is unique; RUN ONLY ONCE)
 router.post('/create-admin', async (req, res) => {
     const { username, password } = req.body;
@@ -132,5 +133,5 @@ router.post('/login', async (req, res) => {
         res.status(500).json({ message: 'Error logging in' });
     }
 });
-
+*/
 module.exports = router;
