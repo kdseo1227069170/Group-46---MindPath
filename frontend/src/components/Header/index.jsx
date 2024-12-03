@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
+import LogoutButton from '../LogoutButton'; 
 import DropDown from './DropDown';
 import SocialWidget from '../Widget/SocialWidget';
 import Newsletter from '../Widget/Newsletter';
@@ -32,14 +33,15 @@ export default function Header({logoSrc, variant}) {
         window.location.href = '/login';  // Adjust the route if needed
     };
 	 */
+	 
+	const handleLogout = () => {
+		setIsLoggedIn(false); // Update the state to reflect the user has logged out
+	};
 	  // Log in handler (simulate login by setting the state to true)
-	  const handleLogin = () => {
-		setIsLoggedIn(true);
-		// Optionally store token or session data here
-	  };
-		const handleLogout = () => {
-			setIsLoggedIn(false); // Update the state to reflect the user has logged out
-		};
+	const handleLogin = () => {
+		setIsLoggedIn(true);		
+	};
+		
 
 
     // Smooth scroll to FAQ section
@@ -122,8 +124,9 @@ export default function Header({logoSrc, variant}) {
 											</>
 										) : (
 										
-                                            <button onClick={handleLogout}>Log Out</button> 
-                                        
+                                            //<button onClick={handleLogout}>Log Out</button> 
+											<LogoutButton onLogout={handleLogout} /> // Pass handleLogout here
+                                                                                
 										)}
 									</div>
                                 </div>

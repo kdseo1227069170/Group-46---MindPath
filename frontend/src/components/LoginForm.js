@@ -10,6 +10,7 @@ const LoginForm = ({ onClose }) => {
   });
 
   const [isFormClosed, setIsFormClosed] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null); 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -73,6 +74,7 @@ const LoginForm = ({ onClose }) => {
           />
         </div>
         <button type="submit">Login</button>
+		{errorMessage && <p className="error-message">{errorMessage}</p>} {/* Display error if any */}
       </form>
     </div>
   );
