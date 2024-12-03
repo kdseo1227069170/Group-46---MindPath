@@ -3,6 +3,7 @@ import { Bar, Line } from 'react-chartjs-2';
 import 'chart.js/auto';
 import './AdminDashboard.css';
 import axios from 'axios';
+const isTestMode = true; //test mode toggle for placeholder data
 
 const FeedbackList = () => {
     const [feedbacks, setFeedbacks] = useState([]);
@@ -66,10 +67,7 @@ const AdminDashboard = () => {
     };*/
 
     const fetchDashboardData = async () => {
-        setLoading(true);
-        setError(null);
-
-        try {
+        if (isTestMode) {
             const data = {
                 totalUsers: 2,
                 totalSearches: 10,
@@ -84,6 +82,13 @@ const AdminDashboard = () => {
                 activeUsers: 2,
             };
             setDashboardData(data);
+            setLoading(false);
+            return;
+        }
+
+        try {
+            const response = await axios.get('/api/admin/dashboard');
+            setDashboardData(response.data);
         } catch (err) {
             console.error('Error fetching dashboard data:', err);
             setError('Failed to load dashboard data. Please try again.');
