@@ -17,6 +17,8 @@ export default function Header({logoSrc, variant}) {
     const [searchToggle, setSearchToggle] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+	 const navigate = useNavigate();
+
     // Add scroll listener to toggle sticky header
     useEffect(() => {
         const handleScroll = () => setIsSticky(window.scrollY > 0);
@@ -36,6 +38,7 @@ export default function Header({logoSrc, variant}) {
 	 
 	const handleLogout = () => {
 		setIsLoggedIn(false); // Update the state to reflect the user has logged out
+		navigate('/');
 	};
 	  // Log in handler (simulate login by setting the state to true)
 	const handleLogin = () => {

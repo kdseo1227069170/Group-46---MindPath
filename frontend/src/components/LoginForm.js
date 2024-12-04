@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './LoginForm.css';
 
 const LoginForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
-    username: '', // use username instead of email
+    username: '', 
     password: '',
   });
 
@@ -44,6 +44,23 @@ const LoginForm = ({ onClose }) => {
       alert('Login failed!');
     }
   };
+  
+  // Clear form data when the component mounts
+  useEffect(() => {
+    setFormData({
+      username: '',
+      password: '',
+    });
+  }, []);
+  
+  const handleClose = () => {
+	
+	setIsFormClosed(true);
+    if (onClose) {
+      onClose(); // Maintain existing behavior
+    }
+    navigate('/'); // Redirect to main page
+  };
 
   if (isFormClosed) {
     return null; // Render nothing when the form is closed
@@ -51,7 +68,11 @@ const LoginForm = ({ onClose }) => {
 
   return (
     <div className="login-form-container">
-      <h2>Login</h2>
+	  <div className="login-form-header">
+        <h2>Login</h2>
+        <button className="close-button" onClick={handleClose}>X</button>
+      </div>
+      
       <form onSubmit={handleSubmit}>
         <div>
           <label>Username:</label>

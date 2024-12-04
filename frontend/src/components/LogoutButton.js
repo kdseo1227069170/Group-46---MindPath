@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -6,12 +6,17 @@ const LogoutButton = ({ onLogout }) => {
     const navigate = useNavigate();
     const SESSION_TIMEOUT = 1 * 60 * 1000;
 	const inactivityTimeout = useRef(null);
+	let isLoggingOut = false; 
 
-    const handleLogout = async () => {
+    const handleLogout = useCallback(async () => {
+		if (isLoggingOut) return; // Prevent multiple logouts
+        isLoggingOut = true;
+
         try {
             const token = localStorage.getItem('jwtToken');
             if (!token) {
                 alert('You are already logged out.');
+				isLoggingOut = false;
                 return;
             }
 
@@ -30,18 +35,18 @@ const LogoutButton = ({ onLogout }) => {
                 onLogout();
                 alert('Logged out successfully.');
                 navigate('/'); // Redirect to login page
-            } else {
-                //const errorData = await response.json();
+            } else {                
                 alert(`Logout failed!`); 
             }
         } catch (error) {
             console.error('Logout error:', error);
             alert('Something went wrong during logout.');
+        } finally {
+            isLoggingOut = false; // Reset flag
         }
-    };
+    }, [navigate, onLogout]);
 
-    useEffect(() => {
-        // Handle inactivity-based logout
+    useEffect(() => {        
         const handleInactivityLogout = () => {
             alert('You have been logged out due to inactivity.');
             handleLogout(); // Call the logout function when inactive timeout is reached
@@ -66,7 +71,7 @@ const LogoutButton = ({ onLogout }) => {
             window.removeEventListener('mousemove', resetInactivityTimer);
             window.removeEventListener('keypress', resetInactivityTimer);
             window.removeEventListener('scroll', resetInactivityTimer);
-            if (inactivityTimeout) {
+            if (inactivityTimeout.current) {
                 clearTimeout(inactivityTimeout.current); // Clear the timeout on cleanup
             }
         };
@@ -74,14 +79,12 @@ const LogoutButton = ({ onLogout }) => {
 
     // Handle logout when browser window/tab is closed
     useEffect(() => {
-        const handleBeforeUnload = () => {
-            // You can perform actions like cleaning up session data before unload
+        const handleBeforeUnload = () => {            
             localStorage.removeItem('jwtToken'); // Optional, remove token on browser close
         };
 
         window.addEventListener('beforeunload', handleBeforeUnload);
-
-        // Cleanup event listener on component unmount
+        
         return () => {
             window.removeEventListener('beforeunload', handleBeforeUnload);
         };
