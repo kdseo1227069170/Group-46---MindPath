@@ -93,13 +93,24 @@
   z-index: 1000; 
 }
 
-#dark .cs_main_header_in {
+#dark .cs_main_header {
   background-color: rgb(10, 12, 41);
   width: 100%;
+}
+
+#dark .cs_nav_list {
+  color:#D4DEF1;
+}
+
+#dark .cs_accordian_head {
+  color:#D4DEF1;
+}
+
+#dark .cs_accordian h2 {
+  color:#819ccf;
 
 }
 
-#dark .container {
-  width: 100%
-  
+#dark .cs_accordian_body p {
+  color:#1e4ba0;
 }
