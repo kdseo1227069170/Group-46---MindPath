@@ -18,23 +18,14 @@ export default function Header({logoSrc, variant}) {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	 const navigate = useNavigate();
-
+	 
     // Add scroll listener to toggle sticky header
     useEffect(() => {
         const handleScroll = () => setIsSticky(window.scrollY > 0);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-	/**
-	 // Log out handler
-	  const handleLogout = () => {
-		// Clear any session or token
-        localStorage.removeItem('jwtToken');
-        setIsLoggedIn(false);
-        // Optionally, redirect user to login page
-        window.location.href = '/login';  // Adjust the route if needed
-    };
-	 */
+	
 	 
 	const handleLogout = () => {
 		setIsLoggedIn(false); // Update the state to reflect the user has logged out
