@@ -1,10 +1,13 @@
 const express = require('express')
 const router = express.Router()
+const User = require('../models/User');
 const authController = require('../controllers/authController');
 const Admin = require('../models/adminModel'); //for the Admin user
 const { body, validationResult } = require('express-validator');
 const { verifyToken } = require('../middlewares/middleware');
 const jwt = require('jsonwebtoken');
+const speakeasy = require('speakeasy');
+const { verifyTwoFACode } = require('../controllers/authController');
 
 // Validation middleware for registering a user
 const validateRegister = [
@@ -51,12 +54,7 @@ router.post('/login', validateLogin, (req, res, next) => {
 // @route   POST /api/auth/logout
 // @desc    Logout user
 // @access  Private
-/*
-router.post('/logout', (req, res) => {
-    const { userId } = req.body;  
-    authController.logout(req, res);  
-});
-*/
+
 router.post('/logout', authController.logout);
 
 // Route for checking who is logged into system 
@@ -64,7 +62,8 @@ router.get('/active-user', authController.getActiveUsers);
 
 
 // Route for verifying 2FA code
-router.post('/verify-2fa', authController.verify2FA);
+//router.post('/verify-2fa', authController.verify2FA);
+router.post('/verify-2fa', authController.enable2FA);
 
 // Route to get all users
 router.get('/users', authController.getAllUsers);
@@ -76,6 +75,9 @@ router.delete('/delete/:userId', authController.deleteUserById);
 router.get('/protected-route', verifyToken, (req, res) => {
     res.json({ message: 'This is protected data', user: req.user });
 });
+
+
+
 
 
 /**
@@ -134,4 +136,66 @@ router.post('/login', async (req, res) => {
     }
 });
 */
+
+// Endpoint to enable 2FA
+router.post('/enable-2fa', async (req, res) => {
+    const { userId } = req.body; 
+
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Generate the 2FA secret for the user
+        const secret = user.generate2FASecret();
+
+        // Save the user with the new 2FA secret
+        await user.save();
+
+        // Return the 2FA secret 
+        res.json({
+            message: '2FA enabled successfully',
+            secret: secret.base32,
+            otpauthUrl: secret.otpauth_url
+        });
+    } catch (error) {
+        console.error('Error enabling 2FA:', error);
+        res.status(500).json({ message: 'Failed to enable 2FA' });
+    }
+});
+
+// Endpoint to verify the 2FA code
+router.post('/verify-2fa', async (req, res) => {
+    const { userId, token } = req.body; // Get userId and the token entered by the user
+
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        if (!user.twoFASecret) {
+            return res.status(400).json({ message: '2FA is not enabled' });
+        }
+
+        // Verify the token against the stored 2FA secret
+        const verified = speakeasy.totp.verify({
+            secret: user.twoFASecret, // The secret we stored earlier
+            encoding: 'base32',
+            token: token, // The token the user entered
+            window: 1 // Allow a small window for time drift (optional)
+        });
+
+        if (verified) {
+            res.json({ message: '2FA code verified successfully' });
+        } else {
+            res.status(400).json({ message: 'Invalid 2FA code' });
+        }
+    } catch (error) {
+        console.error('Error verifying 2FA code:', error);
+        res.status(500).json({ message: 'Failed to verify 2FA code' });
+    }
+});
+
 module.exports = router;
