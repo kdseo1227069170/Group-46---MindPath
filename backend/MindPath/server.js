@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const authRoutes = require('./src/routes/authRoutes');
-const dashboardRoutes = require('./src/routes/admin'); // Use the correct path for admin dashboard routes
+const dashboardRoutes = require('./src/routes/admin'); 
+
+const sessionTimeoutMiddleware = require('./src/middlewares/middleware');
 require('dotenv').config();
 
 
@@ -13,6 +15,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
+
 
 // Route Definitions
 app.use('/api/auth', authRoutes); 

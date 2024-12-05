@@ -49,7 +49,7 @@ exports.register = async (req, res) => {
         
         // Create a new user
         const newUser = new User({ firstName, lastName, email, username, password, phoneNumber });
-		
+/**		
 		// Generate the 2FA secret
         const secret = speakeasy.generateSecret({
             name: 'Mindpath App',
@@ -58,7 +58,7 @@ exports.register = async (req, res) => {
         
         newUser.twoFASecret = secret.base32; 
         newUser.is2FAEnabled = true; 
-		
+	*/	
         await newUser.save();
 
         // Send notification to admin
