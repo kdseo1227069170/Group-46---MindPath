@@ -45,25 +45,26 @@ export default function Header({logoSrc, variant}) {
             if (faqSection) faqSection.scrollIntoView({behavior: 'smooth'});
         }, 0);
     };
-  
-  return (
-		<>
-			<header
-				className={`cs_site_header cs_style1 cs_sticky_header ${mobileToggle ? 'cs_mobile_toggle_active' : ''} ${variant} ${isSticky ? 'cs_active_sticky' : ''}`}
-			>
-				<div className="cs_main_header">
-					<div className="container">
-						<div className="cs_main_header_in">
-							<div className="cs_main_header_left">
-								<Link className="cs_site_branding" to="/">
-								  <img src={logoSrc} alt="Logo" />
-								</Link>
-								<nav className="cs_nav">
-									<ul className={`${mobileToggle ? 'cs_nav_list cs_active' : 'cs_nav_list'}`}>
-										<li>
-											<Link to="/about">About</Link>
-										</li>
-										<li className="menu-item-has-children">
+
+    return (
+        <>
+            <header
+                className={`cs_site_header cs_style1 cs_sticky_header ${mobileToggle ? 'cs_mobile_toggle_active' : ''} ${variant} ${isSticky ? 'cs_active_sticky' : ''}`}
+            >
+                <div className="cs_main_header">
+                    <div className="container">
+                        <div className="cs_main_header_in">
+                            <div className="cs_main_header_left">
+                                <Link className="cs_site_branding" to="/">
+                                    <img src={logoSrc} alt="Logo"/>
+                                </Link>
+                                <nav className="cs_nav">
+                                    <ul className={`${mobileToggle ? 'cs_nav_list cs_active' : 'cs_nav_list'}`}>
+                                        <li>
+                                            <Link to="/about">About</Link>
+                                        </li>
+                                        <li className="menu-item-has-children">
+
                                             <Link to="/services">Services</Link>
                                             <DropDown>
                                                 <ul>
@@ -76,26 +77,35 @@ export default function Header({logoSrc, variant}) {
                                             </DropDown>
                                         </li>
 
-										<li>
-											<Link to="/" onClick={handleFaqScroll}>FAQ</Link>
-										</li>
-										<li>
-											<Link to="/Blog">Blog</Link>
-										</li>
-										<li>
-											<CrisisSupport />
-										</li>
-									</ul>
-									<span
-										className={`cs_menu_toggle ${mobileToggle ? 'cs_teggle_active' : ''}`}
-										onClick={() => setMobileToggle(!mobileToggle)}
-									>
-										<span></span>
-									</span>
+
+                                        <li>
+                                            <Link to="/" onClick={handleFaqScroll}>FAQ</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/Blog">Blog</Link>
+                                        </li>
+                                        <div
+                                            style={{
+                                                position: "absolute",
+                                                right: 200,
+                                                zIndex: 1000,
+                                            }}
+                                        >
+                                            <CrisisSupport/>
+                                        </div>
+                                    </ul>
+                                    <span
+                                        className={`cs_menu_toggle ${mobileToggle ? 'cs_teggle_active' : ''}`}
+                                        onClick={() => setMobileToggle(!mobileToggle)}
+                                    >
+                    <span></span>
+                  </span>
+
                                 </nav>
                             </div>
                             <div className="cs_main_header_right">
                                 <div className="cs_toolbox">
+
 									<div
 										style={{
 											position: 'absolute',
@@ -123,6 +133,7 @@ export default function Header({logoSrc, variant}) {
                                                                                 
 										)}
 									</div>
+
                                 </div>
                             </div>
                         </div>
@@ -187,7 +198,7 @@ export default function Header({logoSrc, variant}) {
                     className="cs_sidenav_overlay"
                     onClick={() => setSearchToggle(!searchToggle)}
                 />
-    			
+
 
             </div>
         </>

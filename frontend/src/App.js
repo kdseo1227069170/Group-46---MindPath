@@ -14,15 +14,19 @@ import PricingPlan from './components/Pages/PricingPlan';
 import Gallery from './components/Pages/Gallery';
 import Timetable from './components/Pages/Timetable';
 import Contact from './components/Pages/Contact';
-import React, { useEffect } from 'react';
+import React, { useState,createContext, useEffect } from 'react';
 import ErrorPage from './components/Pages/ErrorPage';
 import Services from './components/Services/Services';
 import AdminDashboard from './components/AdminDashboard';
 import LoadingSpinner from './components/LoadingSpinner';
 import ContactForm from './components/Pages/Contact';
 import LoginForm from './components/LoginForm';  
+import './App.css';
+import ReactSwitch from 'react-switch';
+import {FaSun, FaMoon} from 'react-icons/fa';
 
 
+export const ThemeContext = createContext(null);
 
 function App() {
     const { pathname } = useLocation();
@@ -31,9 +35,16 @@ function App() {
         window.scrollTo(0, 0);
     }, [pathname]);
 
-    return (
-        <>
 
+    const [theme,setTheme] = useState("dark");
+    const toggleTheme = () => {
+        setTheme((curr) => (curr === "light" ? "dark" : "light"));
+        document.body.className = theme === "light" ? "dark" : "light"; 
+    };
+
+    return (
+        <ThemeContext.Provider value={{toggleTheme}}>
+        <div className="App" id={theme}>
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
@@ -57,7 +68,44 @@ function App() {
                 </Route>
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
-        </>
+            <div className="switch">
+                    <ReactSwitch
+                        onChange={toggleTheme}
+                        checked={theme === "dark"}
+                        onColor="#282c34"
+                        offColor="#d3d3d3"
+                        checkedIcon={
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    height: "100%",
+                                    fontSize: 15,
+                                    color: "#f9d71c",
+                                }}
+                            >
+                                <FaMoon />
+                            </div>
+                        }
+                        uncheckedIcon={
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    height: "100%",
+                                    fontSize: 15,
+                                    color: "#f39c12",
+                                }}
+                            >
+                                <FaSun />
+                            </div>
+                        }
+                    />
+                </div>
+            </div>
+        </ThemeContext.Provider>
     );
 }
 

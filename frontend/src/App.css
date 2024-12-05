@@ -1,0 +1,116 @@
+#light {
+  background-color: white;
+}
+
+#dark {
+  background-color: rgb(10, 12, 41);
+}
+
+#dark .home-page-element{
+  color:#D4DEF1;
+  background-color: rgb(10, 12, 41);
+}
+
+#dark .cs_hero_info_wrap{
+  background-color: rgb(10, 12, 41);
+  color:#D4DEF1;
+}
+
+#dark .cs_hero_info_right h3 {
+  color:#D4DEF1;
+}
+#dark .cs_section_title {
+  color:#D4DEF1;
+}
+
+#dark .cs_feature {
+  background-color: rgb(31, 39, 110);
+  color:#D4DEF1;
+}
+
+#dark .cs_feature h2{
+  color:#D4DEF1;
+}
+
+#dark .cs_footer_logo_wrap {
+  background-color: rgb(10, 12, 41);
+
+}
+
+#dark .cs_footer_bottom {
+  background-color: rgb(10, 12, 41);
+
+}
+
+#dark .contactSection h1{
+  color: #D4DEF1;
+}
+
+#dark .contactSection button{
+  background-color: #6899f3;
+}
+
+#dark .cs_normal {
+  color:#D4DEF1;
+}
+
+#dark .cs_post_info {
+  background-color: rgb(31, 39, 110);
+}
+
+#dark .cs_posted_by {
+  color:#D4DEF1;
+}
+
+#dark .cs_post_info {
+  background-color: rgb(31, 39, 110);
+}
+
+#dark .cs_section_heading {
+  color:#D4DEF1;
+}
+
+#dark .cs_post_title a {
+  color:#D4DEF1;
+}
+
+#dark .cs_post_title a:hover{
+  color:#000000;
+}
+
+#dark .cs_post_btn {
+  color:#D4DEF1;
+}
+
+#dark .cs_post_btn:hover{
+  color:#000000;
+}
+
+.switch {
+  position: absolute; 
+  top: 20px; 
+  right: 20px; 
+  z-index: 1000; 
+}
+
+#dark .cs_main_header {
+  background-color: rgb(10, 12, 41);
+  width: 100%;
+}
+
+#dark .cs_nav_list {
+  color:#D4DEF1;
+}
+
+#dark .cs_accordian_head {
+  color:#D4DEF1;
+}
+
+#dark .cs_accordian h2 {
+  color:#819ccf;
+
+}
+
+#dark .cs_accordian_body p {
+  color:#1e4ba0;
+}

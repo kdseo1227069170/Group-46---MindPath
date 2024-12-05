@@ -115,7 +115,7 @@ export default function Home() {
   pageTitle('Home');
   const navigate = useNavigate();
   return (
-    <>
+    <div className="home-page-element">
       <Hero
         title="Your Partner in Health and Wellness"
         subTitle="We are committed to providing you with the best medical and healthcare services to help you live healthier and happier."
@@ -243,6 +243,6 @@ export default function Home() {
         <h1>Have a question or need help?</h1>
         <button onClick={() => navigate('/contact')}>Contact Us</button>
       </Section>
-    </>
+    </div>
   );
 }

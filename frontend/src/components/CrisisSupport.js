@@ -19,11 +19,13 @@ const CrisisSupport = () => {
     );
 };
 
+// Styles for the button
 const styles = {
-    // Edit button appearance
+    // Style for the button container
     container: {
         marginTop: '25px',
     },
+    // Style for the button
     button: {
         padding: '4px 12px',
         fontSize: '14px',
