@@ -5,7 +5,8 @@ import './AdminDashboard.css';
 import axios from 'axios';
 const isTestMode = true; //test mode toggle for placeholder data
 
-const FeedbackList = () => {
+//Commented out and replaced with a placeholder Feedback form to make a testing environment:
+/*const FeedbackList = () => {
     const [feedbacks, setFeedbacks] = useState([]);
 
     useEffect(() => {
@@ -13,6 +14,47 @@ const FeedbackList = () => {
             .get('/api/feedback')
             .then((response) => setFeedbacks(response.data))
             .catch((error) => console.error('Error fetching feedback:', error));
+    }, []);
+
+    return (
+        <div>
+            <h3>User Feedback</h3>
+            <ul>
+                {feedbacks.map((fb, index) => (
+                    <li key={index}>
+                        <strong>Rating:</strong> {fb.rating} <br />
+                        <strong>Comments:</strong> {fb.comments} <br />
+                        <strong>Submitted At:</strong> {new Date(fb.submittedAt).toLocaleString()}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+};*/
+
+//Testing environment with placeholder Feedback form
+const FeedbackList = () => {
+    const [feedbacks, setFeedbacks] = useState([]);
+
+    useEffect(() => {
+        const fakeFeedbacks = [
+            {
+                rating: 5,
+                comments: "This app is fantastic! It's really helping me manage my mental health.",
+                submittedAt: new Date().toISOString(),
+            },
+            {
+                rating: 4,
+                comments: "Great app, but I'd love more features for tracking my progress.",
+                submittedAt: new Date(Date.now() - 86400000).toISOString(), // Yesterday
+            },
+            {
+                rating: 3,
+                comments: "It's okay, but it could use some improvements in navigation.",
+                submittedAt: new Date(Date.now() - 172800000).toISOString(), // 2 days ago
+            },
+        ];
+        setFeedbacks(fakeFeedbacks);
     }, []);
 
     return (
