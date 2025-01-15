@@ -13,10 +13,13 @@ logs/
 .DS_Store
 Thumbs.db
 
-
+# Ignore files
 backend/node_modules/
 backend/.env
 backend/package.json
 backend/package-lock.json
+package.json
+package-lock.json
+
 
 .idea/

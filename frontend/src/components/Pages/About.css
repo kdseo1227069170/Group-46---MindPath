@@ -11,6 +11,10 @@
   margin: 0 auto; 
 }
 
+.cs_height_xl_110 {
+  margin-top: -130px;
+}
+
 
 .about-me-services {
   display: flex;
@@ -20,6 +24,10 @@
   margin: 0 auto;
 }
 
+.about-me-services button {
+  margin-top: -200px;
+}
+
 .section-container {
   display: flex;
   flex-direction: column;
@@ -27,28 +35,115 @@
 }
 
 .about-me, .mission-section {
-  width: 100%; /* Make full-width for mobile */
-  max-width: 600px; /* Set a max width for readability */
+  width: 100%; 
+  max-width: 600px; 
   padding: 20px;
-  margin-bottom: 20px; /* Add spacing between sections */
+  margin-bottom: 20px;
+  background-color: #D4DEF1;
+  border-radius: 20px;
+  
 }
 
 .about-me {
-  align-self: flex-start; /* Align to the left */
+  align-self: flex-start;
+  margin-left: 15px; 
 }
 
 .mission-section {
-  align-self: flex-end; /* Align to the right */
+  align-self: flex-end; 
+  margin-right: 15px;
 }
 
-/* Media query for larger screens to make sections side-by-side */
+.help-section,
+.privacy-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  width: 100%;
+  max-width: 800px; 
+  margin: 0 auto;
+  background-color: #D4DEF1;
+  margin-top: 30px;
+}
+
+.help-section,.privacy-section {
+  border-radius: 20px;
+}
+
+.help-section h1, .privacy-section h1 {
+  margin-bottom: 20px;
+}
+
+
+.privacy-section {
+  margin-top: 30px;
+}
+
+.privacy-section p, .help-section p {
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+
+.help-section ol {
+  padding-left: 0;
+  list-style-position: inside;
+  text-align: left;
+  width: 100%;
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+.help-section li {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #007bff;
+  margin-top: 20px;
+}
+
+.help-section p {
+  margin-left: 20px;
+}
+
+
+@media (max-width: 768px) {
+  .about-me {
+    margin-left: 0; 
+    align-self: center; 
+  }
+
+  .mission-section {
+    margin-right: 0; 
+    align-self: center; 
+  }
+}
+
+
+@media (max-width: 768px) {
+  .help-section h1, .privacy-section h1 {
+    font-size: 2rem;
+  }
+  
+  .privacy-section p, .help-section p {
+    font-size: 1rem;
+  }
+  
+  .help-section li {
+    font-size: 1.2rem;
+  }
+}
+
+
 @media (min-width: 768px) {
   .section-container {
-    flex-direction: row; /* Row layout for large screens */
+    flex-direction: row;
     justify-content: space-between;
   }
   .about-me, .mission-section {
-    width: 48%; /* Side-by-side with some spacing */
+    width: 48%; 
   }
 }
 

@@ -1,22 +1,29 @@
 const nodemailer = require('nodemailer');
+require('dotenv').config();
+
+// Ensure environment variables are set
+if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    throw new Error("Missing required environment variables: EMAIL_USER or EMAIL_PASS");
+}
+
+if (!process.env.SENDER_EMAIL || !process.env.ADMIN_EMAIL) {
+    throw new Error("Missing required environment variables: SENDER_EMAIL or ADMIN_EMAIL");
+}
 
 // Set up email transporter
 const transporter = nodemailer.createTransport({
-	host: 'smtp.mailtrap.io',
-	port: 2525,
-    //service: 'Gmail', 
+	host: 'sandbox.smtp.mailtrap.io',
+	port: 2525,    
     auth: {
-		user: 'todorov.g@abv.bg',
-        pass: 'MindPath2024'
-        //user: 'your_email@gmail.com',
-        //pass: 'your_email_password'
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     }
 });
 
 // Function to send 2FA code via email
 const send2FAEmail = async (email, code) => {
     const mailOptions = {
-        from: 'asu-softdev-kevins-mi-aaaaoic7ltrbijvybrroj2wdpa@teamcanage.slack.com',
+		from: process.env.SENDER_EMAIL,        
         to: email,
         subject: 'Your Two-Factor Authentication Code',
         text: `Your 2FA code is: ${code}`
@@ -26,8 +33,8 @@ const send2FAEmail = async (email, code) => {
 		await transporter.sendMail(mailOptions);
 		console.log(`2FA code sent to ${email}`);
 	} catch (error) {
-		console.error('Error sending email:', error);
-		throw error;
+		console.error('Error sending email:', error.message);
+		throw new Error('Failed to send 2FA email.');
 	}
 };
 

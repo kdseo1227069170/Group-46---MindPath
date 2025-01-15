@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const speakeasy = require('speakeasy'); 
 
 // Define the User schema
 const userSchema = new mongoose.Schema({
@@ -9,9 +10,11 @@ const userSchema = new mongoose.Schema({
 	username: { type: String, required: true, unique: true },
 	password : { type: String, required: true },
 	phoneNumber: { type: String, required: true },
-	is2FAEnabled: { type: Boolean, default: false },
+	is2FAEnabled: { type: Boolean, default: true },
+	twoFASecret: { type: String },
 	twoFACode: { type: String },
 	twoFACodeExpires: { type: Date},
+	twoFAExpire: { type: Date },
 	createdAt: { type: Date, default: Date.now},
 	lastLogin: { type: Date },
 });
@@ -31,6 +34,18 @@ userSchema.pre('save', async function (next) {
 //Method to compare passwords
 userSchema.methods.comparePassword = async function (password) {
 	return await bcrypt.compare(password, this.password);
+};
+
+// Generate a 2FA secret
+userSchema.methods.generate2FASecret = function () {
+    const secret = speakeasy.generateSecret({
+        name: 'Mindpath App',
+        length: 20
+    });
+
+    this.twoFASecret = secret.base32;  // Store the secret in the user model
+    this.twoFAExpire = Date.now() + 300000;  // Optional: Set an expiration for the secret (5 minutes)
+    return secret;
 };
 
 //Export the user model
