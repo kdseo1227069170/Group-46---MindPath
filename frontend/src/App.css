@@ -114,3 +114,22 @@
 #dark .cs_accordian_body p {
   color:#1e4ba0;
 }
+
+#dark .cs_input_label, .cs_form_field {
+  color:#D4DEF1;
+}
+
+#dark .cs_form_field input{
+  color:#D4DEF1;
+}
+#dark .contactPage {
+  background-color: rgb(10, 12, 41);
+}
+
+#dark .cs_banner_contact {
+  background-color: rgb(10, 12, 41);
+}
+
+#dark .cs_banner_contact_title {
+  color:#D4DEF1;
+}
