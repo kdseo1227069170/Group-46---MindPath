@@ -18,6 +18,7 @@ import React, { useState,createContext, useEffect } from 'react';
 import ErrorPage from './components/Pages/ErrorPage';
 import Services from './components/Services/Services';
 import AdminDashboard from './components/AdminDashboard';
+import FeedbackForm from './components/FeedbackForm';
 import LoadingSpinner from './components/LoadingSpinner';
 import ContactForm from './components/Pages/Contact';
 import LoginForm from './components/LoginForm';  
@@ -64,7 +65,8 @@ function App() {
                     <Route path="services" element={<Services />} />
                     <Route path="/contact" element={<ContactForm />} />
                     <Route path="register" element={<RegistrationForm />} />
-					<Route path="login" element={<LoginForm />} />
+                    <Route path="/feedback" element={<FeedbackForm />} />
+					          <Route path="login" element={<LoginForm />} />
                 </Route>
                 <Route path="*" element={<ErrorPage />} />
             </Routes>

@@ -22,7 +22,8 @@ const checkPopularSearchTrends = async () => {
 // Call daily or as needed:
 checkPopularSearchTrends();
 
-router.get('/dashboard', verifyAdmin, async (req, res) => {
+//router.get('/dashboard', verifyAdmin, async (req, res) => {
+router.get('/dashboard', async (req, res) => {
     try {
         const totalUsers = await User.countDocuments();
         const totalSearches = await SearchLog.countDocuments();
