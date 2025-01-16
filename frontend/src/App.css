@@ -116,7 +116,7 @@
 }
 
 #dark .cs_input_label, .cs_form_field {
-  color:#D4DEF1;
+  color:#123474;
 }
 
 #dark .cs_form_field input{
@@ -124,6 +124,7 @@
 }
 #dark .contactPage {
   background-color: rgb(10, 12, 41);
+
 }
 
 #dark .cs_banner_contact {
@@ -131,5 +132,39 @@
 }
 
 #dark .cs_banner_contact_title {
+  color:#D4DEF1;
+}
+
+#dark .services-header h1{
+  color:#D4DEF1;
+}
+
+#dark .services-header p{
+  color:#D4DEF1;
+}
+
+#dark .registration-form-container, .registration-form-container h2 {
+  background-color: rgb(10, 12, 41);
+  color:#D4DEF1;
+}
+
+#dark .login-form-container {
+  background-color: rgb(10, 12, 41);
+  color:#D4DEF1;
+}
+#dark .login-form-container h2 {
+  color:#D4DEF1;
+}
+
+#dark .questionnaire-popup {
+  background-color: rgb(10, 12, 41);
+  color:#D4DEF1;
+}
+
+#dark .questionnaire-popup h2 {
+  color:#D4DEF1;
+}
+
+#dark .cs_fs_72 {
   color:#D4DEF1;
 }
