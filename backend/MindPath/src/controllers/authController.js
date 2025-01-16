@@ -213,8 +213,8 @@ exports.verifyTwoFACode = async (req, res) => {
 
         // The 2FA code is correct
         const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '1h' });
-        user.twoFACode = null;  // Clear the code after successful verification
-        user.twoFACodeExpires = null;  // Clear expiry
+        user.twoFACode = null;  
+        user.twoFACodeExpires = null;  
         await user.save();
 
         return res.status(200).json({ message: '2FA verified successfully', token });
