@@ -17,7 +17,7 @@ router.post('/', verifyUser, async (req, res) => {
         await note.save();
         res.status(201).json(note);
     } catch (error) {
-        res.status(500).json({ message: 'Error saving note', error });
+        res.status(500).json({ message: 'Failed to save note', error });
     }
 });
 
@@ -27,7 +27,7 @@ router.get('/', verifyUser, async (req, res) => {
         const notes = await ProgressNote.find({ userId: req.user.id }).sort({ createdAt: -1 });
         res.status(200).json(notes);
     } catch (error) {
-        res.status(500).json({ message: 'Error fetching notes', error });
+        res.status(500).json({ message: 'Error obtaining notes', error });
     }
 });
 
@@ -42,7 +42,7 @@ router.put('/:id', verifyUser, async (req, res) => {
         if (!note) return res.status(404).json({ message: 'Note not found' });
         res.status(200).json(note);
     } catch (error) {
-        res.status(500).json({ message: 'Error updating note', error });
+        res.status(500).json({ message: 'Failed to update note', error });
     }
 });
 
@@ -53,11 +53,11 @@ router.delete('/:id', verifyUser, async (req, res) => {
             _id: req.params.id,
             userId: req.user.id,
         });
-        if (!note) return res.status(404).json({ message: 'Note not found' });
-        res.status(200).json({ message: 'Note deleted' });
+        if (!note) return res.status(404).json({ message: 'Note was not found' });
+        res.status(200).json({ message: 'Note successfully deleted' });
     } catch (error) {
-        res.status(500).json({ message: 'Error deleting note', error });
+        res.status(500).json({ message: 'Failed to delete the note', error });
     }
 });
 
-module.exports = router;
+module.exports = router;US
