@@ -11,10 +11,14 @@ import AppointmentSection from '../Section/AppointmentSection';
 import FaqSection from '../Section/FaqSection';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import './Home.css';
+import { useContext } from 'react';
+import { ThemeContext } from '../../App';
+
 
 
 import { pageTitle } from '../../helpers/PageTitle';
 import ContactForm from '../ContactForm';
+
 
 const featureListData = [
   {
@@ -111,18 +115,18 @@ const blogData = [
   },
 ];
 
+
+
 export default function Home() {
   pageTitle('Home');
   const navigate = useNavigate();
+  const { theme } = useContext(ThemeContext);
   return (
     <div className="home-page-element">
       <Hero
-        title="Your Partner in Health and Wellness"
-        subTitle="We are committed to providing you with the best medical and healthcare services to help you live healthier and happier."
-        bgUrl="/images/home_1/hero_bg.jpeg"
-        imgUrl="/images/home_1/hero_img.png"
-        videoBtnText="See how we work"
-        videoUrl="https://www.youtube.com/embed/VcaAVWtP48A"
+        title="Find The Support You Deserve"
+        subTitle="We are committed to providing you with the best mental health resources based on the care you need!"
+        bgUrl={theme === 'dark' ? null : '/images/home_1/hero_bg.jpeg'}
         infoList={[
           {
             title: 'Hotline',
@@ -140,9 +144,10 @@ export default function Home() {
             iconUrl: '/images/icons/pin.svg',
           },
         ]}
-        btnText="Book Now"
-        btnUrl="/appointments"
       />
+
+
+      
       {/* Start Feature Section */}
       <Section
         topMd={185}

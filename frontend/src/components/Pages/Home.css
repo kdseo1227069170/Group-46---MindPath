@@ -21,3 +21,11 @@
   transition-duration: 0.3s;
 }
 
+#dark .cs_hero_title {
+  color:#D4DEF1;
+
+}
+
+#dark .cs_hero_subtitle {
+  color:#D4DEF1;
+}
