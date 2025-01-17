@@ -121,10 +121,10 @@ export default function Home() {
         subTitle="We are committed to providing you with the best medical and healthcare services to help you live healthier and happier."
         bgUrl="/images/home_1/hero_bg.jpeg"
         //imgUrl="/images/home_1/hero_img.png"
-        videoBtnText="See how we work"
-        videoUrl="https://www.youtube.com/embed/VcaAVWtP48A"
+        //videoBtnText="See how we work"
+        //videoUrl="https://www.youtube.com/embed/VcaAVWtP48A"
         infoList={[
-          {
+          /*{
             title: 'Hotline',
             subTitle: '123-456-7890',
             iconUrl: '/images/contact/icon_1.svg',
@@ -138,10 +138,10 @@ export default function Home() {
             title: 'Location',
             subTitle: 'New York, US',
             iconUrl: '/images/icons/pin.svg',
-          },
+          },*/
         ]}
-        btnText="Book Now"
-        btnUrl="/appointments"
+        //btnText="Book Now"
+        //btnUrl="/appointments"
       />
       {/* Start Feature Section */}
       <Section
