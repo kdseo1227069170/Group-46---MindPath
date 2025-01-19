@@ -120,9 +120,9 @@ export default function Home() {
         title="Your Partner in Health and Wellness"
         subTitle="We are committed to providing you with the best medical and healthcare services to help you live healthier and happier."
         bgUrl="/images/home_1/hero_bg.jpeg"
-        //imgUrl="/images/home_1/hero_img.png"
-        //videoBtnText="See how we work"
-        //videoUrl="https://www.youtube.com/embed/VcaAVWtP48A"
+        /*imgUrl="/images/home_1/hero_img.png"
+        videoBtnText="See how we work"
+        videoUrl="https://www.youtube.com/embed/VcaAVWtP48A"*/
         infoList={[
           /*{
             title: 'Hotline',
@@ -210,13 +210,13 @@ export default function Home() {
       </Section>
       {/* End Blog Section */}
       {/* Start Appointment Section */}
-      <Section topMd={190} topLg={145} topXl={105} id="appointment">
+      {/*<Section topMd={190} topLg={145} topXl={105} id="appointment">
         <AppointmentSection
           sectionTitle="Appointment"
           sectionTitleUp="BOOK AN"
           imgUrl="/images/home_1/appointment.jpeg"
         />
-      </Section>
+      </Section>*/}
       {/* End Appointment Section */}
       {/* Start FAQ Section */}
       <Section topMd={190} topLg={145} topXl={105}>

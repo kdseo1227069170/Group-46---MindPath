@@ -26,16 +26,16 @@ export default function Hero({
             <p className="cs_hero_subtitle cs_fs_20 cs_heading_color">
               {parse(subTitle)}
             </p>
-            <div className="cs_hero_btn_wrap">
+            {/*<div className="cs_hero_btn_wrap">
               <VideoModal
                 videoUrl={videoUrl}
                 videoBtnText={videoBtnText}
                 variant="cs_heading_color"
               />
-            </div>
+            </div>*/}
           </div>
           <img src={imgUrl} alt="Hero" className="cs_hero_img" />
-          <div className="cs_hero_info_wrap cs_shadow_1 cs_white_bg cs_radius_15">
+          {/*<div className="cs_hero_info_wrap cs_shadow_1 cs_white_bg cs_radius_15">
             {infoList.map((item, index) => (
               <div className="cs_hero_info_col" key={index}>
                 <div className="cs_hero_info d-flex align-items-center">
@@ -62,7 +62,7 @@ export default function Hero({
                 </i>
               </Link>
             </div>
-          </div>
+          </div>*/}
         </div>
       </div>
     </section>
