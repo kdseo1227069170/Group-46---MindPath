@@ -55,7 +55,7 @@ userSchema.methods.validate2FACode = function (userInputCode) {
         secret: this.twoFASecret,     // The secret stored for the user
         encoding: 'base32',           // The encoding of the secret
         token: userInputCode,        // The code entered by the user
-        
+        window: 1                     // Optional: allow a window for slight delays in code generation
     });
 
     return verified;  // Returns true if the code is valid, false otherwise
