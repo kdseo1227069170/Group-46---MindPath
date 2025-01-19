@@ -48,5 +48,19 @@ userSchema.methods.generate2FASecret = function () {
     return secret;
 };
 
+// Method to validate the 2FA code
+userSchema.methods.validate2FACode = function (userInputCode) {
+    // Validate the user's 2FA code using Speakeasy
+    const verified = speakeasy.totp.verify({
+        secret: this.twoFASecret,     // The secret stored for the user
+        encoding: 'base32',           // The encoding of the secret
+        token: userInputCode,        // The code entered by the user
+        
+    });
+
+    return verified;  // Returns true if the code is valid, false otherwise
+};
+
+
 //Export the user model
 module.exports = mongoose.model('User', userSchema);
