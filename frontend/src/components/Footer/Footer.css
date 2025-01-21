@@ -1,0 +1,30 @@
+#dark .cs_footer_item{
+  color:#D4DEF1;
+}
+#dark .helpline {
+  color:#D4DEF1;
+}
+#dark .helpline h3 {
+  color:#D4DEF1;
+}
+#dark .cs_footer_brand_text {
+  color:#D4DEF1;
+}
+
+#dark .cs_footer_main{
+  background-color:#1F276E;
+}
+#dark .cs_footer_logo_wrap {
+  background-color: rgb(10, 12, 41);
+}
+#dark .cs_copyright {
+  color:#D4DEF1
+}
+#dark .cs_social_links_wrap {
+  color:#D4DEF1;
+}
+#dark .cs_footer_brand {
+  background-color: #1F276E;
+  width: 110%;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}

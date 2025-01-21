@@ -15,7 +15,6 @@ import { useContext } from 'react';
 import { ThemeContext } from '../../App';
 
 
-
 import { pageTitle } from '../../helpers/PageTitle';
 import ContactForm from '../ContactForm';
 
@@ -116,7 +115,6 @@ const blogData = [
 ];
 
 
-
 export default function Home() {
   pageTitle('Home');
   const navigate = useNavigate();
@@ -144,10 +142,7 @@ export default function Home() {
             iconUrl: '/images/icons/pin.svg',
           },
         ]}
-      />
-
-
-      
+      />   
       {/* Start Feature Section */}
       <Section
         topMd={185}
