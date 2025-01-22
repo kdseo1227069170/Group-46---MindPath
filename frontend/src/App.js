@@ -21,7 +21,8 @@ import AdminDashboard from './components/AdminDashboard';
 import FeedbackForm from './components/FeedbackForm';
 import LoadingSpinner from './components/LoadingSpinner';
 import ContactForm from './components/Pages/Contact';
-import LoginForm from './components/LoginForm';  
+import LoginForm from './components/LoginForm';
+import ProgressNotes from './components/ProgressNotes'; //imported ProgressNotes page, 1/21/25
 import './App.css';
 import ReactSwitch from 'react-switch';
 import {FaSun, FaMoon} from 'react-icons/fa';
@@ -66,6 +67,7 @@ function App() {
                     <Route path="/contact" element={<ContactForm />} />
                     <Route path="register" element={<RegistrationForm />} />
                     <Route path="/feedback" element={<FeedbackForm />} />
+                    <Route path="/progress-notes" element={<ProgressNotes />} />;
 					          <Route path="login" element={<LoginForm />} />
                 </Route>
                 <Route path="*" element={<ErrorPage />} />
