@@ -278,7 +278,7 @@ exports.enable2FA = async (req, res) => {
     try {
         // Generate a secret key for the user
         const secret = speakeasy.generateSecret({
-            name: 'Mindpath Authenticator', // App name displayed in Google Authenticator
+            name: 'Mindpath', // App name displayed in Google Authenticator
             length: 20
         });
 
