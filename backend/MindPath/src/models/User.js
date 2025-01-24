@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
 	is2FAEnabled: { type: Boolean, default: true },
 	twoFASecret: { type: String },
 	twoFACode: { type: String },
-	twoFACodeExpires: { type: Date},
+	twoFACodeExpiry: { type: Date},
 	twoFAExpire: { type: Date },
 	createdAt: { type: Date, default: Date.now},
 	lastLogin: { type: Date },
