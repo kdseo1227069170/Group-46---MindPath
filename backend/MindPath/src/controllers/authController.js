@@ -226,16 +226,6 @@ exports.verifyTwoFACode = async (req, res) => {
 
 
 
-
-exports.verifyTwoFACode = async (req, res) => {
-    try {
-        
-        res.status(200).json({ message: "2FA verified successfully" });
-    } catch (error) {
-        res.status(400).json({ message: error.message });
-    }
-};
-
 // Get all users
 exports.getAllUsers = async (req, res) => {
   try {
