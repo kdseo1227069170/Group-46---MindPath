@@ -13,6 +13,9 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import './Home.css';
 import { useContext } from 'react';
 import { ThemeContext } from '../../App';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, useGLTF, Html } from '@react-three/drei';
+import { Suspense } from 'react';
 
 
 import { pageTitle } from '../../helpers/PageTitle';
@@ -115,6 +118,12 @@ const blogData = [
 ];
 
 
+function Model() {
+  const { scene } = useGLTF(process.env.PUBLIC_URL + '/brain3d.glb');
+
+  return <primitive object={scene} scale={0.3} position={[0, 0, 0]} />;
+}
+
 export default function Home() {
   pageTitle('Home');
   const navigate = useNavigate();
@@ -142,7 +151,26 @@ export default function Home() {
             iconUrl: '/images/icons/pin.svg',
           },
         ]}
-      />   
+        />
+
+        
+  <div className="modelContainer"> 
+    <Canvas style={{ width: '250px', height: '200px'}}>
+      <Suspense fallback={<Html>Loading...</Html>}>
+        <ambientLight intensity={0.9} />
+        <directionalLight position={[10, 10, 5]} />
+        <Model />
+        <OrbitControls 
+              enableZoom={false} 
+              autoRotate 
+              autoRotateSpeed={2.0} 
+              maxPolarAngle={Math.PI / 2} 
+              minDistance={5} 
+              maxDistance={10} 
+            />
+      </Suspense>
+    </Canvas>
+  </div>  
       {/* Start Feature Section */}
       <Section
         topMd={185}

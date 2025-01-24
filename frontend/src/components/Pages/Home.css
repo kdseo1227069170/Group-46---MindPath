@@ -29,3 +29,29 @@
 #dark .cs_hero_subtitle {
   color:#D4DEF1;
 }
+
+.container {
+  padding-bottom: auto;
+
+}
+.cs_hero_info_wrap {
+  margin-top: -300px;
+}
+
+.modelContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%; 
+  padding: 10px; 
+  margin-top: 70px;
+  margin-bottom: -150px;
+}
+
+@media (max-width: 768px) {
+  .cs_hero_info_wrap {
+    margin-top: 100px;
+  }
+}
