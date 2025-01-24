@@ -177,20 +177,42 @@ exports.logout = (req, res) => {
     }
 };
 
+// Enable 2FA for a user
+exports.enable2FA = async (req, res) => {
+    const userId = req.userId; // Assuming you're using JWT and `userId` is available
+    try {
+        // Generate a secret key for the user
+        const secret = speakeasy.generateSecret({
+            name: 'Mindpath Authenticator', // Your application name
+            length: 20
+        });
 
-// Generate and send 2FA code that expires in 10 minutes
-const send2FACode = async (user) => {
-    const verificationCode = crypto.randomBytes(3).toString('hex'); 
-    const expiresAt = moment().add(10, 'minutes').toDate(); 
+        // Store the secret in the user's record
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
 
-    // Create or update the 2FA entry
-    user.twoFACode = verificationCode;
-    user.twoFACodeExpires = expiresAt;
-    await user.save();
+        user.twoFASecret = secret.base32; // Save the base32 secret
+        user.is2FAEnabled = true; // Mark 2FA as enabled
+        await user.save();
 
-    // Send the verification code to the user's phone or email
-    console.log(`2FA code for ${user.email}: ${verificationCode}`); 
+        // Generate the QR code
+        const qrCodeUrl = await qrcode.toDataURL(secret.otpauth_url);
+
+        return res.status(200).json({
+            message: '2FA enabled successfully',
+            qrCodeUrl: qrCodeUrl, // Send QR code URL to client
+            secret: secret.base32 // Send the secret in case the user needs to manually enter it
+        });
+    } catch (error) {
+        console.error('Error enabling 2FA:', error);
+        return res.status(500).json({ message: 'Server error' });
+    }
 };
+
+
+
 
 
 // 2FA Verification Method
@@ -261,38 +283,4 @@ exports.deleteUserById = async (req, res) => {
 };
 
 
-
-// Enable 2FA for a user
-exports.enable2FA = async (req, res) => {
-    const userId = req.userId; // Assuming you're using JWT and `userId` is available
-    try {
-        // Generate a secret key for the user
-        const secret = speakeasy.generateSecret({
-            name: 'Mindpath Authenticator', // Your application name
-            length: 20
-        });
-
-        // Store the secret in the user's record
-        const user = await User.findById(userId);
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-
-        user.twoFASecret = secret.base32; // Save the base32 secret
-        user.is2FAEnabled = true; // Mark 2FA as enabled
-        await user.save();
-
-        // Generate the QR code
-        const qrCodeUrl = await qrcode.toDataURL(secret.otpauth_url);
-
-        return res.status(200).json({
-            message: '2FA enabled successfully',
-            qrCodeUrl: qrCodeUrl, // Send QR code URL to client
-            secret: secret.base32 // Send the secret in case the user needs to manually enter it
-        });
-    } catch (error) {
-        console.error('Error enabling 2FA:', error);
-        return res.status(500).json({ message: 'Server error' });
-    }
-};
 
