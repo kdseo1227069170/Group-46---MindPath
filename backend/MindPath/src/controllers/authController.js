@@ -199,6 +199,7 @@ exports.enable2FA = async (req, res) => {
 
         // Generate the QR code
         const qrCodeUrl = await qrcode.toDataURL(secret.otpauth_url);
+		//const qrCodeUrl = await generateQRCode(secret.otpauth_url); // This will generate a QR code URL
 
         return res.status(200).json({
             message: '2FA enabled successfully',
