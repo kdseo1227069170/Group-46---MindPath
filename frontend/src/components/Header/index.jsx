@@ -74,17 +74,21 @@ export default function Header({variant}) {
                                             <DropDown>
                                                 <ul>
                                                     <li>
-														<Link to="/questionnaire" className="cs_nav_button">
-															Questionnaire
-														</Link>
-													</li>
+                                                        <Link to="/questionnaire" className="cs_nav_button">
+                                                            Questionnaire
+                                                        </Link>
+                                                    </li>
+                                                    <li>
+                                                        <Link to="/progress-notes" className="cs_nav_button">
+                                                            Progress Notes
+                                                        </Link>
+                                                    </li>
                                                 </ul>
                                             </DropDown>
                                         </li>
-
-
+                                        
                                         <li>
-                                            <Link to="/" onClick={handleFaqScroll}>FAQ</Link>
+                                        <Link to="/" onClick={handleFaqScroll}>FAQ</Link>
                                         </li>
                                         <li>
                                             <Link to="/Blog">Blog</Link>
