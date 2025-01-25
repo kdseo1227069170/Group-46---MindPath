@@ -9,15 +9,17 @@ const TwoFASetup = () => {
   useEffect(() => {
     const enableTwoFA = async () => {
       try {
-        const response = await axios.post('/api/auth/enable2FA', { userId: 'yourUserId' });  // Replace 'yourUserId' with the actual user ID
-        setQrCodeUrl(response.data.otpauthUrl);  // Store the QR code URL from the response
+        // Replace 'userId' dynamically with actual logged-in user information
+        const userId = 'REPLACE_WITH_USER_ID'; // Replace with the actual user ID dynamically
+        const response = await axios.post('/api/auth/enable2FA', { userId });
+        setQrCodeUrl(response.data.otpauthUrl); // Store the QR code URL from the response
       } catch (err) {
         setError('Failed to enable 2FA');
       }
     };
 
-    enableTwoFA();
-  }, []);
+    enableTwoFA(); // Call the function inside useEffect
+  }, []); // Empty dependency array ensures it runs once on component mount
 
   return (
     <div>
@@ -25,7 +27,7 @@ const TwoFASetup = () => {
       {qrCodeUrl ? (
         <div>
           <h3>Scan this QR code with Google Authenticator:</h3>
-          <QRCode value={qrCodeUrl} size={256} />
+          <img src={qrCodeUrl} alt="QR Code for Google Authenticator" />
         </div>
       ) : (
         <p>Loading QR code...</p>
