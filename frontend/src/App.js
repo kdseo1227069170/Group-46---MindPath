@@ -44,7 +44,7 @@ function App() {
     };
 
     return (
-        <ThemeContext.Provider value={{toggleTheme}}>
+        <ThemeContext.Provider value={{theme,toggleTheme}}>
         <div className="App" id={theme}>
             <Routes>
                 <Route path="/" element={<Layout />}>

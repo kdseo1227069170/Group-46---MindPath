@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState,useContext} from 'react';
+import { ThemeContext } from '../../App';
 import {Link} from 'react-router-dom';
 import LogoutButton from '../LogoutButton'; 
 import DropDown from './DropDown';
@@ -11,13 +12,14 @@ import CrisisSupport from '../CrisisSupport';
 import { useNavigate } from 'react-router-dom';
 
 // Header component for the website
-export default function Header({logoSrc, variant}) {
+export default function Header({variant}) {
     const [isSticky, setIsSticky] = useState(false);
     const [mobileToggle, setMobileToggle] = useState(false);
     const [searchToggle, setSearchToggle] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-	 const navigate = useNavigate();
+	const navigate = useNavigate();
+    const { toggleTheme, theme } = useContext(ThemeContext);
 	 
     // Add scroll listener to toggle sticky header
     useEffect(() => {
@@ -56,7 +58,10 @@ export default function Header({logoSrc, variant}) {
                         <div className="cs_main_header_in">
                             <div className="cs_main_header_left">
                                 <Link className="cs_site_branding" to="/">
-                                    <img src={logoSrc} alt="Logo"/>
+                                <img
+                                        src={theme === 'dark' ? '/images/MindPathLogoDarkMode.png' : '/images/MindPath.png'}
+                                        alt="Logo"
+                                    />
                                 </Link>
                                 <nav className="cs_nav">
                                     <ul className={`${mobileToggle ? 'cs_nav_list cs_active' : 'cs_nav_list'}`}>

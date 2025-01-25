@@ -100,7 +100,7 @@ export default function About() {
       <BannerSectionStyle3
         bgUrl="/images/about/banner_bg.svg"
         imgUrl="/images/about/MindPathAboutMe.png"
-        title="Welcome to MindPath!"
+        title="Wanna Know More About Us?"
         subTitle="Your Guide to Provincial Mental Health Services and Coverage!"
       />
       <div class="about-me-services">
