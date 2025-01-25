@@ -50,6 +50,13 @@
   margin-bottom: -150px;
 }
 
+.cs_hero_img {
+  width: 600px;
+  height: 600px;
+  margin-bottom: 400px;
+
+}
+
 @media (max-width: 768px) {
   .cs_hero_info_wrap {
     margin-top: 100px;

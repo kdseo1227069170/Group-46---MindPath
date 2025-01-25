@@ -134,6 +134,7 @@ export default function Home() {
         title="Find The Support You Deserve"
         subTitle="We are committed to providing you with the best mental health resources based on the care you need!"
         bgUrl={theme === 'dark' ? null : '/images/home_1/hero_bg.jpeg'}
+        imgUrl={theme=='dark' ? "/images/homepageDark.png" : "/images/homepageLight.png"}
         infoList={[
           {
             title: 'Hotline',
