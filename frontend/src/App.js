@@ -18,9 +18,11 @@ import React, { useState,createContext, useEffect } from 'react';
 import ErrorPage from './components/Pages/ErrorPage';
 import Services from './components/Services/Services';
 import AdminDashboard from './components/AdminDashboard';
+import FeedbackForm from './components/FeedbackForm';
 import LoadingSpinner from './components/LoadingSpinner';
 import ContactForm from './components/Pages/Contact';
-import LoginForm from './components/LoginForm';  
+import LoginForm from './components/LoginForm';
+import ProgressNotes from './components/ProgressNotes'; //imported ProgressNotes page, 1/21/25
 import './App.css';
 import ReactSwitch from 'react-switch';
 import {FaSun, FaMoon} from 'react-icons/fa';
@@ -43,7 +45,7 @@ function App() {
     };
 
     return (
-        <ThemeContext.Provider value={{toggleTheme}}>
+        <ThemeContext.Provider value={{theme,toggleTheme}}>
         <div className="App" id={theme}>
             <Routes>
                 <Route path="/" element={<Layout />}>
@@ -64,7 +66,9 @@ function App() {
                     <Route path="services" element={<Services />} />
                     <Route path="/contact" element={<ContactForm />} />
                     <Route path="register" element={<RegistrationForm />} />
-					<Route path="login" element={<LoginForm />} />
+                    <Route path="/feedback" element={<FeedbackForm />} />
+                    <Route path="/progress-notes" element={<ProgressNotes />} />;
+					          <Route path="login" element={<LoginForm />} />
                 </Route>
                 <Route path="*" element={<ErrorPage />} />
             </Routes>

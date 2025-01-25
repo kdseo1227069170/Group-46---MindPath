@@ -114,3 +114,70 @@
 #dark .cs_accordian_body p {
   color:#1e4ba0;
 }
+
+#dark .cs_input_label, .cs_form_field {
+  color:#123474;
+}
+
+#dark .cs_form_field input{
+  color:#D4DEF1;
+}
+#dark .contactPage {
+  background-color: rgb(10, 12, 41);
+
+}
+
+#dark .cs_banner_contact {
+  background-color: rgb(10, 12, 41);
+}
+
+#dark .cs_banner_contact_title {
+  color:#D4DEF1;
+}
+
+#dark .services-header h1{
+  color:#D4DEF1;
+}
+
+#dark .services-header p{
+  color:#D4DEF1;
+}
+
+#dark .registration-form-container, .registration-form-container h2 {
+  background-color: rgb(10, 12, 41);
+  color:#D4DEF1;
+}
+
+#dark .login-form-container {
+  background-color: rgb(10, 12, 41);
+  color:#D4DEF1;
+}
+#dark .login-form-container h2 {
+  color:#D4DEF1;
+}
+
+#dark .questionnaire-popup {
+  background-color: rgb(10, 12, 41);
+  color:#D4DEF1;
+}
+
+#dark .questionnaire-popup h2 {
+  color:#D4DEF1;
+}
+
+#dark .cs_fs_72 {
+  color:#D4DEF1;
+}
+
+.cs_hero_info_wrap {
+  padding-top: 400px;
+}
+
+
+@media (max-width: 768px) {
+  .cs_hero_info_wrap {
+    margin-top: 100px;
+  }
+}
+
+

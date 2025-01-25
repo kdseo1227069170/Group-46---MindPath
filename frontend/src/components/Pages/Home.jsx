@@ -11,10 +11,16 @@ import AppointmentSection from '../Section/AppointmentSection';
 import FaqSection from '../Section/FaqSection';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import './Home.css';
+import { useContext } from 'react';
+import { ThemeContext } from '../../App';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, useGLTF, Html } from '@react-three/drei';
+import { Suspense } from 'react';
 
 
 import { pageTitle } from '../../helpers/PageTitle';
 import ContactForm from '../ContactForm';
+
 
 const featureListData = [
   {
@@ -111,18 +117,24 @@ const blogData = [
   },
 ];
 
+
+function Model() {
+  const { scene } = useGLTF(process.env.PUBLIC_URL + '/brain3d.glb');
+
+  return <primitive object={scene} scale={0.3} position={[0, 0, 0]} />;
+}
+
 export default function Home() {
   pageTitle('Home');
   const navigate = useNavigate();
+  const { theme } = useContext(ThemeContext);
   return (
     <div className="home-page-element">
       <Hero
-        title="Your Partner in Health and Wellness"
-        subTitle="We are committed to providing you with the best medical and healthcare services to help you live healthier and happier."
-        bgUrl="/images/home_1/hero_bg.jpeg"
-        /*imgUrl="/images/home_1/hero_img.png"
-        videoBtnText="See how we work"
-        videoUrl="https://www.youtube.com/embed/VcaAVWtP48A"*/
+        title="Find The Support You Deserve"
+        subTitle="We are committed to providing you with the best mental health resources based on the care you need!"
+        bgUrl={theme === 'dark' ? null : '/images/home_1/hero_bg.jpeg'}
+        imgUrl={theme=='dark' ? "/images/homepageDark.png" : "/images/homepageLight.png"}
         infoList={[
           /*{
             title: 'Hotline',
@@ -140,9 +152,26 @@ export default function Home() {
             iconUrl: '/images/icons/pin.svg',
           },*/
         ]}
-        //btnText="Book Now"
-        //btnUrl="/appointments"
-      />
+        />
+
+        
+  <div className="modelContainer"> 
+    <Canvas style={{ width: '250px', height: '200px'}}>
+      <Suspense fallback={<Html>Loading...</Html>}>
+        <ambientLight intensity={0.9} />
+        <directionalLight position={[10, 10, 5]} />
+        <Model />
+        <OrbitControls 
+              enableZoom={false} 
+              autoRotate 
+              autoRotateSpeed={2.0} 
+              maxPolarAngle={Math.PI / 2} 
+              minDistance={5} 
+              maxDistance={10} 
+            />
+      </Suspense>
+    </Canvas>
+  </div>  
       {/* Start Feature Section */}
       <Section
         topMd={185}

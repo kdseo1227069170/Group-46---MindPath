@@ -4,6 +4,10 @@ import MenuWidget from '../Widget/MenuWidget';
 import SocialWidget from '../Widget/SocialWidget';
 import Newsletter from '../Widget/Newsletter';
 import TextWidget from '../Widget/TextWidget';
+import { useContext } from 'react';
+import { ThemeContext } from '../../App';
+import { useNavigate } from 'react-router-dom';
+import './Footer.css';
 
 const menuDataOne = [
   { title: 'About Us', href: '/about' },
@@ -22,16 +26,25 @@ const menuDataTwo = [
 ];
 
 export default function Footer() {
+  const navigate = useNavigate();
+  const { theme } = useContext(ThemeContext);
+
+  const footerBgImage =
+    theme === 'dark' ? null : 'url(/images/footer_bg_1.svg)';
+  const footerLogoBgImage =
+    theme === 'dark' ? null : 'url(/images/footer_logo_bg.svg)';
+
   return (
     <footer className="cs_footer cs_style_1 cs_heading_color">
       <div
         className="cs_footer_logo_wrap"
-        style={{ backgroundImage: 'url(/images/footer_bg_1.svg)' }}
+        style={{ backgroundImage: footerBgImage }}
       >
         <div
           className="cs_footer_brand"
-          style={{ backgroundImage: 'url(/images/footer_logo_bg.svg)' }}
+          style={{ backgroundImage: footerLogoBgImage }}
         >
+          
           <img
             src="/images/canadaLeaf.svg"
             alt="Canada Leaf Icon"

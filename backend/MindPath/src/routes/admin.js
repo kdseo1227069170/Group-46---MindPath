@@ -42,7 +42,10 @@ const getActiveUsers = async () => {
 };
 
 // Admin Dashboard route
-router.get('/dashboard', verifyAdmin, async (req, res) => {
+//router.get('/dashboard', verifyAdmin, async (req, res) => {
+
+//substituting hardcoded data
+/*router.get('/dashboard', async (req, res) => {
     try {
         const totalUsers = await User.countDocuments();
         const totalSearches = await SearchLog.countDocuments();
@@ -51,11 +54,11 @@ router.get('/dashboard', verifyAdmin, async (req, res) => {
         const activeUsers = await getActiveUsers();
 
         // Log admin access
-        const logEntry = new ActivityLog({
-            adminId: req.user.id,
-            action: 'Accessed Admin Dashboard',
-        });
-        await logEntry.save();
+        //const logEntry = new ActivityLog({
+            //adminId: req.user.id,
+            //action: 'Accessed Admin Dashboard',
+        //});
+        //await logEntry.save();
 
         res.json({
             totalUsers,
@@ -67,6 +70,28 @@ router.get('/dashboard', verifyAdmin, async (req, res) => {
     } catch (err) {
         console.error('Error retrieving dashboard data:', err);
         res.status(500).json({ message: 'Error updating the dashboard' });
+    }
+});*/
+
+router.get('/dashboard', async (req, res) => {
+    try {
+        const data = {
+            totalUsers: 2,
+            totalSearches: 10,
+            searchesPerDay: [
+                { _id: '2024-11-10', totalSearches: 4 },
+                { _id: '2024-11-11', totalSearches: 6 },
+            ],
+            popularSearches: [
+                { _id: 'mental health', count: 5 },
+                { _id: 'therapy', count: 3 },
+            ],
+            activeUsers: 2,
+        };
+        res.json(data);
+    } catch (error) {
+        console.error('Error retrieving dashboard data:', error);
+        res.status(500).json({ message: 'Error retrieving dashboard data' });
     }
 });
 
