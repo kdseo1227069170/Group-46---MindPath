@@ -60,4 +60,4 @@ router.delete('/:id', verifyUser, async (req, res) => {
     }
 });
 
-module.exports = router;US
+module.exports = router;
