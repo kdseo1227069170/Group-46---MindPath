@@ -32,15 +32,14 @@ export default function Hero({
                 videoBtnText={videoBtnText}
                 variant="cs_heading_color"
               />
-            </div>
-            */}
+            </div>*/}
           </div>
-          <img src={imgUrl} alt="Hero" className="cs_hero_img" /> 
-          <div className="cs_hero_info_wrap cs_shadow_1 cs_white_bg cs_radius_15">
+          <img src={imgUrl} alt="Hero" className="cs_hero_img" />
+          {/*<div className="cs_hero_info_wrap cs_shadow_1 cs_white_bg cs_radius_15">
             {infoList.map((item, index) => (
               <div className="cs_hero_info_col" key={index}>
                 <div className="cs_hero_info d-flex align-items-center">
-                  {/*<div className="cs_hero_info_icon cs_center rounded-circle cs_accent_bg">
+                  <div className="cs_hero_info_icon cs_center rounded-circle cs_accent_bg">
                     <img src={item.iconUrl} alt="Icon" />
                   </div>
                   <div className="cs_hero_info_right">
@@ -51,11 +50,10 @@ export default function Hero({
                       {item.subTitle}
                     </p>
                   </div>
-                  */}
                 </div>
               </div>
             ))}
-            {/*<div className="cs_hero_info_col">
+            <div className="cs_hero_info_col">
               <Link to={btnUrl} className="cs_btn cs_style_1">
                 <span>{btnText}</span>
                 <i>
@@ -63,8 +61,8 @@ export default function Hero({
                   <img src="/images/icons/arrow_white.svg" alt="Icon" />
                 </i>
               </Link>
-            </div>*/}
-          </div>
+            </div>
+          </div>*/}
         </div>
       </div>
     </section>

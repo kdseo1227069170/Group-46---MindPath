@@ -136,7 +136,7 @@ export default function Home() {
         bgUrl={theme === 'dark' ? null : '/images/home_1/hero_bg.jpeg'}
         imgUrl={theme=='dark' ? "/images/homepageDark.png" : "/images/homepageLight.png"}
         infoList={[
-          {
+          /*{
             title: 'Hotline',
             subTitle: '123-456-7890',
             iconUrl: '/images/contact/icon_1.svg',
@@ -150,7 +150,7 @@ export default function Home() {
             title: 'Location',
             subTitle: 'New York, US',
             iconUrl: '/images/icons/pin.svg',
-          },
+          },*/
         ]}
         />
 
@@ -187,14 +187,14 @@ export default function Home() {
       {/* Start About Section */}
       <Section>
         <AboutSection
-          imgUrl="/images/home_1/about.png"
+          //imgUrl="/images/home_1/about.png"
           spiningImgUrl="/images/home_1/about_mini.svg"
           title="About Us"
-          subTitle="PRO HEALTH"
+          subTitle="CanAge"
           featureList={[
             {
               featureListTitle:
-                'ProHealth is a team of experienced medical professionals',
+                'CanAge is a team of experienced medical professionals',
               featureListSubTitle:
                 'Dedicated to providing top-quality healthcare services. We believe in a holistic approach to healthcare that focuses on treating the whole person, not just the illness or symptoms.',
             },
@@ -202,10 +202,10 @@ export default function Home() {
         />
       </Section>
       {/* End About Section */}
-      
-      
+
+
       {/* Start Testimonial */}
-      <Section
+      {/*<Section
         topMd={185}
         topLg={140}
         topXl={100}
@@ -217,35 +217,35 @@ export default function Home() {
           sectionTitle="Some Reviews"
           sectionTitleDown="Of our clients"
         />
-      </Section>
+      </Section>*/}
       {/* End Testimonial */}
       {/* Start Banner Section */}
       <Section>
         <Banner
           bgUrl="images/home_1/cta_bg.svg"
-          imgUrl="images/home_1/cta_img.png"
+          //imgUrl="images/home_1/cta_img.png"
           title="Don’t Let Your Health Take a Backseat!"
           subTitle="Schedule an appointment with one of our experienced medical professionals today!"
         />
       </Section>
       {/* End Banner Section */}
       {/* Start Blog Section */}
-      <Section topMd={190} topLg={145} topXl={105}>
+      {/*<Section topMd={190} topLg={145} topXl={105}>
         <BlogSection
           sectionTitle="Latest Update"
           sectionTitleUp="BLOG POSTS"
           data={blogData}
         />
-      </Section>
+      </Section>*/}
       {/* End Blog Section */}
       {/* Start Appointment Section */}
-      <Section topMd={190} topLg={145} topXl={105} id="appointment">
+      {/*<Section topMd={190} topLg={145} topXl={105} id="appointment">
         <AppointmentSection
           sectionTitle="Appointment"
           sectionTitleUp="BOOK AN"
           imgUrl="/images/home_1/appointment.jpeg"
         />
-      </Section>
+      </Section>*/}
       {/* End Appointment Section */}
       {/* Start FAQ Section */}
       <Section topMd={190} topLg={145} topXl={105}>
