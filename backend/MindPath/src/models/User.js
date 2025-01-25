@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
 	is2FAEnabled: { type: Boolean, default: true },
 	twoFASecret: { type: String },
 	twoFACode: { type: String },
-	twoFACodeExpires: { type: Date},
+	twoFACodeExpiry: { type: Date},
 	twoFAExpire: { type: Date },
 	createdAt: { type: Date, default: Date.now},
 	lastLogin: { type: Date },
@@ -47,6 +47,20 @@ userSchema.methods.generate2FASecret = function () {
     this.twoFAExpire = Date.now() + 300000;  // Optional: Set an expiration for the secret (5 minutes)
     return secret;
 };
+
+// Method to validate the 2FA code
+userSchema.methods.validate2FACode = function (userInputCode) {
+    // Validate the user's 2FA code using Speakeasy
+    const verified = speakeasy.totp.verify({
+        secret: this.twoFASecret,     // The secret stored for the user
+        encoding: 'base32',           // The encoding of the secret
+        token: userInputCode,        // The code entered by the user
+        window: 1                     // Optional: allow a window for slight delays in code generation
+    });
+
+    return verified;  // Returns true if the code is valid, false otherwise
+};
+
 
 //Export the user model
 module.exports = mongoose.model('User', userSchema);
