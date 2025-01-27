@@ -8,18 +8,17 @@ const TwoFASetup = () => {
 
   useEffect(() => {
     const enableTwoFA = async () => {
-      try {
-        // Replace 'userId' dynamically with actual logged-in user information
-        const userId = 'REPLACE_WITH_USER_ID'; // Replace with the actual user ID dynamically
+      try {        
+        const userId = 'REPLACE_WITH_USER_ID'; 
         const response = await axios.post('/api/auth/enable2FA', { userId });
-        setQrCodeUrl(response.data.otpauthUrl); // Store the QR code URL from the response
+        setQrCodeUrl(response.data.otpauthUrl); 
       } catch (err) {
         setError('Failed to enable 2FA');
       }
     };
 
-    enableTwoFA(); // Call the function inside useEffect
-  }, []); // Empty dependency array ensures it runs once on component mount
+    enableTwoFA(); 
+  }, []); 
 
   return (
     <div>
