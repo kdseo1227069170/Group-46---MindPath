@@ -68,6 +68,9 @@ export default function Header({variant}) {
                                         <li>
                                             <Link to="/about">About</Link>
                                         </li>
+                                        <li>
+                                            <Link to="/summary">Summary</Link>
+                                        </li>
                                         <li className="menu-item-has-children">
 
                                             <Link to="/services">Services</Link>
