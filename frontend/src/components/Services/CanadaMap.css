@@ -1,0 +1,12 @@
+.canada-map {
+  width: 100%;  
+  max-width: 700px;
+  height: auto;
+  background-color: transparent; 
+}
+
+.canada-map svg {
+  width: 100%;  
+  height: auto;  
+}
+

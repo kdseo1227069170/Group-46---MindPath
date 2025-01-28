@@ -1,6 +1,7 @@
 import React from 'react';
 import './Services.css';
 import { Link } from 'react-router-dom';
+import CanadaMap from './CanadaMap';
 
 
 
@@ -28,7 +29,7 @@ const Services = () => {
 
       {/* Coverage by Province Section */}
       <section className="coverage-by-province">
-        <h2>Provincial Coverage for Mental Health Services</h2>
+        {/* <h2>Provincial Coverage for Mental Health Services</h2>
         <p>Each province has unique mental health service coverage options. Here’s an overview:</p>
         <ul>
           <li><strong>Ontario</strong>: Coverage information coming soon.</li>
@@ -41,7 +42,8 @@ const Services = () => {
           <li><strong>New Brunswick</strong>: Coverage information coming soon.</li>
           <li><strong>Prince Edward Island</strong>: Coverage information coming soon.</li>
           <li><strong>Newfoundland and Labrador</strong>: Coverage information coming soon.</li>
-        </ul>
+        </ul> */}
+        <CanadaMap />
       
       </section>
       {/* Crisis Support Section */}
