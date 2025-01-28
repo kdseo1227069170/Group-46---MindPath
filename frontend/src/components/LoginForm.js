@@ -14,6 +14,7 @@ const LoginForm = ({ onClose }) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [is2FARequired, setIs2FARequired] = useState(false);  // Track if 2FA is required
   const [twoFAError, setTwoFAError] = useState('');  // Track 2FA error
+  const [qrCodeUrl, setQrCodeUrl] = useState('');  
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -31,6 +32,11 @@ const LoginForm = ({ onClose }) => {
         // Step 2: If 2FA is required, show the 2FA input field
         if (response.data.is2FARequired) {
           setIs2FARequired(true);
+		  // Retrieve the QR code URL from the response and store it
+		  if (response.data.qrCodeUrl) {
+			setQrCodeUrl(response.data.qrCodeUrl);
+		  }
+
           return;  // Wait for the user to input the 2FA code
         }
         
