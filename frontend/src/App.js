@@ -1,6 +1,7 @@
 import { Route, Routes, useLocation, Link } from 'react-router-dom';
 import CrisisSupportPage from './components/CrisisSupportPage';
 import Questionnaire from "./components/Questionnaire";
+import Summary from "./components/Summary";
 import Layout from './components/Layout';
 import RegistrationForm from './components/RegistrationForm';
 import Home from './components/Pages/Home';
@@ -51,7 +52,7 @@ function App() {
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
                     <Route path="about" element={<About />} />
-                    {/*<Route path="summary" element={<Summary />} />*/}
+                    <Route path="summary" element={<Summary />} />
                     <Route path="doctors" element={<Doctors />} />
                     <Route path="doctors/:doctorId" element={<DoctorDetails />} />
                     <Route path="blog" element={<Blog />} />
