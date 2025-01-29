@@ -1,0 +1,26 @@
+/*CSS file to beautify the Progress Notes page, which is unorganized with the widget blocks out of place */
+.progress-notes-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Light overlay for visibility */
+    border-radius: 10px;
+}
+
+.progress-notes-container input,
+.progress-notes-container textarea {
+    width: 90%; /* Can adjust width to be more uniform */
+    max-width: 500px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #222; /* The is the dark theme input */
+    color: #fff;
+    font-size: 16px;
+}
