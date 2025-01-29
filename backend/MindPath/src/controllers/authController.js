@@ -183,7 +183,7 @@ exports.enable2FA = async (req, res) => {
     try {
         // Generate a secret key for the user
         const secret = speakeasy.generateSecret({
-            name: 'Mindpath Authenticator', // Your application name
+            name: 'Mindpath', // Your application name
             length: 20
         });
 
@@ -225,7 +225,7 @@ exports.verifyTwoFACode = async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
-
+/**
         if (moment().isAfter(user.twoFACodeExpires)) {
             return res.status(400).json({ message: '2FA code has expired' });
         }
@@ -239,8 +239,31 @@ exports.verifyTwoFACode = async (req, res) => {
         user.twoFACode = null;  
         user.twoFACodeExpires = null;  
         await user.save();
+*/
+	if (!user.twoFASecret) {
+            return res.status(400).json({ message: '2FA is not enabled for this user' });
+        }
 
-        return res.status(200).json({ message: '2FA verified successfully', token });
+        // Verify the token using the stored 2FA secret (TOTP)
+        const verified = speakeasy.totp.verify({
+            secret: user.twoFASecret,  // The secret stored in the database
+            encoding: 'base32',
+            token: token,              // The token the user entered
+            window: 1                  // Allow small time drift (optional)
+        });
+
+        if (verified) {
+            // 2FA is verified, generate JWT token for the user
+            const jwtToken = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '1h' });
+
+            return res.status(200).json({
+                message: '2FA verified successfully',
+                token: jwtToken
+            });
+        } else {
+            return res.status(400).json({ message: 'Invalid 2FA code' });
+        }
+        //return res.status(200).json({ message: '2FA verified successfully', token });
     } catch (error) {
         console.error('Error verifying 2FA code:', error);
         return res.status(500).json({ message: 'Server error' });

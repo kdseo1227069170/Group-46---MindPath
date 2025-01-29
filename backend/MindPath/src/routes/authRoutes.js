@@ -123,7 +123,7 @@ router.post('/verify2FA', async (req, res) => {
             secret: user.twoFASecret, // The secret we stored earlier
             encoding: 'base32',
             token: token, // The token the user entered
-            window: 3 // Allow a small window for time drift (optional)
+            window: 1 // Allow a small window for time drift (optional)
         });
 
         if (verified) {
