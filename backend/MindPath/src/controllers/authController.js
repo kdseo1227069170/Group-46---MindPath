@@ -179,29 +179,26 @@ exports.logout = (req, res) => {
 
 // Enable 2FA for a user
 exports.enable2FA = async (req, res) => {
-    const userId = req.userId; // Assuming you're using JWT and `userId` is available
+    const userId = req.userId; 
     try {
         // Generate a secret key for the user
         const secret = speakeasy.generateSecret({
             name: 'Mindpath', // Your application name
             length: 20
         });
-
         // Store the secret in the user's record
         const user = await User.findById(userId);
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
-
         user.twoFASecret = secret.base32; // Save the base32 secret
         user.is2FAEnabled = true; // Mark 2FA as enabled
         await user.save();
-
         // Generate the QR code
         const qrCodeUrl = await qrcode.toDataURL(secret.otpauth_url);
 		//const qrCodeUrl = await generateQRCode(secret.otpauth_url); // This will generate a QR code URL
-
-        return res.status(200).json({
+        //Return the QR code URL and secret to the client
+		return res.status(200).json({
             message: '2FA enabled successfully',
             qrCodeUrl: qrCodeUrl, // Send QR code URL to client
             secret: secret.base32 // Send the secret in case the user needs to manually enter it

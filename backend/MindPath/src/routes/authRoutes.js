@@ -8,6 +8,7 @@ const { verifyToken } = require('../middlewares/middleware');
 const jwt = require('jsonwebtoken');
 const speakeasy = require('speakeasy');
 const { verifyTwoFACode } = require('../controllers/authController');
+const { enable2FA } = require('../controllers/authController');
 
 // Validation middleware for registering a user
 const validateRegister = [
@@ -75,6 +76,8 @@ router.get('/protected-route', verifyToken, (req, res) => {
 
 
 // Endpoint to enable 2FA
+router.post('/enable2FA', enable2FA);
+/**
 router.post('/enable2FA', async (req, res) => {
     const { userId } = req.body; 
 
@@ -103,8 +106,11 @@ router.post('/enable2FA', async (req, res) => {
         res.status(500).json({ message: 'Failed to enable 2FA' });
     }
 });
+*/
 
 // Endpoint to verify the 2FA code
+router.post('/verify2FA', verifyTwoFACode);
+/**
 router.post('/verify2FA', async (req, res) => {
     const { userId, token } = req.body; // Get userId and the token entered by the user
 
@@ -136,5 +142,5 @@ router.post('/verify2FA', async (req, res) => {
         res.status(500).json({ message: 'Failed to verify 2FA code' });
     }
 });
-
+*/
 module.exports = router;
