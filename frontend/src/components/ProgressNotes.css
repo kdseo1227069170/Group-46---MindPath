@@ -24,3 +24,24 @@
     color: #fff;
     font-size: 16px;
 }
+
+.progress-notes-container textarea {
+    height: 100px; /* Can put more height in text area if needed */
+    resize: vertical;
+}
+
+.progress-notes-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4780b6; /* Theme color */
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.progress-notes-container button:hover {
+    background-color: #366593;
+}
