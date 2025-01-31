@@ -13,8 +13,7 @@ const LoginForm = ({ onClose }) => {
   const [isFormClosed, setIsFormClosed] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const [is2FARequired, setIs2FARequired] = useState(false);  // Track if 2FA is required
-  const [twoFAError, setTwoFAError] = useState('');  // Track 2FA error
-  const [qrCodeUrl, setQrCodeUrl] = useState('');  
+  const [twoFAError, setTwoFAError] = useState('');  // Track 2FA error  
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -27,16 +26,14 @@ const LoginForm = ({ onClose }) => {
     try {
       // Step 1: Attempt to log in with username and password
       const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+	  
+	  // Log the entire response to the console
+		console.log('Server Response:', response); 
       
       if (response.status === 200) {
         // Step 2: If 2FA is required, show the 2FA input field
         if (response.data.is2FARequired) {
           setIs2FARequired(true);
-		  // Retrieve the QR code URL from the response and store it
-		  if (response.data.qrCodeUrl) {
-			setQrCodeUrl(response.data.qrCodeUrl);
-		  }
-
           return;  // Wait for the user to input the 2FA code
         }
         
@@ -57,7 +54,7 @@ const LoginForm = ({ onClose }) => {
   const handle2FAVerify = async () => {
     try {
       // Step 3: Verify 2FA code entered by user
-      const response = await axios.post('http://localhost:5000/api/auth/verify-2fa', {
+      const response = await axios.post('http://localhost:5000/api/auth/verify2FA', {
         userId: formData.username,  // You should use the actual user ID
         token: formData.twoFACode,
       });
@@ -128,7 +125,7 @@ const LoginForm = ({ onClose }) => {
         </div>
         
         {is2FARequired && (
-          <div>
+          <div className="two-fa-container">
             <label>Enter 2FA Code:</label>
             <input
               type="text"

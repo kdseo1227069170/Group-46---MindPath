@@ -64,6 +64,7 @@
     border-radius: 4px;
 }
 
+
 .login-form-container button {
     margin-top: 10px;
     padding: 10px;
@@ -81,5 +82,29 @@
 .error-message {
     color: red;
     margin-top: 10px;
+    text-align: center;
+}
+
+
+.two-fa-container {
+    margin-top: 15px;
+}
+
+.two-fa-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.two-fa-container input {
+    width: 100%; 
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.two-fa-container .error-message {
+    color: red;
+    margin-top: 5px;
     text-align: center;
 }

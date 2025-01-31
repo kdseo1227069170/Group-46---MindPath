@@ -66,11 +66,15 @@ const RegistrationForm = ({ onClose }) => {
           password: '',
           phoneNumber: '',
         });
-        setIsFormClosed(true);
-        if (onClose) {
-          onClose();
-        }
-        navigate('/');
+		setTimeout(() => {
+		  setIsFormClosed(true);
+		  if (onClose) {
+			onClose();
+		  }
+		  navigate('/');  // Redirect to home page
+		}, 60000);  // 60 seconds (1 minute)
+
+        
       }
     } catch (error) {
       console.error('Error registering user:', error);
@@ -152,7 +156,7 @@ const RegistrationForm = ({ onClose }) => {
 	  
 	  {/* Show QR Code after registration */}
     {qrCodeUrl && (
-      <div>
+      <div className="qr-code-container">
         <h3>Scan this QR code with Google Authenticator:</h3>
         <img src={qrCodeUrl} alt="QR Code for Google Authenticator" />
       </div>
