@@ -15,6 +15,8 @@ const RegistrationForm = ({ onClose }) => {
 
   const [passwordError, setPasswordError] = useState('');
   const [phoneNumberError, setPhoneNumberError] = useState('');
+  const [qrCodeUrl, setQrCodeUrl] = useState('');
+
   const [isFormClosed, setIsFormClosed] = useState(false);
   const navigate = useNavigate();
 
@@ -47,8 +49,14 @@ const RegistrationForm = ({ onClose }) => {
     try {
       const response = await axios.post('http://localhost:5000/api/auth/register', formData);
       console.log(response.data);
+	  
       if (response.status === 201) {
         alert('Registration successful!');
+		
+	  
+      // Get the QR code URL from the backend response
+      setQrCodeUrl(response.data.qrCodeUrl); 
+
         // Clear form after success
         setFormData({
           firstName: '',
@@ -141,6 +149,14 @@ const RegistrationForm = ({ onClose }) => {
         </div>
         <button type="submit" disabled={passwordError}>Register</button>
       </form>
+	  
+	  {/* Show QR Code after registration */}
+    {qrCodeUrl && (
+      <div>
+        <h3>Scan this QR code with Google Authenticator:</h3>
+        <img src={qrCodeUrl} alt="QR Code for Google Authenticator" />
+      </div>
+    )}
     </div>
   );
 };

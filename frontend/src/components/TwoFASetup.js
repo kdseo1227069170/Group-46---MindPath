@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import QRCode from 'qrcode';
 import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 
 const TwoFASetup = () => {
   const [qrCodeUrl, setQrCodeUrl] = useState('');
@@ -8,8 +9,17 @@ const TwoFASetup = () => {
 
   useEffect(() => {
     const enableTwoFA = async () => {
-      try {        
-        const userId = 'REPLACE_WITH_USER_ID'; 
+      try {
+        // Get userId from the decoded JWT token
+        const token = localStorage.getItem('token');  // Or wherever you store the JWT
+        if (!token) {
+          setError('User not logged in');
+          return;
+        }
+        const decoded = jwt_decode(token);  // Decode the JWT to get the user info
+        const userId = decoded.userId;  
+		
+		
         const response = await axios.post('/api/auth/enable2FA', { userId });
         setQrCodeUrl(response.data.otpauthUrl); 
       } catch (err) {
