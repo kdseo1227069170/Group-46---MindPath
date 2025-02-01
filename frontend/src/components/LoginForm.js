@@ -7,7 +7,7 @@ const LoginForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
     username: '', 
     password: '',
-    twoFACode: '', // Add twoFACode to handle 2FA input
+    twoFACode: '', 
   });
 
   const [isFormClosed, setIsFormClosed] = useState(false);
@@ -25,29 +25,42 @@ const LoginForm = ({ onClose }) => {
     e.preventDefault();
     try {
       // Step 1: Attempt to log in with username and password
-      const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const response = await axios.post('http://localhost:5000/api/auth/login', { //formData);
+		 username: formData.username,
+         password: formData.password
+      });
 	  
-	  // Log the entire response to the console
-		console.log('Server Response:', response); 
+	  console.log('Server Response:', response.data); 
       
       if (response.status === 200) {
         // Step 2: If 2FA is required, show the 2FA input field
-        if (response.data.is2FARequired) {
+        //if (response.data.is2FARequired){
+		if (response.data.message === "2FA required") {
           setIs2FARequired(true);
           return;  // Wait for the user to input the 2FA code
         }
         
-        // If login is successful, store the JWT token and proceed
+        // If login is successful, and no 2FA required
         localStorage.setItem('jwtToken', response.data.token);
         alert('Login successful!');
-        setFormData({ username: '', password: '', twoFACode: '' });
-        setIsFormClosed(true);
-        if (onClose) onClose();
+        //setFormData({ username: '', password: '', twoFACode: '' });
+        //setIsFormClosed(true);
+        //if (onClose) onClose();
         navigate('/');
       }
     } catch (error) {
       console.error('Error logging in:', error);
-      setErrorMessage('Login failed!');
+	  
+	  if (error.response) {
+            console.error('Error Response Data:', error.response.data);
+            console.error('Status Code:', error.response.status);
+            console.error('Headers:', error.response.headers);
+
+            setErrorMessage(`Login failed: ${error.response.data.message || "Unknown error"}`);
+        } else {
+            setErrorMessage('Login failed due to a network error.');
+        }
+      //setErrorMessage('Login failed!');
     }
   };
 
@@ -55,21 +68,25 @@ const LoginForm = ({ onClose }) => {
     try {
       // Step 3: Verify 2FA code entered by user
       const response = await axios.post('http://localhost:5000/api/auth/verify2FA', {
-        userId: formData.username,  // You should use the actual user ID
-        token: formData.twoFACode,
+        username: formData.username,  
+        password: formData.password,
+        code: formData.twoFACode, 
       });
+	  
+	   console.log('2FA Verification Response:', response.data);
 
       if (response.status === 200) {
         // If 2FA is verified successfully, store the JWT token and proceed
         localStorage.setItem('jwtToken', response.data.token);
         alert('2FA verification successful!');
-        setFormData({ username: '', password: '', twoFACode: '' });
-        setIsFormClosed(true);
-        if (onClose) onClose();
+        //setFormData({ username: '', password: '', twoFACode: '' });
+        //setIsFormClosed(true);
+        //if (onClose) onClose();
         navigate('/');
       }
     } catch (error) {
       console.error('Error verifying 2FA:', error);
+	  
       setTwoFAError('Invalid 2FA code. Please try again.');
     }
   };
@@ -99,10 +116,10 @@ const LoginForm = ({ onClose }) => {
     <div className="login-form-container">
       <div className="login-form-header">
         <h2>Login</h2>
-        <button className="close-button" onClick={handleClose}>X</button>
+        <button className="close-button" onClick={onClose}>X</button>
       </div>
       
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={is2FARequired ? handle2FAVerify : handleSubmit}> {/*{handleSubmit}> */}
         <div>
           <label>Username:</label>
           <input
