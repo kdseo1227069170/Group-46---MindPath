@@ -32,7 +32,7 @@
         <text id="cajsvn10" transform="matrix(1 0 0 1 508 380)" font-size="12">PE</text>
         <text id="cajsvn11" transform="matrix(1 0 0 1 411 376)" font-size="17">QC</text>
         <text id="cajsvn12" transform="matrix(1 0 0 1 183 360)" font-size="15">SK</text>
-        <text id="cajsvn13" transform="matrix(1 0 0 1 59 199)" font-size="14">YT</text>
+        <text id="cajsvn13" transform="matrix(1 0 0 1 59 199)" font-size="14">YT</text> 
       </g>
       <g id="cajspins"></g>
     </svg>
