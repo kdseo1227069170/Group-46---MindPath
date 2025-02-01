@@ -48,18 +48,36 @@ exports.register = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         
         // Create a new user
-        const newUser = new User({ firstName, lastName, email, username, password, phoneNumber });
-/**		
+        const newUser = new User({ 
+		firstName, 
+		lastName, 
+		email, 
+		username, 
+		password, 
+		phoneNumber,
+		
+	});
+		
 		// Generate the 2FA secret
         const secret = speakeasy.generateSecret({
-            name: 'Mindpath App',
+            name: 'Mindpath ',
             length: 20
         });
         
         newUser.twoFASecret = secret.base32; 
         newUser.is2FAEnabled = true; 
-	*/	
+	
         await newUser.save();
+		
+		// Generate a QR code URL
+        const qrCodeUrl = await qrcode.toDataURL(secret.otpauth_url);
+
+        // Respond with success and send the QR code URL for the frontend
+        return res.status(201).json({
+            message: 'User registered and 2FA enabled successfully',
+            qrCodeUrl: qrCodeUrl, // Send the QR code URL to client
+            secret: secret.base32, // Send the secret in case the user needs to manually enter it
+        });
 
         // Send notification to admin
         await sendAdminNotification(email, username);
@@ -99,6 +117,12 @@ exports.login = async (req, res) => {
 
 
 */
+
+		// If 2FA is enabled but no code is provided, tell the frontend to ask for 2FA
+        if (user.is2FAEnabled && user.twoFASecret && !code) {
+            return res.status(200).json({ message: "2FA required" });
+        }
+		
 		// Check if 2FA is enabled and verify the code
         if (user.is2FAEnabled && user.twoFASecret) {
             // Verify the code from the Google Authenticator app
