@@ -1,47 +1,152 @@
 /*CSS file to beautify the Progress Notes page, which is unorganized with the widget blocks out of place */
+/* Container Styling */
 .progress-notes-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
+    max-width: 700px;
+    margin: 80px auto 20px; /* Nicely centered, but move down */
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.1); /* Light overlay for visibility */
+    background: rgba(255, 255, 255, 0.15);
     border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
+/* Title */
+.progress-notes-container h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Input and Text Area*/
 .progress-notes-container input,
 .progress-notes-container textarea {
-    width: 90%; /* Can adjust width to be more uniform */
-    max-width: 500px;
-    padding: 10px;
+    width: 100%;
+    max-width: 600px;
+    padding: 12px;
     margin: 10px 0;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #222; /* The is the dark theme input */
+    background-color: #222; /* Dark mode */
     color: #fff;
     font-size: 16px;
+    transition: border 0.3s ease-in-out;
 }
 
+/* Focus Effect for Inputs */
+.progress-notes-container input:focus,
+.progress-notes-container textarea:focus {
+    border: 1px solid #4780b6;
+    outline: none;
+}
+
+/* Text Area */
 .progress-notes-container textarea {
-    height: 100px; /* Can put more height in text area if needed */
+    height: 120px; /* Increased height */
     resize: vertical;
 }
 
+/* Button Styling */
 .progress-notes-container button {
-    padding: 10px 20px;
+    padding: 12px 20px;
     font-size: 16px;
-    background-color: #4780b6; /* Theme color */
+    background-color: #4780b6;
     color: white;
     border: none;
     cursor: pointer;
     margin-top: 10px;
     border-radius: 5px;
-    transition: background 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out, transform 0.1s;
 }
 
+/* Button Hover and Click Effects */
 .progress-notes-container button:hover {
-    background-color: #366593;
+    background-color: #356999;
+}
+
+.progress-notes-container button:active {
+    transform: scale(0.98);
+}
+
+/* Search Bar Styling */
+.search-input {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Notes List Styling */
+.notes-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    max-width: 700px;
+}
+
+/* Individual Note Item */
+.note-item {
+    background: #f8f8f8;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: left;
+    position: relative;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Title & Text */
+.note-item h3 {
+    margin: 0;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.note-item p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Tags for Notes */
+.note-item small {
+    display: block;
+    color: gray;
+    font-size: 12px;
+}
+
+/* Edit & Delete Buttons */
+.note-item button {
+    padding: 8px 10px;
+    font-size: 14px;
+    margin: 5px;
+    background: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.note-item button:hover {
+    background: #d9534f;
+}
+
+.note-item button.edit {
+    background: #4caf50;
+}
+
+.note-item button.edit:hover {
+    background: #45a049;
 }

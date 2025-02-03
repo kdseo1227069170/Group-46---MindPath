@@ -5,7 +5,7 @@ import axios from 'axios';
 const ProgressNotes = () => {
     const [notes, setNotes] = useState([]); // Holds obtained notes
     const [newNote, setNewNote] = useState({ title: '', content: '' }); // Holds new note input
-    
+
     useEffect(() => {
         fetchNotes();
     }, []);
