@@ -15,6 +15,7 @@
     "upColor": "#FFFFF3",
     "overColor": "#d4def1",
     "downColor": "#cae9af",
+    "services": "testing listing services\n1) .......................\n2) .......................\n3) .......................",
     "active": true
   },
   "cajs3": {
@@ -38,7 +39,7 @@
   "cajs5": {
     "hover": "NEWFOUNDLAND AND LABRADOR",
     "url": "#",
-    "target": "same_window",
+    "target": "popup",
     "upColor": "#FFFFF3",
     "overColor": "#d4def1",
     "downColor": "#cae9af",
@@ -47,7 +48,7 @@
   "cajs6": {
     "hover": "NORTHWEST TERRITORIES",
     "url": "#",
-    "target": "same_window",
+    "target": "popup",
     "upColor": "#FFFFF3",
     "overColor": "#d4def1",
     "downColor": "#cae9af",
@@ -56,7 +57,7 @@
   "cajs7": {
     "hover": "NOVA SCOTIA",
     "url": "#",
-    "target": "same_window",
+    "target": "popup",
     "upColor": "#FFFFF3",
     "overColor": "#d4def1",
     "downColor": "#cae9af",
@@ -65,7 +66,7 @@
   "cajs8": {
     "hover": "NUNAVUT",
     "url": "#",
-    "target": "same_window",
+    "target": "popup",
     "upColor": "#FFFFF3",
     "overColor": "#d4def1",
     "downColor": "#cae9af",
@@ -74,7 +75,7 @@
   "cajs9": {
     "hover": "ONTARIO",
     "url": "#",
-    "target": "same_window",
+    "target": "popup",
     "upColor": "#FFFFF3",
     "overColor": "#d4def1",
     "downColor": "#cae9af",
@@ -83,7 +84,7 @@
   "cajs10": {
     "hover": "PRINCE EDWARD ISLAND",
     "url": "#",
-    "target": "same_window",
+    "target": "popup",
     "upColor": "#FFFFF3",
     "overColor": "#d4def1",
     "downColor": "#cae9af",
@@ -92,7 +93,7 @@
   "cajs11": {
     "hover": "QUEBEC",
     "url": "#",
-    "target": "same_window",
+    "target": "popup",
     "upColor": "#FFFFF3",
     "overColor": "#d4def1",
     "downColor": "#cae9af",
@@ -101,7 +102,7 @@
   "cajs12": {
     "hover": "SASKATCHEWAN",
     "url": "#",
-    "target": "same_window",
+    "target": "popup",
     "upColor": "#FFFFF3",
     "overColor": "#d4def1",
     "downColor": "#cae9af",
@@ -110,7 +111,7 @@
   "cajs13": {
     "hover": "YUKON",
     "url": "#",
-    "target": "same_window",
+    "target": "popup",
     "upColor": "#FFFFF3",
     "overColor": "#d4def1",
     "downColor": "#cae9af",
