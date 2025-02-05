@@ -25,7 +25,7 @@ const LoginForm = ({ onClose }) => {
     e.preventDefault();
     try {
       // Step 1: Attempt to log in with username and password
-      const response = await axios.post('http://localhost:5000/api/auth/login', { //formData);
+      const response = await axios.post('http://localhost:5000/api/auth/login', { 
 		 username: formData.username,
          password: formData.password
       });
@@ -64,13 +64,18 @@ const LoginForm = ({ onClose }) => {
     }
   };
 
-  const handle2FAVerify = async () => {
+  const handle2FAVerify = async (e) => {
+	
+	e.preventDefault();
+	
     try {
       // Step 3: Verify 2FA code entered by user
-      const response = await axios.post('http://localhost:5000/api/auth/verify2FA', {
+      //const response = await axios.post('http://localhost:5000/api/auth/verify2FA', {
+	  const response = await axios.post('http://localhost:5000/api/auth/login', {
+
         username: formData.username,  
         password: formData.password,
-        code: formData.twoFACode, 
+        code: formData.twoFACode.trim(), 
       });
 	  
 	   console.log('2FA Verification Response:', response.data);
