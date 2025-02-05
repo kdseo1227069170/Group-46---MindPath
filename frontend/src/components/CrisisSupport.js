@@ -23,11 +23,12 @@ const CrisisSupport = () => {
 const styles = {
     // Style for the button container
     container: {
-        marginTop: '25px',
+        marginTop: '5px',
+        marginRight: '-172px',
     },
     // Style for the button
     button: {
-        padding: '4px 12px',
+        padding: '1px 12px',
         fontSize: '14px',
         backgroundColor: '#ff3333',
         color: '#ffffff',
