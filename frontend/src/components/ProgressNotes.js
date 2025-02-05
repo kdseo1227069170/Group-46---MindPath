@@ -5,6 +5,8 @@ import axios from 'axios';
 const ProgressNotes = () => {
     const [notes, setNotes] = useState([]); // Holds obtained notes
     const [newNote, setNewNote] = useState({ title: '', content: '' }); // Holds new note input
+    const [searchQuery, setSearchQuery] = useState('');
+    const [editingNote, setEditingNote] = useState(null);
 
     useEffect(() => {
         fetchNotes();
@@ -33,6 +35,29 @@ const ProgressNotes = () => {
             setNewNote({ title: '', content: '' }); // Reset input fields
         } catch (error) {
             console.error('Failed to add note:', error);
+        }
+    };
+
+    const handleEditNote = (note) => {
+        setEditingNote(note);
+    };
+
+    const handleSaveEdit = async () => {
+        try {
+            await axios.put(`/api/progress-notes/${editingNote._id}`, editingNote);
+            setNotes(notes.map((note) => (note._id === editingNote._id ? editingNote : note)));
+            setEditingNote(null);
+        } catch (error) {
+            console.error('Could not update your note:', error);
+        }
+    };
+
+    const handleDeleteNote = async (id) => {
+        try {
+            await axios.delete(`/api/progress-notes/${id}`);
+            setNotes(notes.filter((note) => note._id !== id));
+        } catch (error) {
+            console.error('Could not delete your note:', error);
         }
     };
 
