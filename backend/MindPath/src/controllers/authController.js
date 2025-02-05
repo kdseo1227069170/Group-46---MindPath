@@ -60,7 +60,7 @@ exports.register = async (req, res) => {
 		
 		// Generate the 2FA secret
         const secret = speakeasy.generateSecret({
-            name: 'Mindpath ',
+            name: 'MindPath',
             length: 20
         });
         
@@ -207,7 +207,7 @@ exports.enable2FA = async (req, res) => {
     try {
         // Generate a secret key for the user
         const secret = speakeasy.generateSecret({
-            name: 'Mindpath', // Your application name
+            name: 'MindPath', // Your application name
             length: 20
         });
         // Store the secret in the user's record
@@ -269,7 +269,7 @@ exports.verifyTwoFACode = async (req, res) => {
         const verified = speakeasy.totp.verify({
             secret: user.twoFASecret,  // The secret stored in the database
             encoding: 'base32',
-            token: token,              // The token the user entered
+            token: code,              // The token the user entered
             window: 1                  // Allow small time drift (optional)
         });
 
