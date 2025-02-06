@@ -12,8 +12,8 @@ const LoginForm = ({ onClose }) => {
 
   const [isFormClosed, setIsFormClosed] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
-  const [is2FARequired, setIs2FARequired] = useState(false);  // Track if 2FA is required
-  const [twoFAError, setTwoFAError] = useState('');  // Track 2FA error  
+  const [is2FARequired, setIs2FARequired] = useState(false);  
+  const [twoFAError, setTwoFAError] = useState('');  
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -37,15 +37,12 @@ const LoginForm = ({ onClose }) => {
         //if (response.data.is2FARequired){
 		if (response.data.message === "2FA required") {
           setIs2FARequired(true);
-          return;  // Wait for the user to input the 2FA code
+          return;  
         }
         
         // If login is successful, and no 2FA required
         localStorage.setItem('jwtToken', response.data.token);
-        alert('Login successful!');
-        //setFormData({ username: '', password: '', twoFACode: '' });
-        //setIsFormClosed(true);
-        //if (onClose) onClose();
+        alert('Login successful!');        
         navigate('/');
       }
     } catch (error) {
@@ -60,7 +57,7 @@ const LoginForm = ({ onClose }) => {
         } else {
             setErrorMessage('Login failed due to a network error.');
         }
-      //setErrorMessage('Login failed!');
+      
     }
   };
 
@@ -70,7 +67,7 @@ const LoginForm = ({ onClose }) => {
 	
     try {
       // Step 3: Verify 2FA code entered by user
-      //const response = await axios.post('http://localhost:5000/api/auth/verify2FA', {
+      
 	  const response = await axios.post('http://localhost:5000/api/auth/login', {
 
         username: formData.username,  
@@ -80,13 +77,9 @@ const LoginForm = ({ onClose }) => {
 	  
 	   console.log('2FA Verification Response:', response.data);
 
-      if (response.status === 200) {
-        // If 2FA is verified successfully, store the JWT token and proceed
+      if (response.status === 200) {        
         localStorage.setItem('jwtToken', response.data.token);
-        alert('2FA verification successful!');
-        //setFormData({ username: '', password: '', twoFACode: '' });
-        //setIsFormClosed(true);
-        //if (onClose) onClose();
+        alert('2FA verification successful!');        
         navigate('/');
       }
     } catch (error) {
@@ -114,17 +107,17 @@ const LoginForm = ({ onClose }) => {
   };
 
   if (isFormClosed) {
-    return null; // Render nothing when the form is closed
+    return null; 
   }
 
   return (
     <div className="login-form-container">
       <div className="login-form-header">
         <h2>Login</h2>
-        <button className="close-button" onClick={onClose}>X</button>
+        <button className="close-button" onClick={handleClose}>X</button>
       </div>
       
-      <form onSubmit={is2FARequired ? handle2FAVerify : handleSubmit}> {/*{handleSubmit}> */}
+      <form onSubmit={is2FARequired ? handle2FAVerify : handleSubmit}> 
         <div>
           <label>Username:</label>
           <input

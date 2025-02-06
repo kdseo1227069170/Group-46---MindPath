@@ -28,16 +28,17 @@ export default function Header({variant}) {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 	
-	 
-	const handleLogout = () => {
-		setIsLoggedIn(false); // Update the state to reflect the user has logged out
-		navigate('/');
-	};
-	  // Log in handler (simulate login by setting the state to true)
+		  
 	const handleLogin = () => {
 		setIsLoggedIn(true);		
 	};
-		
+	
+	const handleLogout = () => {
+		setIsLoggedIn(false); 
+		localStorage.removeItem('jwtToken');
+		navigate('/');
+		window.location.reload();
+	};
 
 
     // Smooth scroll to FAQ section
@@ -137,8 +138,8 @@ export default function Header({variant}) {
 											</>
 										) : (
 										
-                                            //<button onClick={handleLogout}>Log Out</button> 
-											<LogoutButton onLogout={handleLogout} /> // Pass handleLogout here
+                                            
+											<LogoutButton onLogout={handleLogout} /> 
                                                                                 
 										)}
 									</div>
