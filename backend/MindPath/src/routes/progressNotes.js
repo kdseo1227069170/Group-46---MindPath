@@ -3,10 +3,14 @@
 const express = require('express');
 const router = express.Router();
 const ProgressNote = require('../models/ProgressNote');
-const verifyUser = require('../middlewares/verifyUser'); // Middleware for user authentication
+//const verifyUser = require('../middlewares/verifyUser'); // Middleware for user authentication
+const { verifyToken } = require('../middlewares/middleware'); // Now enforcing authentication
+
 
 // Add a new note
-router.post('/', verifyUser, async (req, res) => {
+router.post('/', verifyToken, async (req, res) => {
+// Commented out by Galin	
+//router.post('/', verifyUser, async (req, res) => {
     const { title, content } = req.body;
     try {
         const note = new ProgressNote({
@@ -22,7 +26,9 @@ router.post('/', verifyUser, async (req, res) => {
 });
 
 // Get all notes for a user
-router.get('/', verifyUser, async (req, res) => {
+router.get('/', verifyToken, async (req, res) => {
+//commented out by Galin	
+//router.get('/', verifyUser, async (req, res) => {	
     try {
         const notes = await ProgressNote.find({ userId: req.user.id }).sort({ createdAt: -1 });
         res.status(200).json(notes);
@@ -32,7 +38,9 @@ router.get('/', verifyUser, async (req, res) => {
 });
 
 // Edit a note
-router.put('/:id', verifyUser, async (req, res) => {
+router.put('/:id', verifyToken, async (req, res) => {
+// commented out by Galin	
+//router.put('/:id', verifyUser, async (req, res) => {
     try {
         const note = await ProgressNote.findOneAndUpdate(
             { _id: req.params.id, userId: req.user.id },
@@ -47,7 +55,9 @@ router.put('/:id', verifyUser, async (req, res) => {
 });
 
 // Delete a note
-router.delete('/:id', verifyUser, async (req, res) => {
+router.delete('/:id', verifyToken, async (req, res) => {
+// Commented out by Galin
+// router.delete('/:id', verifyUser, async (req, res) => {	
     try {
         const note = await ProgressNote.findOneAndDelete({
             _id: req.params.id,

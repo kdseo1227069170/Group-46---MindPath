@@ -4,9 +4,10 @@ const express = require('express');
 const router = express.Router();
 const Feedback = require('../models/Feedback');
 const verifyAdmin = require('../middlewares/verifyAdmin'); // Import the verifyAdmin middleware
+const { verifyToken } = require('../middlewares/middleware'); // Added by Galin. 
 
-
-router.post('/', async (req, res) => {
+//Protect the feedback submission route. 
+router.post('/', verifyToken, async (req, res) => {
     try {
         const { rating, comments } = req.body;
         const feedback = new Feedback({ rating, comments });
@@ -19,8 +20,10 @@ router.post('/', async (req, res) => {
 });
 
 // ADMIN-ONLY: this route retrieves the feedback form to view
-//router.get('/', verifyAdmin, async (req, res) => {
-router.get('/', async (req, res) => {
+router.get('/', verifyAdmin, async (req, res) => {
+// Galin commented this line out and uncommented the upper one. This way only the admin is able to see feedback.
+// If the feedback should be visible for anyone, the upper line should be commented out and the one below should be uncommented.
+//router.get('/', async (req, res) => { 
     try {
         const feedbacks = await Feedback.find().sort({ submittedAt: -1 });
         res.json(feedbacks);
